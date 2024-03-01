@@ -7,12 +7,7 @@ import { StatisticsModule } from './statistics/statistics.module';
 import { ConfigModule } from '@nestjs/config';
 
 @Module({
-  imports: [
-    ConfigModule.forRoot(),
-    AuthModule,
-    UserModule, 
-    StatisticsModule
-    ],
+  imports: [ConfigModule.forRoot(), AuthModule, UserModule, StatisticsModule],
   controllers: [AppController],
   providers: [AppService],
 })
