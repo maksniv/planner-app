@@ -36,7 +36,7 @@ export class UserService {
     const completedTask = await this.prisma.task.count({
       where: {
         userId: id,
-        isComplited: true,
+        isCompleted: true,
       },
     });
 
