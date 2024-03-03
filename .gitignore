@@ -10,6 +10,7 @@ lerna-debug.log*
 front/node_modules
 front/dist
 front/dist-ssr
+front/.nuxt
 back/node_modules
 back/dist
 .DS_Store
