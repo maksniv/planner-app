@@ -4,10 +4,11 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'SettingPage',
-};
+<script setup lang="js">
+useHead({
+  title: 'Задачи',
+  meta: [{ name: 'Задачи', content: 'Задачи' }],
+});
 </script>
 
 <style lang="css" scoped>

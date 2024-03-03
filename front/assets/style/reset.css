@@ -1,8 +1,9 @@
 *,
 *::before,
 *::after {
-  font-family: 'Open Sans';
+  font-family: 'Lato', sans-serif;
   font-style: normal;
+  font-size: 18px;
 
   box-sizing: border-box;
   margin: 0;

@@ -4,10 +4,11 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'SettingPage',
-};
+<script setup lang="js">
+useHead({
+  title: 'Настройки',
+  meta: [{ name: 'Настройки', content: 'Настройки' }],
+});
 </script>
 
 <style lang="sass" scoped>

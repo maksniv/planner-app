@@ -7,7 +7,7 @@
 
 <script>
 export default {
-  name: 'ErrorLayout',
+  name: 'AuthLayout',
 };
 </script>
 

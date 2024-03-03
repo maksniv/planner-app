@@ -1,28 +1,18 @@
 <template>
-  <div>
-    <p>Это наша навигация</p>
-    <slot />
+  <div class="container">
+    <TheNavigation />
+    <main class="main__wrapper">
+      <slot />
+    </main>
   </div>
 </template>
 
-<script setup lang="js">
-useHead({
-  title: 'My App',
-  meta: [{ name: 'description', content: 'My amazing site.' }],
-});
-
-// export default {
-//   name: 'DefaultLayout',
-//   data() {
-//     return {
-//       msg: 'Hello world!',
-//     };
-//   },
-// };
-</script>
-
 <style lang="sass" scoped>
-p
+.container
   width: 100%
-  background-color: tomato
+  height: 100vh
+  display: grid
+  grid-template-columns: 1fr 6fr
+  .main__wrapper
+    background-color: $background
 </style>

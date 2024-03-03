@@ -1,5 +1,5 @@
 export default defineNuxtConfig({
-  devtools: { enabled: true },
+  devtools: { enabled: false },
   app: {
     head: {
       charset: 'utf-8',
@@ -22,4 +22,13 @@ export default defineNuxtConfig({
       pathPrefix: false,
     },
   ],
+  modules: ['@nuxtjs/google-fonts', 'nuxt-icon', '@pinia/nuxt'],
+  googleFonts: {
+    families: {
+      Lato: {
+        wght: [300, 400, 700],
+        ital: '300',
+      },
+    },
+  },
 });
