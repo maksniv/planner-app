@@ -11,6 +11,8 @@ module.exports = {
     allowImportExportEverywhere: true,
   },
   extends: [
+    '@nuxt/eslint-config',
+    'plugin:prettier/recommended',
     'airbnb-base',
     'plugin:vue/base',
     'plugin:vue/essential',

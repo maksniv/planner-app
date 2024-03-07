@@ -3,7 +3,7 @@
 </template>
 
 <style lang="sass" scoped>
-.loader 
+.loader
   color: #fff
   font-size: 10px
   width: 1em

@@ -5,6 +5,7 @@ export default defineNuxtConfig({
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1',
     },
+    pageTransition: { name: 'page', mode: 'out-in' },
   },
   css: ['@/assets/style/reset.css'],
   vite: {
@@ -25,9 +26,8 @@ export default defineNuxtConfig({
   modules: ['@nuxtjs/google-fonts', 'nuxt-icon', '@pinia/nuxt'],
   googleFonts: {
     families: {
-      Lato: {
+      'Plus Jakarta Sans': {
         wght: [300, 400, 700],
-        ital: '300',
       },
     },
   },

@@ -1,7 +1,8 @@
 <template>
   <div class="container">
-    <TheNavigation />
+    <TheSidePanel />
     <main class="main__wrapper">
+      <TheMainPanel></TheMainPanel>
       <slot />
     </main>
   </div>
