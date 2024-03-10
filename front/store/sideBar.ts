@@ -4,16 +4,17 @@ export const useSideBarStore = defineStore({
   id: 'side-bar-store',
   state: () => {
     return {
-      activePageTitle: 'test',
+      activePageTitle: '',
       openStatus: false,
     };
   },
   actions: {
-    changeActivePageTitle(value) {
+    changeActivePageTitle(value: string) {
       this.activePageTitle = value;
     },
     changeOpenStatusValue() {
       this.openStatus = !this.openStatus;
+      console.log(this.openStatus);
     },
   },
   getters: {

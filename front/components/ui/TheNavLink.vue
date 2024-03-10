@@ -5,7 +5,7 @@
   </NuxtLink>
 </template>
 
-<script setup lang="js">
+<script setup lang="ts">
 defineProps({
   title: {
     type: String,
@@ -25,7 +25,7 @@ defineProps({
 <style lang="sass" scoped>
 .link__nav
   cursor: pointer
-  width: 90%
+  min-width: 90%
   font-size: 16px
   color: $secondaryTextColor
   display: flex
@@ -35,13 +35,15 @@ defineProps({
   align-items: center
   gap: 12px
   padding: 15px 24px
-  transition: .3s
-  &:hover
-    background-color: $border
-    border-radius: 0 100px 100px 0
-
-.link__nav.router-link-active
-  background-color: $primary
-  color: $textColor
   border-radius: 0 100px 100px 0
+  transition: .3s ease-out
+  &:hover
+    transform: scale(1.05)
+    background-color: $border
+  &:active
+    transform: scale(0.99)
+    background-color: $border
+  &.router-link-active
+    background-color: $primary
+    color: $textColor
 </style>

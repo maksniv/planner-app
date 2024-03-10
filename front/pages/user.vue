@@ -4,10 +4,21 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'StatisticsPage',
-};
+<script setup lang="ts">
+import { onMounted } from 'vue';
+import { useSideBarStore } from '~/store/sideBar';
+
+const store = useSideBarStore();
+const { changeActivePageTitle } = store;
+
+onMounted(() => {
+  changeActivePageTitle('Пользователь');
+})
+
+useHead({
+  title: 'Пользователь',
+  meta: [{ name: 'Пользователь', content: 'Пользователь' }],
+});
 </script>
 
 <style lang="sass" scoped>

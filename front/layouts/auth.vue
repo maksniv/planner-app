@@ -1,18 +1,13 @@
 <template>
-  <div>
-    <p>Это ошибка</p>
+  <div class="container">
     <slot />
   </div>
 </template>
 
-<script>
-export default {
-  name: 'AuthLayout',
-};
-</script>
-
 <style lang="sass" scoped>
-p
+.container
   width: 100%
-  background-color: tomato
+  height: 100vh
+  display: grid
+  background-color: $background
 </style>

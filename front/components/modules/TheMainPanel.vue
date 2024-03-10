@@ -5,7 +5,7 @@
         class="left-wrapper__icon"
         :name="'iconamoon:menu-burger-horizontal-bold'"
         size="40"
-        @click="changeActivePageTitle()"
+        @click="changeOpenStatusValue()"
       ></Icon>
       <span class="left-wrapper__title">{{ getActivePageTitle }}</span>
     </div>
@@ -13,12 +13,12 @@
   </aside>
 </template>
 
-<script setup lang="js">
+<script setup lang="ts">
 import { useSideBarStore } from '~/store/sideBar';
 import { storeToRefs } from 'pinia';
 
 const store = useSideBarStore();
-const { changeActivePageTitle } = store;
+const { changeOpenStatusValue } = store;
 const { getActivePageTitle } = storeToRefs(store);
 </script>
 
@@ -40,14 +40,19 @@ const { getActivePageTitle } = storeToRefs(store);
     flex-wrap: nowrap
     justify-content: space-between
     align-items: center
-    gap: 30px
+    gap: 20px
     .left-wrapper__icon
+      cursor: pointer
       padding: 5px
       transition: .3s
       &:hover
-        transform: scale(1.20)
+        transform: scale(1.15)
         background-color: $border
         border-radius: 100px
+      &:active
+        transform: scale(0.95)
+        background-color: $border
+        border-radius: 80px
     .left-wrapper__title
       font-size: 25px
 </style>

@@ -5,13 +5,10 @@
   </div>
 </template>
 
-<script setup lang="js">
-import { NuxtError } from '#app';
+<script setup lang="ts">
+import type { NuxtError } from '#app';
 
 const props = defineProps({
-  error: {
-    type: Object,
-    default: () => NuxtError,
-  },
+  error: Object as () => NuxtError,
 });
 </script>
