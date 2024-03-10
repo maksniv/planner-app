@@ -26,26 +26,30 @@ const { getOpenStatus } = storeToRefs(store);
   max-width: 300px
   height: 100vh
   background-color: $sidebar
-  display: flex
+  display: none
   .aside__logo
     margin: 20px 10px
     height: 70px
   &.is-visible
+    display: flex
     animation: open 0.4s ease-in
     animation-fill-mode: forwards
   &.is-hidden
-    width: 0%
     animation: close 0.4s ease
 
 @keyframes open
   0%
+    display: none
     width: 0%
   100%
     width: 100%
+    display: flex
 
 @keyframes close
   0%
+    display: flex
     width: 100%
   100%
     width: 0%
+    display: none
 </style>

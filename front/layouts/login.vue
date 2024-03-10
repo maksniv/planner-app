@@ -8,6 +8,6 @@
 .container
   width: 100%
   height: 100vh
-  display: grid
+  display: flex
   background-color: $background
 </style>

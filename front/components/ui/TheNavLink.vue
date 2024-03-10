@@ -25,6 +25,7 @@ defineProps({
 <style lang="sass" scoped>
 .link__nav
   cursor: pointer
+  user-select: none
   min-width: 90%
   font-size: 16px
   color: $secondaryTextColor

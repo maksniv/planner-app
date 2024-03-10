@@ -31,7 +31,7 @@ const { getActivePageTitle } = storeToRefs(store);
   justify-content: space-between
   align-items: center
   min-height: 70px
-  padding: 0 15px 0 0
+  padding: 0 15px 0 10px
   background-color: $sidebar
   .aside__left-wrapper
     color: $textColor
