@@ -1,7 +1,7 @@
 <template>
   <div class="forms-container">
-    <TheFormRegistration v-show="flagForm" />
-    <TheFormAuthorization v-show="!flagForm" />
+    <TheFormRegistration v-show="!flagForm" />
+    <TheFormAuthorization v-show="flagForm" />
     <span class="forms__toggle-span"
       >{{ content }}
       <button class="forms__toggle-button" @click="toggleForm()">

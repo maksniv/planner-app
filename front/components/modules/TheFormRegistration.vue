@@ -41,7 +41,7 @@ const sendData = () => {
 
 const { mutate } = useMutation({
   mutationKey: ['auth'],
-  mutationFn: (data: IAuthForm) => authService.main('login', data),
+  mutationFn: (data: IAuthForm) => authService.main('register', data),
   onSuccess() {
     router.push('/');
   },
