@@ -13,3 +13,5 @@ export interface ITaskResponse {
   createdAt: String;
   updatedAt: String;
 }
+
+export type TypeTaskFormState = Partial<Omit<ITaskResponse, 'id' | 'updateAt'>>;

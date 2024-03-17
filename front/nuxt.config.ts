@@ -1,5 +1,10 @@
 export default defineNuxtConfig({
   devtools: { enabled: false },
+  runtimeConfig: {
+    public: {
+      apiBase: process.env.API_BASE_URL,
+    },
+  },
   app: {
     head: {
       charset: 'utf-8',

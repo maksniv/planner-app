@@ -5,21 +5,21 @@
       class="field__input"
       v-bind="$attrs"
       :placeholder="placeholderText"
-      :value="defaultValue"
-      @input="$emit('input', $event.target.value)"
+      :value="modelValue"
+      @input="$emit('update:modelValue', $event.target.value)"
     />
   </div>
 </template>
 
 <script setup lang="ts">
 const props = defineProps({
+  modelValue: {
+    type: String,
+    default: '',
+  },
   placeholderText: {
     type: String,
     default: 'Поле...',
-  },
-  defaultValue: {
-    type: String,
-    default: '',
   },
   labelText: {
     type: String,

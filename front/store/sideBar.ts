@@ -14,7 +14,6 @@ export const useSideBarStore = defineStore({
     },
     changeOpenStatusValue() {
       this.openStatus = !this.openStatus;
-      console.log(this.openStatus);
     },
   },
   getters: {

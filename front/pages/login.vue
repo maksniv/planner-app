@@ -1,7 +1,7 @@
 <template>
   <div class="forms-container">
-    <TheFormRegistration v-show="openForm" />
-    <TheFormAuthorization v-show="!openForm" />
+    <TheFormRegistration v-show="flagForm" />
+    <TheFormAuthorization v-show="!flagForm" />
     <span class="forms__toggle-span"
       >{{ content }}
       <button class="forms__toggle-button" @click="toggleForm()">
@@ -15,18 +15,18 @@
 definePageMeta({
   layout: 'login',
 });
-let openForm = ref(true);
+let flagForm = ref(true);
 
 const toggleForm = () => {
-  openForm.value = !openForm.value;
+  flagForm.value = !flagForm.value;
 };
 
 const content = computed(() => {
-  return openForm.value ? 'Еще нет аккаунта?' : 'Уже есть аккаунт?';
+  return flagForm.value ? 'Еще нет аккаунта?' : 'Уже есть аккаунт?';
 });
 
 const buttonContent = computed(() => {
-  return openForm.value ? 'Зарегистрироваться!' : 'Войти!';
+  return flagForm.value ? 'Зарегистрироваться!' : 'Войти!';
 });
 </script>
 

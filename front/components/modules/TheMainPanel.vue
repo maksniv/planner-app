@@ -54,5 +54,6 @@ const { getActivePageTitle } = storeToRefs(store);
         background-color: $border
         border-radius: 80px
     .left-wrapper__title
+      user-select: none
       font-size: 25px
 </style>

@@ -28,6 +28,7 @@ const { getOpenStatus } = storeToRefs(store);
   background-color: $sidebar
   display: none
   .aside__logo
+    user-select: none
     margin: 20px 10px
     height: 70px
   &.is-visible

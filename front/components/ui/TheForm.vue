@@ -1,26 +1,24 @@
 <template>
-  <template>
-    <form class="form__container">
-      <h1 class="form__title" :class="setTextSize">
-        <slot name="title"></slot>
-      </h1>
-      <div class="form__line"></div>
-      <div class="form__wrapper">
-        <slot name="body"></slot>
-      </div>
-      <div class="form__line"></div>
-      <div class="form__button-wrapper">
-        <slot name="footer"></slot>
-      </div>
-    </form>
-  </template>
+  <form class="form__container">
+    <h1 class="form__title" :class="setTextSize">
+      <slot name="title"></slot>
+    </h1>
+    <div class="form__line"></div>
+    <div class="form__wrapper">
+      <slot name="body"></slot>
+    </div>
+    <div class="form__line"></div>
+    <div class="form__button-wrapper">
+      <slot name="footer"></slot>
+    </div>
+  </form>
 </template>
 
 <script setup lang="ts">
 const props = defineProps({
   titleSize: {
     type: String,
-    default: 'small',
+    default: '',
   },
 });
 
@@ -42,7 +40,7 @@ const setTextSize = computed(() => {
     &.small
       padding: 24px
     &.big
-      font-size: 30px
+      font-size: 35px
       padding: 30px
   .form__line
     width: 100%
