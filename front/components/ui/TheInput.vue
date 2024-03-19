@@ -6,13 +6,15 @@
       v-bind="$attrs"
       :placeholder="placeholderText"
       :value="modelValue"
-      @input="$emit('update:modelValue', $event.target.value)"
+      @input="
+        $emit('update:modelValue', ($event.target as HTMLInputElement).value)
+      "
     />
   </div>
 </template>
 
 <script setup lang="ts">
-const props = defineProps({
+defineProps({
   modelValue: {
     type: String,
     default: '',
