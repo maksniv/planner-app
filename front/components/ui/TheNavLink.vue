@@ -6,20 +6,13 @@
 </template>
 
 <script setup lang="ts">
-defineProps({
-  title: {
-    type: String,
-    default: 'Ссылка',
-  },
-  link: {
-    type: String,
-    default: '/',
-  },
-  icon: {
-    type: String,
-    default: '',
-  },
-});
+interface Props {
+  title: string;
+  link: string;
+  icon: string;
+}
+
+defineProps<Props>();
 </script>
 
 <style lang="sass" scoped>

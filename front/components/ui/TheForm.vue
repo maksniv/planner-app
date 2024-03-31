@@ -15,12 +15,11 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps({
-  titleSize: {
-    type: String,
-    default: '',
-  },
-});
+interface Props {
+  titleSize: string;
+}
+
+const props = defineProps<Props>();
 
 const setTextSize = computed(() => {
   return props.titleSize === 'small' ? 'small' : 'big';

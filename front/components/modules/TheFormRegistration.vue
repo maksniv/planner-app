@@ -1,5 +1,5 @@
 <template>
-  <TheForm>
+  <TheForm :title-size="'small'">
     <template #title>Форма регистрации</template>
     <template #body>
       <TheInput

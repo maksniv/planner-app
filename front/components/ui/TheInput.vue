@@ -14,20 +14,13 @@
 </template>
 
 <script setup lang="ts">
-defineProps({
-  modelValue: {
-    type: String,
-    default: '',
-  },
-  placeholderText: {
-    type: String,
-    default: 'Поле...',
-  },
-  labelText: {
-    type: String,
-    default: '',
-  },
-});
+interface Props {
+  modelValue: string;
+  placeholderText: string;
+  labelText: string;
+}
+
+defineProps<Props>();
 </script>
 
 <style lang="sass" scoped>

@@ -1,27 +1,28 @@
 <template>
   <div class="navigation">
     <TheNavLink
-      title="Задачи"
-      link="/"
-      icon="radix-icons:dashboard"
-    ></TheNavLink>
-    <TheNavLink
-      title="Пользователь"
-      link="/user"
-      icon="mingcute:group-line"
-    ></TheNavLink>
-    <TheNavLink
-      title="Статистика"
-      link="/statistics"
-      icon="ic:sharp-stacked-line-chart"
-    ></TheNavLink>
-    <TheNavLink
-      title="Настройки"
-      link="/setting"
-      icon="radix-icons:gear"
+      v-for="link in links"
+      :key="link.link"
+      :title="link.title"
+      :link="link.link"
+      :icon="link.icon"
     ></TheNavLink>
   </div>
 </template>
+
+<script setup lang="ts">
+const links = ref([
+  { title: 'Задачи', link: '/', icon: 'radix-icons:dashboard' },
+  { title: 'Пользователь', link: '/user', icon: 'mingcute:group-line' },
+  {
+    title: 'Статистика',
+    link: '/statistics',
+    icon: 'ic:sharp-stacked-line-chart',
+  },
+  { title: 'Настройки', link: '/setting', icon: 'radix-icons:gear' },
+  { title: 'вход', link: '/login', icon: 'radix-icons:gear' },
+]);
+</script>
 
 <style lang="sass" scoped>
 .navigation
