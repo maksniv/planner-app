@@ -21,7 +21,7 @@
 
 <script setup lang="ts">
 import { useMutation } from '@tanstack/vue-query';
-import { authService } from '~/service/auth.service';
+import { main } from '~/composables/auth.service';
 import { useLoaderStore } from '~/store/loader';
 import { type IAuthForm } from '~/types/auth.types';
 
@@ -44,7 +44,7 @@ const sendData = () => {
 
 const { mutate } = useMutation({
   mutationKey: ['auth'],
-  mutationFn: (data: IAuthForm) => authService.main('login', data),
+  mutationFn: (data: IAuthForm) => main('login', data),
   async onSuccess() {
     email.value = '';
     password.value = '';
