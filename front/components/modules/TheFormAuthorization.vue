@@ -38,18 +38,26 @@ const email = ref('');
 const password = ref('');
 
 const sendData = () => {
-  loader.show;
   mutate({ email: email.value, password: password.value });
 };
 
 const { mutate } = useMutation({
   mutationKey: ['auth'],
   mutationFn: (data: IAuthForm) => main('login', data),
+  async onMutate() {
+    loader.show();
+  },
   async onSuccess() {
     email.value = '';
     password.value = '';
     await router.push('/');
-    loader.hide;
+  },
+  async onError() {
+    // TO-DO заменить на уведомление
+    console.log('Ошибка');
+  },
+  async onSettled() {
+    loader.hide();
   },
 });
 </script>

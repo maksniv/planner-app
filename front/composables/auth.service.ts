@@ -1,4 +1,3 @@
-// import AxiosClassic from '@/plugins/axios';
 import { type IAuthResponse, type IAuthForm } from '~/types/auth.types';
 
 const main = async (type: 'login' | 'register', data: IAuthForm) => {

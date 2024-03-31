@@ -8,9 +8,6 @@ export const useLoaderStore = defineStore({
     };
   },
   actions: {
-    set(value: boolean) {
-      this.isShow = value;
-    },
     show() {
       this.isShow = true;
     },

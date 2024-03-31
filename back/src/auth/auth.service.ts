@@ -71,11 +71,11 @@ export class AuthService {
   private async validateUser(dto: AuthDto) {
     const user = await this.userService.getByEmail(dto.email);
 
-    if (!user) throw new NotFoundException('Нет такого пользователя');
+    if (!user) throw new NotFoundException('Не существует такого пользователя');
 
     const isValid = await verify(user.password, dto.password);
 
-    if (!isValid) throw new UnauthorizedException('Неверный пароль!');
+    if (!isValid) throw new UnauthorizedException('Неверный пароль');
 
     return user;
   }

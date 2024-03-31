@@ -11,7 +11,9 @@
 </template>
 
 <script setup lang="ts">
-const links = ref([
+import { type NavLink } from '~/types/navLink.types';
+
+const links = ref<Array<NavLink>>([
   { title: 'Задачи', link: '/', icon: 'radix-icons:dashboard' },
   { title: 'Пользователь', link: '/user', icon: 'mingcute:group-line' },
   {

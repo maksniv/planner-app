@@ -2,7 +2,12 @@ import { IsEmail, IsOptional, IsString, MinLength } from 'class-validator';
 
 export class UserDto {
   @IsOptional()
-  @IsEmail()
+  @IsEmail(
+    {},
+    {
+      message: 'Email должен быть в формате email@mail.xx',
+    },
+  )
   email: string;
 
   @IsOptional()

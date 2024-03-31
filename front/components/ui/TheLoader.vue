@@ -4,6 +4,7 @@
 
 <style lang="sass" scoped>
 .loader
+  z-index: 1000
   color: #fff
   font-size: 15px
   width: 1em

@@ -2,10 +2,6 @@ import type { IUser, TypeUserForm } from '~/types/auth.types';
 
 export interface IProfileResponse {
   user: IUser;
-  statistics: {
-    label: String;
-    value: String;
-  }[];
 }
 
 const BASE_URL = '/user/profile';

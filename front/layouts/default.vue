@@ -28,5 +28,6 @@ const { getStatus } = storeToRefs(loader);
   .main__wrapper
     background-color: $background
     width: 100%
+    height: 100%
     transition: .3s ease-out
 </style>

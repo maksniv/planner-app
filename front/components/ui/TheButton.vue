@@ -14,7 +14,7 @@
   height: 42px
   background-color: $btnBgColor
   color: $btnColor
-  border-radius: 12px
+  border-radius: 8px
   transition: .15s ease-out
   &:hover
     transform: scale(1.03)
