@@ -1,6 +1,12 @@
 export interface IStatisticsResponse {
-  label: String[];
-  value: Number[];
+  statisticsQuantity: {
+    label: String[];
+    value: Number[];
+  };
+  statisticsWeekly: {
+    label: String[];
+    value: Number[];
+  };
 }
 
 const BASE_URL = '/user/statistics';

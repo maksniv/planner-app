@@ -21,6 +21,7 @@ export class StatisticsService {
   async getStatistics(id: string) {
     const profile = await this.getById(id);
 
+    // first statistics
     const totalTask = profile.task.length;
     const completedTask = await this.prisma.task.count({
       where: {
@@ -28,7 +29,14 @@ export class StatisticsService {
         isCompleted: true,
       },
     });
+    const uncompletedTask = await this.prisma.task.count({
+      where: {
+        userId: id,
+        isCompleted: false,
+      },
+    });
 
+    // second statistics
     const todayStart = startOfDay(new Date());
     const weekStart = startOfDay(subDays(new Date(), 7));
 
@@ -51,13 +59,14 @@ export class StatisticsService {
     });
 
     return {
-      label: [
-        'Всего задач',
-        'Завершенных задач',
-        'Задач на сегодня',
-        'Задач на неделю',
-      ],
-      value: [totalTask, completedTask, todayTasks, weekTasks],
+      statisticsQuantity: {
+        label: ['Всего задач', 'Завершенных задач', 'Незавершенных задач'],
+        value: [totalTask, completedTask, uncompletedTask],
+      },
+      statisticsWeekly: {
+        label: ['Задач на сегодня', 'Задач на неделю'],
+        value: [todayTasks, weekTasks],
+      },
     };
   }
 }

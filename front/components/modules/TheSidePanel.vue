@@ -1,10 +1,13 @@
 <template>
   <aside
-    class="aside__wrapper"
+    class="aside__container"
     :class="{ 'is-hidden': getOpenStatus, 'is-visible': !getOpenStatus }"
   >
-    <img src="/logo.png" class="aside__logo" />
-    <TheNavigation></TheNavigation>
+    <div class="aside__wrapper">
+      <img src="/logo.png" class="aside__logo" />
+      <TheNavigation />
+    </div>
+    <TheLogoutButton />
   </aside>
 </template>
 
@@ -17,16 +20,23 @@ const { getOpenStatus } = storeToRefs(store);
 </script>
 
 <style lang="sass" scoped>
-.aside__wrapper
+.aside__container
   flex-direction: column
   flex-wrap: nowrap
-  justify-content: flex-start
+  justify-content: space-between
   align-items: center
   gap: 30px
   max-width: 300px
   height: 100vh
   background-color: $sidebar
+  padding-bottom: 30px
   display: none
+  .aside__wrapper
+    display: flex
+    flex-direction: column
+    flex-wrap: nowrap
+    justify-content: flex-start
+    align-items: center
   .aside__logo
     user-select: none
     margin: 20px 10px

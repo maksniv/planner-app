@@ -1,5 +1,8 @@
 <template>
-  <aside class="aside__container">
+  <aside
+    class="aside__container"
+    :class="{ 'is-hidden': getOpenStatus, 'is-visible': !getOpenStatus }"
+  >
     <div class="aside__left-wrapper">
       <Icon
         class="left-wrapper__icon"
@@ -19,6 +22,7 @@ import { storeToRefs } from 'pinia';
 
 const store = useSideBarStore();
 const { changeOpenStatusValue } = store;
+const { getOpenStatus } = storeToRefs(store);
 const { getActivePageTitle } = storeToRefs(store);
 </script>
 
@@ -33,6 +37,13 @@ const { getActivePageTitle } = storeToRefs(store);
   min-height: 70px
   padding: 0 15px 0 10px
   background-color: $sidebar
+  // transition: all .3s ease
+  &.is-visible
+    width: calc( 100vw - 265px )
+    animation: open 0.35s ease-in
+  &.is-hidden
+    width: 100vw
+    animation: close 0.35s ease-in-out
   .aside__left-wrapper
     color: $textColor
     display: flex
@@ -56,4 +67,16 @@ const { getActivePageTitle } = storeToRefs(store);
     .left-wrapper__title
       user-select: none
       font-size: 25px
+
+@keyframes open
+  0%
+    width: 100vw
+  100%
+    width: calc( 100vw - 265px )
+
+@keyframes close
+  0%
+    width: calc( 100vw - 265px )
+  100%
+    width: 100vw
 </style>
