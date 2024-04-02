@@ -42,9 +42,3 @@ watch(props, (val) => {
   chartData.value.datasets[0].data = val?.statistics.value;
 });
 </script>
-
-<style lang="sass" scoped>
-.chart-container
-   width: 1000px
-   height: 600px
-</style>

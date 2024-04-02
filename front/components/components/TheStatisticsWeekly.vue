@@ -43,8 +43,3 @@ watch(props, (val) => {
 });
 </script>
 
-<style lang="sass" scoped>
-.chart-container
-   width: 1000px
-   height: 600px
-</style>

@@ -26,11 +26,10 @@ const { getOpenStatus } = storeToRefs(store);
   justify-content: space-between
   align-items: center
   gap: 30px
-  max-width: 300px
+  max-width: 265px
   height: 100vh
   background-color: $sidebar
-  padding-bottom: 30px
-  display: none
+  padding-bottom: 30px 
   .aside__wrapper
     display: flex
     flex-direction: column
@@ -44,8 +43,8 @@ const { getOpenStatus } = storeToRefs(store);
   &.is-visible
     display: flex
     animation: open 0.4s ease-in
-    animation-fill-mode: forwards
   &.is-hidden
+    display: none
     animation: close 0.4s ease
 
 @keyframes open

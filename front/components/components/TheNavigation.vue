@@ -22,7 +22,6 @@ const links = ref<Array<NavLink>>([
     icon: 'ic:sharp-stacked-line-chart',
   },
   { title: 'Настройки', link: '/setting', icon: 'radix-icons:gear' },
-  { title: 'вход', link: '/login', icon: 'radix-icons:gear' },
 ]);
 </script>
 

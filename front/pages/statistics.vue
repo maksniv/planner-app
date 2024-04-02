@@ -45,13 +45,15 @@ const { data } = useQuery({
 
 <style lang="sass" scoped>
 .statistics-page__container
-  width: 100%
+  max-width: 100%
   height: 100%
   display: grid
   grid-template-columns: 1fr 1fr
-  gap: 20px
-  padding: 50px 10px 10px
+  justify-items: center
+  gap: 40px
+  padding: 50px 25px 25px
   .statistics-page__statistics
     height: 300px
     width: 100%
+    max-width: 500px
 </style>

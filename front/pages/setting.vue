@@ -1,6 +1,9 @@
 <template>
-  <div>
-    <p>Страничка настроек</p>
+    <div class="statistics-page__container">
+    <div class="statistics-page__statistics red">
+    </div>
+    <div class="statistics-page__statistics blue">
+    </div>
   </div>
 </template>
 
@@ -22,7 +25,18 @@ useHead({
 </script>
 
 <style lang="sass" scoped>
-p
-  width: 100%
-  background-color: yellow
+.statistics-page__container
+  max-width: 100%
+  height: 100%
+  display: grid
+  grid-template-columns: 1fr 1fr
+  gap: 20px
+  padding: 50px 10px 10px
+  .statistics-page__statistics
+    height: 300px
+    width: 100%
+.red
+  background-color: red    
+.blue
+  background-color: blue  
 </style>
