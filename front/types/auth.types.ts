@@ -10,7 +10,16 @@ export interface IAuthResponse {
 
 export interface IUser {
   id: number;
+  name: string;
+  surname: string;
   email?: string;
   password: string;
 }
-export type TypeUserForm = Omit<IUser, 'id'> & { password: String };
+
+// export type TypeUserForm = Omit<IUser, 'id'> & { password: String };
+export type TypeUserForm = {
+  name: string;
+  surname: string;
+  email?: string;
+  password: string;
+};

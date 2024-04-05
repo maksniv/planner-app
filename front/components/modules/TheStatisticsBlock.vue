@@ -1,0 +1,40 @@
+<template>
+  <div class="statistics__container">
+    <div class="statistics__statistic">
+      <TheStatisticQuantity :statistics="data?.statisticsQuantity" />
+    </div>
+    <div class="statistics__statistic">
+      <TheStatisticWeekly :statistics="data?.statisticsWeekly" />
+    </div>
+  </div>
+</template>
+
+<script setup lang="ts">
+import { useQuery } from '@tanstack/vue-query';
+import { getStatistics } from '@/composables/statistics.service';
+
+const { data, isError, error } = useQuery({
+  queryKey: ['statistics'],
+  queryFn: () => getStatistics(),
+});
+
+watch(isError, (val) => {
+  // TO-DO заменить на уведомление
+  if (val) console.log(error);
+});
+</script>
+
+<style lang="sass" scoped>
+.statistics__container
+  max-width: 100%
+  height: 100%
+  display: grid
+  grid-template-columns: 1fr 1fr
+  justify-items: center
+  gap: 40px
+  padding: 50px 25px 25px
+  .statistics__statistic
+    height: 300px
+    width: 100%
+    max-width: 500px
+</style>

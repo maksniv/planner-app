@@ -1,13 +1,13 @@
 <template>
-  <form class="form__container">
-    <h1 class="form__title" :class="setTextSize">
+  <form class="form__container" autocomplete="false">
+    <h1 class="form__title" :class="setTextSize" v-if="!hideTitle">
       <slot name="title"></slot>
     </h1>
-    <div class="form__line"></div>
+    <div class="form__line" v-if="!hideTitle" />
     <div class="form__wrapper">
       <slot name="body"></slot>
     </div>
-    <div class="form__line"></div>
+    <div class="form__line" />
     <div class="form__button-wrapper">
       <slot name="footer"></slot>
     </div>
@@ -16,13 +16,14 @@
 
 <script setup lang="ts">
 interface Props {
-  titleSize: string;
+  smallTitleSize?: boolean | false;
+  hideTitle?: boolean | false;
 }
 
 const props = defineProps<Props>();
 
 const setTextSize = computed(() => {
-  return props.titleSize === 'small' ? 'small' : 'big';
+  return props.smallTitleSize === true ? 'small' : 'big';
 });
 </script>
 

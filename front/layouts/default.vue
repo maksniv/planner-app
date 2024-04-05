@@ -1,10 +1,8 @@
 <template>
   <div class="container">
     <TheSidePanel />
-    <TheLoader v-if="getStatus" />
-    <main
-      class="main__wrapper"
-    >
+    <TheLoader v-if="isFetching || isMutating" />
+    <main class="main__wrapper">
       <TheMainPanel></TheMainPanel>
       <slot />
     </main>
@@ -12,11 +10,10 @@
 </template>
 
 <script setup lang="ts">
-import { useLoaderStore } from '~/store/loader';
-import { storeToRefs } from 'pinia';
+import { useIsFetching, useIsMutating } from '@tanstack/vue-query';
 
-const loader = useLoaderStore();
-const { getStatus } = storeToRefs(loader);
+const isFetching = useIsFetching();
+const isMutating = useIsMutating();
 </script>
 
 <style lang="sass" scoped>

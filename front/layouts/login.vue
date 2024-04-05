@@ -1,16 +1,15 @@
 <template>
   <div class="container">
-    <TheLoader v-if="getStatus" />
+    <TheLoader v-if="isFetching || isMutating" />
     <slot />
   </div>
 </template>
 
 <script setup lang="ts">
-import { useLoaderStore } from '~/store/loader';
-import { storeToRefs } from 'pinia';
+import { useIsFetching, useIsMutating } from '@tanstack/vue-query';
 
-const loader = useLoaderStore();
-const { getStatus } = storeToRefs(loader);
+const isFetching = useIsFetching();
+const isMutating = useIsMutating();
 </script>
 
 <style lang="sass" scoped>

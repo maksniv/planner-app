@@ -24,7 +24,7 @@ const chartData = ref<ChartData<'bar'>>({
   labels: [],
   datasets: [
     {
-      label: 'Задач на неделю',
+      label: 'Количество задач',
       backgroundColor: '#f87979',
       data: [],
     },
@@ -36,10 +36,8 @@ const chartOptions = ref<ChartOptions<'bar'>>({
 });
 
 watch(props, (val) => {
-  console.log(val.statistics);
   if (!val.statistics) return;
   chartData.value.labels = val?.statistics.label;
   chartData.value.datasets[0].data = val?.statistics.value;
 });
 </script>
-

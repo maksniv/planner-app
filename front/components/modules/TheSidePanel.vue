@@ -4,7 +4,7 @@
     :class="{ 'is-hidden': getOpenStatus, 'is-visible': !getOpenStatus }"
   >
     <div class="aside__wrapper">
-      <img src="/logo.png" class="aside__logo" />
+      <TheLogo />
       <TheNavigation />
     </div>
     <TheLogoutButton />
@@ -29,17 +29,13 @@ const { getOpenStatus } = storeToRefs(store);
   max-width: 265px
   height: 100vh
   background-color: $sidebar
-  padding-bottom: 30px 
+  padding-bottom: 30px
   .aside__wrapper
     display: flex
     flex-direction: column
     flex-wrap: nowrap
     justify-content: flex-start
     align-items: center
-  .aside__logo
-    user-select: none
-    margin: 20px 10px
-    height: 70px
   &.is-visible
     display: flex
     animation: open 0.4s ease-in

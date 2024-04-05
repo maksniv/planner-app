@@ -3,12 +3,14 @@
     <span v-if="labelText" class="field__label">{{ labelText }}</span>
     <input
       class="field__input"
+      autocomplete="new-password"
       v-bind="$attrs"
       :placeholder="placeholderText"
-      :value="modelValue"
-      @input="
-        $emit('update:modelValue', ($event.target as HTMLInputElement).value)
-      "
+      v-model="localValue"
+      :value="localValue"
+      @focus="$emit('focus')"
+      @input="$emit('update:modelValue', localValue)"
+      @blur="$emit('blur', localValue)"
     />
   </div>
 </template>
@@ -18,9 +20,29 @@ interface Props {
   modelValue: string;
   placeholderText: string;
   labelText: string;
+  value?: string | undefined;
 }
+const props = defineProps<Props>();
 
-defineProps<Props>();
+const localValue = ref('');
+
+const emit = defineEmits<{
+  (e: 'update:modelValue', value: string): void;
+  (e: 'blur', value: string): void;
+  (e: 'focus'): void;
+}>();
+
+watch(
+  props,
+  (val) => {
+    if (!val.value) return;
+    if (!val.modelValue && val.value) {
+      localValue.value = val.value;
+      emit('update:modelValue', localValue.value);
+    }
+  },
+  // { immediate: true },
+);
 </script>
 
 <style lang="sass" scoped>

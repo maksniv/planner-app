@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <p>Страничка юзера</p>
+  <div class="user-page">
+    <TheUserBlock />
   </div>
 </template>
 
@@ -13,7 +13,7 @@ const { changeActivePageTitle } = store;
 
 onMounted(() => {
   changeActivePageTitle('Пользователь');
-})
+});
 
 useHead({
   title: 'Пользователь',
@@ -22,7 +22,9 @@ useHead({
 </script>
 
 <style lang="sass" scoped>
-p
+.user-page
  width: 100%
- background-color: $primary
+ height: 100%
+ display: flex
+ padding: 15px
 </style>

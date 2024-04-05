@@ -1,5 +1,5 @@
 <template>
-  <TheForm :title-size="'small'">
+  <TheForm>
     <template #title>Форма регистрации</template>
     <template #body>
       <TheInput
@@ -14,7 +14,9 @@
       ></TheInput>
     </template>
     <template #footer>
-      <TheButton @click.prevent="sendData">Зарегистрироваться</TheButton>
+      <TheButton @click.prevent="mutate({ email: email, password: password })"
+        >Зарегистрироваться</TheButton
+      >
     </template>
   </TheForm>
 </template>
@@ -22,7 +24,6 @@
 <script setup lang="ts">
 import { useMutation } from '@tanstack/vue-query';
 import { main } from '~/composables/auth.service';
-import { useLoaderStore } from '~/store/loader';
 import { type IAuthForm } from '~/types/auth.types';
 
 useHead({
@@ -30,34 +31,23 @@ useHead({
   meta: [{ name: 'Регистрация', content: 'Регистрация' }],
 });
 
-const loader = useLoaderStore();
-
 const router = useRouter();
 
 const email = ref('');
 const password = ref('');
 
-const sendData = () => {
-  mutate({ email: email.value, password: password.value });
-};
-
-const { mutate } = useMutation({
+const { mutate, isError, error } = useMutation({
   mutationKey: ['auth'],
   mutationFn: (data: IAuthForm) => main('register', data),
-  async onMutate() {
-    loader.show();
-  },
   async onSuccess() {
     email.value = '';
     password.value = '';
     await router.push('/');
   },
-  async onError() {
-    // TO-DO заменить на уведомление
-    console.log('Ошибка');
-  },
-  async onSettled() {
-    loader.hide();
-  },
+});
+
+watch(isError, (val) => {
+  // TO-DO заменить на уведомление
+  if (val) console.log(error);
 });
 </script>
