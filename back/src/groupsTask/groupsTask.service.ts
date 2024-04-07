@@ -8,6 +8,11 @@ export class GroupsTaskService {
 
   async getAll(userId: string) {
     return this.prisma.taskGroup.findMany({
+      orderBy: [
+        {
+          createdAt: 'desc',
+        },
+      ],
       where: {
         userId,
       },

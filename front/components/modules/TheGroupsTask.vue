@@ -8,7 +8,8 @@
             v-for="item in toRaw(data.data)"
             :key="item.id"
             :id="item.id"
-            :value="item.name"
+            :name="item.name"
+            :color="item.color"
           />
           <TheAddButton
             v-if="data?.data"

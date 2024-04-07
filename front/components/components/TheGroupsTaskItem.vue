@@ -3,9 +3,9 @@
     <TheInput
       v-model="localValueName"
       placeholder-text="Название"
-      :value="value"
+      :value="name"
     ></TheInput>
-    <span>color picker</span>
+    <TheColorPicker v-model="localValueColor" :value="color" />
     <Icon
       :disabled="isPendingUpdate"
       @click="deleteHandler"
@@ -27,13 +27,15 @@ import {
 import { debounce } from '@/utils/debounce';
 
 interface Props {
-  value?: string;
+  name?: string;
+  color?: string;
   id: string;
 }
 
 const props = defineProps<Props>();
 
 const localValueName = ref('');
+const localValueColor = ref('');
 
 const queryClient = useQueryClient();
 
@@ -57,7 +59,7 @@ const {
   error: errorDelete,
 } = useMutation({
   mutationKey: ['delete-group-task'],
-  mutationFn: (data: TypeGroupsTaskFormState) => deleteGroupTask(props.id),
+  mutationFn: () => deleteGroupTask(props.id),
   async onSuccess() {
     queryClient.invalidateQueries({ queryKey: ['groups-task'] });
   },
@@ -66,12 +68,16 @@ const {
 const updateHandler = debounce(update, 800);
 
 watch(localValueName, (newVal, oldVal) => {
-  console.log(newVal);
-  console.log(oldVal);
-
   if (oldVal === '') return;
   updateHandler({
     name: newVal,
+  });
+});
+
+watch(localValueColor, (newVal, oldVal) => {
+  if (oldVal === '') return;
+  updateHandler({
+    color: newVal,
   });
 });
 
