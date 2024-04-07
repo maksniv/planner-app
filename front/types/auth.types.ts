@@ -21,5 +21,5 @@ export type TypeUserForm = {
   name: string;
   surname: string;
   email?: string;
-  password: string;
+  password?: string;
 };

@@ -1,7 +1,7 @@
 <template>
   <div class="logo">
-    <Icon name="bi:calendar-check" size="45" class="logo__icon"></Icon>
-    <span class="logo__text">max-planner</span>
+    <Icon name="line-md:text-box-twotone" size="50" class="logo__icon"></Icon>
+    <span class="logo__text">MAX Planner</span>
   </div>
 </template>
 
@@ -11,9 +11,8 @@
     width: 265px
     display: flex
     flex-direction: row
-    justify-content: space-between
+    justify-content: space-around
     align-items: center
-    // gap: 10px
     user-select: none
     padding: 20px 12px
     height: 100px

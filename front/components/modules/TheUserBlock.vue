@@ -1,7 +1,6 @@
 <template>
   <div class="user-block">
     <TheForm hide-title>
-      <template #title></template>
       <template #body>
         <TheInput
           v-model="name"
@@ -23,18 +22,18 @@
         ></TheInput
         ><TheInput
           v-model="password"
-          :value="data?.user?.password"
           placeholder-text="Пароль"
           labelText="Пароль"
         ></TheInput>
       </template>
       <template #footer>
         <TheButton
+          :disabled="isPending"
           @click.prevent="
             () =>
               mutate({
                 email: email,
-                password: password,
+                password: password || undefined,
                 name: name,
                 surname: surname,
               })
@@ -47,7 +46,10 @@
 </template>
 
 <script setup lang="ts">
-import { useQuery, useQueryClient } from '@tanstack/vue-query';
+import {
+  useQuery,
+  useQueryClient,
+} from '@tanstack/vue-query';
 import { useMutation } from '@tanstack/vue-query';
 import { type TypeUserForm } from '~/types/auth.types';
 import { getProfile, updateProfile } from '@/composables/user.service';
@@ -64,14 +66,11 @@ const { data } = useQuery({
 
 const queryClient = useQueryClient();
 
-const { mutate, isError, error } = useMutation({
+const { mutate, isError, error, isPending } = useMutation({
   mutationKey: ['update profile'],
   mutationFn: (data: TypeUserForm) => updateProfile(data),
   async onSuccess() {
-    email.value = '';
     password.value = '';
-    name.value = '';
-    surname.value = '';
     queryClient.invalidateQueries({ queryKey: ['profile'] });
   },
 });

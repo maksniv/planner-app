@@ -1,6 +1,6 @@
 <template>
-  <div class="user-page">
-    <TheUserBlock />
+  <div class="groups-task-page">
+    <TheGroupsTask />
   </div>
 </template>
 
@@ -12,17 +12,17 @@ const store = useSideBarStore();
 const { changeActivePageTitle } = store;
 
 onMounted(() => {
-  changeActivePageTitle('Пользователь');
+  changeActivePageTitle('Группы задач');
 });
 
 useHead({
-  title: 'Пользователь',
-  meta: [{ name: 'Пользователь', content: 'Пользователь' }],
+  title: 'Группы задач',
+  meta: [{ name: 'Группы задач', content: 'Группы задач' }],
 });
 </script>
 
 <style lang="sass" scoped>
-.user-page
+.groups-task-page
   width: 100%
   height: 100%
   display: flex

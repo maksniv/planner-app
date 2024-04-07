@@ -7,8 +7,8 @@
     <div class="form__wrapper">
       <slot name="body"></slot>
     </div>
-    <div class="form__line" />
-    <div class="form__button-wrapper">
+    <div class="form__line" v-if="!hideFooter" />
+    <div class="form__button-wrapper" v-if="!hideFooter">
       <slot name="footer"></slot>
     </div>
   </form>
@@ -18,6 +18,7 @@
 interface Props {
   smallTitleSize?: boolean | false;
   hideTitle?: boolean | false;
+  hideFooter?: boolean | false;
 }
 
 const props = defineProps<Props>();

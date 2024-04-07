@@ -1,12 +1,7 @@
 import { IsEmail, IsString, MinLength } from 'class-validator';
 
 export class AuthDto {
-  @IsEmail(
-    {},
-    {
-      message: 'Email должен быть в формате email@mail.xx',
-    },
-  )
+  @IsEmail( {},{ message: 'Email должен быть в формате email@mail.xx' } )
   email: string;
 
   @MinLength(6, {

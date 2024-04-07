@@ -13,10 +13,10 @@ export class UserService {
       where: {
         id,
       },
-      include: {
-        task: true,
-        task_group: true,
-      },
+      // include: {
+      //   task: true,
+      //   task_group: true,
+      // },
     });
   }
 

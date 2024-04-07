@@ -4,6 +4,7 @@ import { UserModule } from './user/user.module';
 import { TaskModule } from './task/task.module';
 import { ConfigModule } from '@nestjs/config';
 import { StatisticsModule } from './statistics/statistics.module';
+import { GroupsTaskModule } from './groupsTask/groupsTask.module';
 
 @Module({
   imports: [
@@ -12,6 +13,7 @@ import { StatisticsModule } from './statistics/statistics.module';
     UserModule,
     TaskModule,
     StatisticsModule,
+    GroupsTaskModule,
   ],
 })
 export class AppModule {}

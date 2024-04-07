@@ -18,9 +18,9 @@
 <script setup lang="ts">
 interface Props {
   modelValue: string;
-  placeholderText: string;
-  labelText: string;
-  value?: string | undefined;
+  placeholderText?: string | 'Введите значение...';
+  labelText?: string;
+  value?: string;
 }
 const props = defineProps<Props>();
 
@@ -33,15 +33,23 @@ const emit = defineEmits<{
 }>();
 
 watch(
-  props,
+  () => props.value,
   (val) => {
-    if (!val.value) return;
-    if (!val.modelValue && val.value) {
-      localValue.value = val.value;
+    if (!val) return;
+    if (!localValue.value && val) {
+      localValue.value = val;
       emit('update:modelValue', localValue.value);
     }
   },
-  // { immediate: true },
+  { immediate: true },
+);
+
+watch(
+  () => props.modelValue,
+  (val) => {
+    localValue.value = val;
+    emit('update:modelValue', localValue.value);
+  },
 );
 </script>
 
@@ -54,7 +62,7 @@ watch(
   flex-wrap: nowrap
   gap: 10px
   .field__input
-    padding: 10px 40px 10px 12px
+    padding: 10px 12px 10px 12px
     width: 100%
     height: 100%
     border-radius: $borderRadius
