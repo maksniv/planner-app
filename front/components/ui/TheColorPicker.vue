@@ -5,7 +5,6 @@
       class="field__input"
       v-bind="$attrs"
       v-model="localValue"
-      :value="localValue"
       @focus="$emit('focus')"
       @input="$emit('update:modelValue', localValue)"
       @blur="$emit('blur', localValue)"
@@ -16,7 +15,7 @@
 <script setup lang="ts">
 interface Props {
   modelValue: string;
-  value?: string;
+  value?: string | '#000000';
 }
 const props = defineProps<Props>();
 

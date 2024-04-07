@@ -82,7 +82,7 @@ watch(isErrorGet, (val) => {
     min-height: 300px
     display: flex
     flex-direction: column
-    justify-content: start
+    justify-content: flex-start
     align-items: center
     gap: 15px
     .groups-task__add-button

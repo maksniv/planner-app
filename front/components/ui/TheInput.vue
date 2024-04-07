@@ -7,7 +7,6 @@
       v-bind="$attrs"
       :placeholder="placeholderText"
       v-model="localValue"
-      :value="localValue"
       @focus="$emit('focus')"
       @input="$emit('update:modelValue', localValue)"
       @blur="$emit('blur', localValue)"
@@ -71,7 +70,7 @@ watch(
     background-color: $inputBgColor
     transition: .15s ease-out
     outline: none
-    &::placeholder 
+    &::placeholder
       color: $secondaryTextColor
     &:hover
       border: 1px solid $inputActive

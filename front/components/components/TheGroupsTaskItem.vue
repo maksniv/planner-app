@@ -1,11 +1,16 @@
 <template>
   <div class="groups-task-item__container">
     <TheInput
-      v-model="localValueName"
+      v-model="localValue.name"
       placeholder-text="Название"
       :value="name"
+      @input="updateHandler({ name: localValue.name })"
     ></TheInput>
-    <TheColorPicker v-model="localValueColor" :value="color" />
+    <TheColorPicker
+      v-model="localValue.color"
+      :value="color"
+      @input="updateHandler({ color: localValue.color })"
+    />
     <Icon
       :disabled="isPendingUpdate"
       @click="deleteHandler"
@@ -34,8 +39,7 @@ interface Props {
 
 const props = defineProps<Props>();
 
-const localValueName = ref('');
-const localValueColor = ref('');
+const localValue = ref({ name: '', color: '' });
 
 const queryClient = useQueryClient();
 
@@ -67,20 +71,6 @@ const {
 
 const updateHandler = debounce(update, 800);
 
-watch(localValueName, (newVal, oldVal) => {
-  if (oldVal === '') return;
-  updateHandler({
-    name: newVal,
-  });
-});
-
-watch(localValueColor, (newVal, oldVal) => {
-  if (oldVal === '') return;
-  updateHandler({
-    color: newVal,
-  });
-});
-
 watch(isErrorUpdate, (val) => {
   // TO-DO заменить на уведомление
   if (val) console.log(errorUpdate);
@@ -100,6 +90,7 @@ watch(isErrorDelete, (val) => {
   display: flex
   flex-direction: row
   flex-wrap: nowrap
+  justify-content: center
   padding: 10px 10px
   gap: 15px
   .groups-task-item__icon
