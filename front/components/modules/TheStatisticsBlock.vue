@@ -26,7 +26,8 @@ watch(isError, (val) => {
 
 <style lang="sass" scoped>
 .statistics__container
-  max-width: 100%
+  margin: auto
+  width: 100%
   height: 100%
   display: grid
   grid-template-columns: 1fr 1fr

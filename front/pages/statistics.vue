@@ -1,5 +1,7 @@
 <template>
-  <TheStatisticsBlock />
+  <div class="statistics-page">
+    <TheStatisticsBlock />
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -17,3 +19,11 @@ onMounted(() => {
   changeActivePageTitle('Статистика');
 });
 </script>
+
+<style lang="sass" scoped>
+.statistics-page
+  width: 100%
+  height: 100%
+  display: flex
+  padding: 15px
+</style>
