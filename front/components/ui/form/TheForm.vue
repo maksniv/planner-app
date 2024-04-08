@@ -1,10 +1,14 @@
 <template>
   <form class="form__container" autocomplete="false">
-    <h1 class="form__title" :class="setTextSize" v-if="!hideTitle">
+    <h1
+      class="form__title"
+      :class="smallTitleSize ? 'small' : 'big'"
+      v-if="!hideTitle"
+    >
       <slot name="title"></slot>
     </h1>
-    <div class="form__line" v-if="!hideTitle" />
-    <div class="form__wrapper">
+    <div class="form__line" v-if="!hideTitle && !hideBody" />
+    <div class="form__wrapper" v-if="!hideBody">
       <slot name="body"></slot>
     </div>
     <div class="form__line" v-if="!hideFooter" />
@@ -19,19 +23,17 @@ interface Props {
   smallTitleSize?: boolean | false;
   hideTitle?: boolean | false;
   hideFooter?: boolean | false;
+  hideBody?: boolean | false;
 }
 
-const props = defineProps<Props>();
-
-const setTextSize = computed(() => {
-  return props.smallTitleSize === true ? 'small' : 'big';
-});
+defineProps<Props>();
 </script>
 
 <style lang="sass" scoped>
 .form__container
   flex: 1
   display: flex
+  min-width: 300px
   flex-direction: column
   border: 1px solid $border
   border-radius: $borderRadius
@@ -40,6 +42,7 @@ const setTextSize = computed(() => {
   .form__title
     &.small
       padding: 24px
+      font-size: 25px
     &.big
       font-size: 35px
       padding: 30px
