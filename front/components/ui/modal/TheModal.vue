@@ -4,7 +4,7 @@
       <div
         class="modal"
         :class="showModal ? 'active' : ''"
-        @keydown.esc="close()"
+        @keydown.esc="$emit('close')"
       >
         <TheForm hideBody smallTitleSize>
           <template #title>
@@ -14,8 +14,8 @@
           </template>
           <template #footer>
             <slot name="button">
-              <TheButton @click="props.confirmFunction?.()">Подтвердить</TheButton>
-              <TheButton @click="props.rejectFunction?.()">Отмена</TheButton>
+              <TheButton @click="$emit('confirm')">Подтвердить</TheButton>
+              <TheButton @click="$emit('reject')">Отмена</TheButton>
             </slot>
           </template>
         </TheForm>
@@ -28,12 +28,15 @@
 interface Props {
   showModal: boolean | false;
   contentText?: string | '';
-  confirmFunction?: Function;
-  rejectFunction?: Function;
-  close: Function;
 }
 
 const props = defineProps<Props>();
+
+const emit = defineEmits<{
+  (e: 'close'): void;
+  (e: 'confirm'): void;
+  (e: 'reject'): void;
+}>();
 </script>
 
 <style scoped lang="sass">

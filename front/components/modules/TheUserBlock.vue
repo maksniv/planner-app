@@ -23,59 +23,62 @@
           labelText="Email"
           @input="updateHandler({ email: profile.email })"
         ></TheInput
-        ><TheInput
+        ><TheInputPassword
           v-model="profile.password"
           placeholder-text="Пароль"
           labelText="Пароль"
           @input="updateHandler({ password: profile.password })"
-        ></TheInput>
+        ></TheInputPassword>
       </template>
     </TheForm>
   </div>
 </template>
 
 <script setup lang="ts">
-import { useQuery, useQueryClient } from '@tanstack/vue-query';
-import { useMutation } from '@tanstack/vue-query';
+import {
+  useQuery,
+  useQueryClient,
+  keepPreviousData,
+  useMutation,
+} from '@tanstack/vue-query';
 import { type TypeUserForm } from '~/types/auth.types';
 import { getProfile, updateProfile } from '@/composables/user.service';
+import { errorCatch } from '@/utils/error';
 
-const profile = ref({ email: '', password: '', name: '', surname: '' });
-
-const {
-  data,
-  isError: isErrorGet,
-  error: errorGet,
-} = useQuery({
-  queryKey: ['profile'],
-  queryFn: () => getProfile(),
-});
+const { $toast } = useNuxtApp();
 
 const queryClient = useQueryClient();
 
-const {
-  mutate: update,
-  isError: isErrorUpdate,
-  error: errorUpdate,
-} = useMutation({
+const profile = ref({ email: '', password: '', name: '', surname: '' });
+
+const { data, error: errorGet } = useQuery({
+  queryKey: ['profile'],
+  queryFn: () => getProfile(),
+  throwOnError: (e: any) => e,
+  placeholderData: keepPreviousData,
+});
+
+const { mutate: update, error: errorUpdate } = useMutation({
   mutationKey: ['update profile'],
   mutationFn: (data: TypeUserForm) => updateProfile(data),
   async onSuccess() {
+    $toast.success('Сохранено');
     profile.value.password = '';
     queryClient.invalidateQueries({ queryKey: ['profile'] });
   },
+  onError: (err: any) => err,
 });
 
 const updateHandler = debounce(update, 800);
 
-watch(isErrorUpdate, (val) => {
-  // TO-DO заменить на уведомление
-  if (val) console.log(errorUpdate);
+watch(errorUpdate, (val) => {
+  const errorMessage = errorCatch(val);
+  if (errorMessage) $toast.error(errorMessage);
 });
 
-watch(isErrorGet, (val) => {
-  // TO-DO заменить на уведомление
-  if (val) console.log(errorGet);
+watch(errorGet, (val) => {
+  const errorMessage = errorCatch(val);
+  if (errorMessage) $toast.error(errorMessage);
 });
 </script>
 

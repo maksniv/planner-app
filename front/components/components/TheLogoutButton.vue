@@ -1,5 +1,5 @@
 <template>
-  <TheButton @click="() => (visible = true)">
+  <TheButton @click="visible = true">
     Выйти
     <Icon
       name="material-symbols:logout-rounded"
@@ -10,13 +10,9 @@
   <TheModal
     :show-modal="visible"
     contentText="Вы точно хотите выйти?"
-    :close="() => (visible = false)"
-    :confirmFunction="
-      async () => {
-        await mutate();
-      }
-    "
-    :rejectFunction="() => (visible = false)"
+    @confirm="mutate()"
+    @reject="visible = false"
+    @close="visible = false"
   ></TheModal>
 </template>
 
@@ -24,20 +20,24 @@
 import { useMutation } from '@tanstack/vue-query';
 import { logout } from '~/composables/auth.service';
 
+const { $toast } = useNuxtApp();
+
 const visible = ref(false);
 
 const router = useRouter();
 
-const { mutate, isError, error } = useMutation({
+const { mutate, error } = useMutation({
   mutationKey: ['logout'],
   mutationFn: () => logout(),
   async onSuccess() {
+    visible.value = false;
     await router.push('/login');
   },
+  onError: (err: any) => err,
 });
 
-watch(isError, (val) => {
-  // TO-DO заменить на уведомление
-  if (val) console.log(error);
+watch(error, (val) => {
+  const errorMessage = errorCatch(val);
+  if (errorMessage) $toast.error(errorMessage);
 });
 </script>

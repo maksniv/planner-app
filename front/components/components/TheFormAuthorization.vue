@@ -7,11 +7,11 @@
         placeholder-text="Email"
         labelText="Email"
       ></TheInput
-      ><TheInput
+      ><TheInputPassword
         v-model="password"
         placeholder-text="Пароль"
         labelText="Пароль"
-      ></TheInput>
+      ></TheInputPassword>
     </template>
     <template #footer>
       <TheButton @click.prevent="mutate({ email: email, password: password })"
@@ -31,12 +31,14 @@ useHead({
   meta: [{ name: 'Авторизация', content: 'Авторизация' }],
 });
 
+const { $toast } = useNuxtApp();
+
 const router = useRouter();
 
 const email = ref('');
 const password = ref('');
 
-const { mutate, isError, error } = useMutation({
+const { mutate, isError } = useMutation({
   mutationKey: ['auth'],
   mutationFn: (data: IAuthForm) => main('login', data),
   async onSuccess() {
@@ -46,8 +48,7 @@ const { mutate, isError, error } = useMutation({
   },
 });
 
-watch(isError, (val) => {
-  // TO-DO заменить на уведомление
-  if (val) console.log(error);
+watch(isError, () => {
+  $toast.error(isError?.value?.response?.data?.message[0]);
 });
 </script>

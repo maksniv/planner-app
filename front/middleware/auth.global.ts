@@ -16,4 +16,6 @@ export default defineNuxtRouteMiddleware((to, from) => {
   //   console.log('страничка авторизации');
   //   return navigateTo(to.fullPath);
   // }
+  // console.log(from);
+  // console.log(to);
 });

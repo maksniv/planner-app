@@ -1,11 +1,13 @@
 <template>
   <div class="container">
     <TheSidePanel />
-    <main class="main__wrapper">
+    <div class="main__wrapper">
       <TheMainPanel></TheMainPanel>
       <TheLoader v-if="isFetching || isMutating" />
-      <slot />
-    </main>
+      <main class="content">
+        <slot />
+      </main>
+    </div>
   </div>
 </template>
 
@@ -25,7 +27,11 @@ const isMutating = useIsMutating();
   flex-wrap: nowrap
   .main__wrapper
     position: relative
-    background-color: $background
     width: 100%
     height: 100%
+    .content
+      overflow: auto
+      background-color: $background
+      width: 100%
+      height: 100%
 </style>

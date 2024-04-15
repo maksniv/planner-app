@@ -13,14 +13,17 @@
 import { useQuery } from '@tanstack/vue-query';
 import { getStatistics } from '@/composables/statistics.service';
 
-const { data, isError, error } = useQuery({
+const { $toast } = useNuxtApp();
+
+const { data, error } = useQuery({
   queryKey: ['statistics'],
   queryFn: () => getStatistics(),
+  throwOnError: (e: any) => e,
 });
 
 watch(isError, (val) => {
-  // TO-DO заменить на уведомление
-  if (val) console.log(error);
+  const errorMessage = errorCatch(val);
+  if (errorMessage) $toast.error(errorMessage);
 });
 </script>
 

@@ -3,23 +3,29 @@
     <span v-if="labelText" class="field__label">{{ labelText }}</span>
     <input
       class="field__input"
+      :type="type"
       autocomplete="new-password"
       v-bind="$attrs"
       :placeholder="placeholderText"
-      v-model="localValue"
+      :value="localValue"
       @focus="$emit('focus')"
-      @input="$emit('update:modelValue', localValue)"
-      @blur="$emit('blur', localValue)"
+      @input="
+        localValue = ($event.target as HTMLInputElement).value;
+        $emit('update:modelValue', localValue);
+        $emit('input');
+      "
+      @blur="$emit('blur')"
     />
   </div>
 </template>
 
 <script setup lang="ts">
 interface Props {
-  modelValue: string;
+  modelValue?: string;
+  value?: string;
+  type?: string | 'text';
   placeholderText?: string | 'Введите значение...';
   labelText?: string;
-  value?: string;
 }
 const props = defineProps<Props>();
 
@@ -27,7 +33,8 @@ const localValue = ref('');
 
 const emit = defineEmits<{
   (e: 'update:modelValue', value: string): void;
-  (e: 'blur', value: string): void;
+  (e: 'input'): void;
+  (e: 'blur'): void;
   (e: 'focus'): void;
 }>();
 
@@ -37,7 +44,6 @@ watch(
     if (!val) return;
     if (!localValue.value && val) {
       localValue.value = val;
-      emit('update:modelValue', localValue.value);
     }
   },
   { immediate: true },
@@ -46,8 +52,8 @@ watch(
 watch(
   () => props.modelValue,
   (val) => {
+    if (!val) return;
     localValue.value = val;
-    emit('update:modelValue', localValue.value);
   },
 );
 </script>
@@ -63,7 +69,7 @@ watch(
   .field__input
     padding: 10px 12px 10px 12px
     width: 100%
-    height: 100%
+    height: $baseHeight
     border-radius: $borderRadius
     border: 1px solid $inputBorder
     color: $inputColor

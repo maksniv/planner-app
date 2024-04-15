@@ -39,38 +39,35 @@ import {
   createGroupTask,
 } from '@/composables/groupsTask.service';
 
-const {
-  data,
-  isError: isErrorGet,
-  error: errorGet,
-} = useQuery({
+const { $toast } = useNuxtApp();
+
+const { data, error: errorGet } = useQuery({
   queryKey: ['groups-task'],
   queryFn: () => getGroupsTask(),
+  throwOnError: (e: any) => e,
   placeholderData: keepPreviousData,
 });
 
 const queryClient = useQueryClient();
 
-const {
-  mutate: addHandler,
-  isError: isErrorAdd,
-  error: errorAdd,
-} = useMutation({
+const { mutate: addHandler, error: errorAdd } = useMutation({
   mutationKey: ['add-group-task'],
   mutationFn: (data: TypeGroupsTaskFormState) => createGroupTask(data),
   async onSuccess() {
     queryClient.invalidateQueries({ queryKey: ['groups-task'] });
+    $toast.success('Сохранено');
   },
+  onError: (err: any) => err,
 });
 
-watch(isErrorAdd, (val) => {
-  // TO-DO заменить на уведомление
-  if (val) console.log(errorAdd);
+watch(errorAdd, (val) => {
+  const errorMessage = errorCatch(val);
+  if (errorMessage) $toast.error(errorMessage);
 });
 
-watch(isErrorGet, (val) => {
-  // TO-DO заменить на уведомление
-  if (val) console.log(errorGet);
+watch(errorGet, (val) => {
+  const errorMessage = errorCatch(val);
+  if (errorMessage) $toast.error(errorMessage);
 });
 </script>
 

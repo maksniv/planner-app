@@ -37,6 +37,8 @@ interface Props {
   id: string;
 }
 
+const { $toast } = useNuxtApp();
+
 const props = defineProps<Props>();
 
 const localValue = ref({ name: '', color: '' });
@@ -45,7 +47,6 @@ const queryClient = useQueryClient();
 
 const {
   mutate: update,
-  isError: isErrorUpdate,
   error: errorUpdate,
   isPending: isPendingUpdate,
 } = useMutation({
@@ -54,31 +55,31 @@ const {
     updateGroupTask(props.id, data),
   async onSuccess() {
     queryClient.invalidateQueries({ queryKey: ['groups-task'] });
+    $toast.success('Сохранено');
   },
+  onError: (err: any) => err,
 });
 
-const {
-  mutate: deleteHandler,
-  isError: isErrorDelete,
-  error: errorDelete,
-} = useMutation({
+const { mutate: deleteHandler, error: errorDelete } = useMutation({
   mutationKey: ['delete-group-task'],
   mutationFn: () => deleteGroupTask(props.id),
   async onSuccess() {
     queryClient.invalidateQueries({ queryKey: ['groups-task'] });
+    $toast.success('Сохранено');
   },
+  onError: (err: any) => err,
 });
 
 const updateHandler = debounce(update, 800);
 
-watch(isErrorUpdate, (val) => {
-  // TO-DO заменить на уведомление
-  if (val) console.log(errorUpdate);
+watch(errorUpdate, (val) => {
+  const errorMessage = errorCatch(val);
+  if (errorMessage) $toast.error(errorMessage);
 });
 
-watch(isErrorDelete, (val) => {
-  // TO-DO заменить на уведомление
-  if (val) console.log(errorDelete);
+watch(errorDelete, (val) => {
+  const errorMessage = errorCatch(val);
+  if (errorMessage) $toast.error(errorMessage);
 });
 </script>
 

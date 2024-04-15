@@ -9,7 +9,7 @@
   cursor: pointer
   user-select: none
   padding: 12px 16px
-  height: 42px
+  height: $baseHeight
   background-color: $btnBgColor
   color: $btnColor
   border-radius: $borderRadius
