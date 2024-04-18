@@ -39,9 +39,3 @@ body {
   scrollbar-width: thin;
   scrollbar-color: #635fc7 rgba(255, 255, 255, 0.12);
 }
-
-:root {
-  --toastify-color-success: #259e29 !important;
-  --toastify-color-error: #c84141 !important
-;
-}

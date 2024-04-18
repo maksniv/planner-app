@@ -54,7 +54,7 @@ const {
   mutationFn: (data: TypeGroupsTaskFormState) =>
     updateGroupTask(props.id, data),
   async onSuccess() {
-    queryClient.invalidateQueries({ queryKey: ['groups-task'] });
+    await queryClient.invalidateQueries({queryKey: ['groups-task']});
     $toast.success('Сохранено');
   },
   onError: (err: any) => err,
@@ -64,7 +64,7 @@ const { mutate: deleteHandler, error: errorDelete } = useMutation({
   mutationKey: ['delete-group-task'],
   mutationFn: () => deleteGroupTask(props.id),
   async onSuccess() {
-    queryClient.invalidateQueries({ queryKey: ['groups-task'] });
+    await queryClient.invalidateQueries({queryKey: ['groups-task']});
     $toast.success('Сохранено');
   },
   onError: (err: any) => err,
@@ -86,8 +86,8 @@ watch(errorDelete, (val) => {
 <style lang="sass" scoped>
 .groups-task-item__container
   width: 100%
-  border-radius: $borderRadius
-  border: 3px solid $inputBgColor
+  border-radius: var(--border-radius)
+  border: 2px solid var(--border-base)
   display: flex
   flex-direction: row
   flex-wrap: nowrap
@@ -95,7 +95,7 @@ watch(errorDelete, (val) => {
   padding: 10px 10px
   gap: 15px
   .groups-task-item__icon
-    color: $red
+    color: var(--danger)
     transition: .2s ease-out
     &:hover
         transform: scale(1.15)

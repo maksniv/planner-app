@@ -31,7 +31,7 @@ const isMutating = useIsMutating();
     height: 100%
     .content
       overflow: auto
-      background-color: $background
+      background-color: var(--background)
       width: 100%
       height: 100%
 </style>

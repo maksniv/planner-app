@@ -21,7 +21,7 @@ const { data, error } = useQuery({
   throwOnError: (e: any) => e,
 });
 
-watch(isError, (val) => {
+watch(error, (val) => {
   const errorMessage = errorCatch(val);
   if (errorMessage) $toast.error(errorMessage);
 });

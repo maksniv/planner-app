@@ -1,6 +1,6 @@
 <template>
   <ClientOnly>
-    <Bar :data="chartData" :options="chartOptions" />
+    <Bar :data="chartData" :options="chartOptions" class="statistic"/>
   </ClientOnly>
 </template>
 
@@ -41,4 +41,9 @@ watch(props, (val) => {
   chartData.value.datasets[0].data = val?.statistics.value;
 });
 </script>
+
+<style scoped lang="sass">
+.statistic
+  box-shadow: 0 4px 6px var(--box-shadow)
+</style>
 

@@ -7,7 +7,10 @@
       <TheLogo />
       <TheNavigation />
     </div>
-    <TheLogoutButton />
+    <div class="aside__wrapper">
+      <TheThemeSwitcher/>
+      <TheLogoutButton />
+    </div>
   </aside>
 </template>
 
@@ -28,7 +31,7 @@ const { getOpenStatus } = storeToRefs(store);
   gap: 30px
   max-width: 265px
   height: 100vh
-  background-color: $sidebar
+  background-color: var(--sidebar)
   padding-bottom: 30px
   .aside__wrapper
     display: flex
@@ -36,6 +39,7 @@ const { getOpenStatus } = storeToRefs(store);
     flex-wrap: nowrap
     justify-content: flex-start
     align-items: center
+    gap: 10px
   &.is-visible
     display: flex
     animation: open 0.4s ease-in
@@ -46,7 +50,7 @@ const { getOpenStatus } = storeToRefs(store);
 @keyframes open
   0%
     display: none
-    width: 0%
+    width: 0
   100%
     width: 100%
     display: flex
@@ -56,6 +60,6 @@ const { getOpenStatus } = storeToRefs(store);
     display: flex
     width: 100%
   100%
-    width: 0%
+    width: 0
     display: none
 </style>

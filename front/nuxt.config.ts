@@ -12,17 +12,7 @@ export default defineNuxtConfig({
     },
     pageTransition: { name: 'page', mode: 'out-in' },
   },
-  css: ['@/assets/style/reset.css'],
-  vite: {
-    css: {
-      preprocessorOptions: {
-        sass: {
-          additionalData:
-            '@import "@/assets/style/variables.sass"',
-        },
-      },
-    },
-  },
+  css: ['@/assets/style/reset.css', '@/assets/style/variables.css'],
   components: [
     {
       path: '~/components',

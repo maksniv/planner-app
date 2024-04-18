@@ -24,7 +24,7 @@ const { getActivePageTitle } = storeToRefs(store);
 
 <style lang="sass" scoped>
 .aside__container
-  color: $textColor
+  color: var(--base-text-color)
   display: flex
   flex-direction: row
   flex-wrap: nowrap
@@ -32,9 +32,9 @@ const { getActivePageTitle } = storeToRefs(store);
   align-items: center
   min-height: 70px
   padding: 0 15px 0 10px
-  background-color: $sidebar
+  background-color: var(--sidebar)
   .aside__left-wrapper
-    color: $textColor
+    color: inherit
     display: flex
     flex-direction: row
     flex-wrap: nowrap
@@ -47,11 +47,11 @@ const { getActivePageTitle } = storeToRefs(store);
       transition: .3s
       &:hover
         transform: scale(1.15)
-        background-color: $border
+        background-color: var(--border-base)
         border-radius: 100px
       &:active
         transform: scale(0.95)
-        background-color: $border
+        background-color: var(--border-base)
         border-radius: 80px
     .left-wrapper__title
       user-select: none

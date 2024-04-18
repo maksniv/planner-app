@@ -35,10 +35,10 @@ defineProps<Props>();
   display: flex
   min-width: 300px
   flex-direction: column
-  border: 1px solid $border
-  border-radius: $borderRadius
-  background-color: $sidebar
-  color: $textColor
+  border: 1px solid var(--border-base)
+  border-radius: var(--border-radius)
+  background-color: var(--sidebar)
+  color: var(--base-text-color)
   .form__title
     &.small
       padding: 24px
@@ -48,7 +48,7 @@ defineProps<Props>();
       padding: 30px
   .form__line
     width: 100%
-    border: 1px solid $border
+    border: 1px solid var(--border-base)
   .form__wrapper
     flex: 1
     width: 100%
@@ -59,7 +59,6 @@ defineProps<Props>();
   .form__button-wrapper
     align-self: flex-end
     display: flex
-    padding: 10px
     gap: 24px
     padding: 24px
 </style>

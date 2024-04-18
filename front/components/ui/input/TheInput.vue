@@ -69,19 +69,18 @@ watch(
   .field__input
     padding: 10px 12px 10px 12px
     width: 100%
-    height: $baseHeight
-    border-radius: $borderRadius
-    border: 1px solid $inputBorder
-    color: $inputColor
-    background-color: $inputBgColor
+    height: var(--base-height)
+    border-radius: var(--border-radius)
+    border: 1px solid var(--border-base)
+    color: var(--base-text-color)
+    background-color: var(--background)
     transition: .15s ease-out
-    outline: none
     &::placeholder
-      color: $secondaryTextColor
+      color: var(--secondary-text-color)
     &:hover
-      border: 1px solid $inputActive
+      border: 1px solid var(--primary-hover)
     &:active
-      border: 1px solid $inputActive
+      border: 1px solid var(--primary)
     &:focus
-      box-shadow: 0 0 0 2px $inputActive
+      box-shadow: 0 0 0 2px var(--primary-focus)
 </style>

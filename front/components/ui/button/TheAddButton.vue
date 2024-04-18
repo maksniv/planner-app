@@ -4,7 +4,7 @@
 
 <style lang="sass" scoped>
 .add-button__icon
-    color: $primary
+    color: var(--primary)
     transition: .25s ease-out
     &:hover
         transform: scale(1.15)

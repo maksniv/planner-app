@@ -21,7 +21,7 @@ defineProps<Props>();
   user-select: none
   min-width: 90%
   font-size: 16px
-  color: $secondaryTextColor
+  color: var(--secondary-text-color)
   display: flex
   flex-direction: row
   flex-wrap: nowrap
@@ -33,11 +33,11 @@ defineProps<Props>();
   transition: .3s ease-out
   &:hover
     transform: scale(1.05)
-    background-color: $border
+    background-color: var(--border-base)
   &:active
     transform: scale(0.99)
-    background-color: $border
+    background-color: var(--border-base)
   &.router-link-active
-    background-color: $primary
-    color: $textColor
+    background-color: var(--primary)
+    color: var(--white)
 </style>

@@ -49,7 +49,7 @@ const emit = defineEmits<{
     display: flex
     align-items: center
     justify-content: center
-    background-color: $border
+    background-color: var(--overlay)
     opacity: 0
     pointer-events: none
     z-index: 100
@@ -61,9 +61,9 @@ const emit = defineEmits<{
     .modal
         width: auto
         height: auto
-        border-radius: $borderRadius
-        background-color: $sidebar
-        color: $textColor
+        border-radius: var(--border-radius)
+        background-color: var(--sidebar)
+        color: var(--base-text-color)
         transition: all 0.25s
         transform: scale(0.5)
         &.active

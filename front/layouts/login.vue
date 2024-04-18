@@ -17,6 +17,6 @@ const isMutating = useIsMutating();
   width: 100%
   height: 100vh
   display: flex
-  background-color: $background
+  background-color: var(--background)
   position: relative
 </style>

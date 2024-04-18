@@ -31,12 +31,12 @@ const buttonContent = computed(() => {
 .forms-container
   margin: auto
   user-select: none
-  color: $textColor
+  color: var(--base-text-color)
   transition: .15s ease-out
   display: flex
   flex-direction: column
   flex-wrap: nowrap
-  gap: 10px
+  gap: 15px
   .forms__toggle-span
     text-align: center
   .forms__toggle-button

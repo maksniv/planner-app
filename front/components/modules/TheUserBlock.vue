@@ -86,4 +86,5 @@ watch(errorGet, (val) => {
 .user-block
   margin: auto
   width: 500px
+  box-shadow: 0 4px 6px var(--box-shadow)
 </style>

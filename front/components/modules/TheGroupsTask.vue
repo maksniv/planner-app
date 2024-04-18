@@ -32,7 +32,6 @@ import {
   useQuery,
   keepPreviousData,
 } from '@tanstack/vue-query';
-import {} from '@tanstack/vue-query';
 import { type TypeGroupsTaskFormState } from '~/types/groupsTask.types';
 import {
   getGroupsTask,
@@ -75,6 +74,7 @@ watch(errorGet, (val) => {
 .groups-task__block
   margin: auto
   width: 500px
+  box-shadow: 0 4px 6px var(--box-shadow)
 .groups-task__wrapper
     min-height: 300px
     display: flex

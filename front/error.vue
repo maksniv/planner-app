@@ -13,21 +13,19 @@
       </div>
       <img
         class="error__img"
-        src="/assets/img/404.svg"
+        src="@/assets/img/404.svg"
         alt="Страница не найдена"
       />
     </div>
   </div>
 </template>
 
-<script setup lang="ts"></script>
-
 <style scoped lang="sass">
 .error-page
   width: 100%
   height: 100vh
   display: flex
-  background-color: $background
+  background-color: var(--background)
   position: relative
   .error__container
     margin: auto
@@ -36,10 +34,10 @@
     justify-content: space-between
     gap: 5px
     padding: 10px 30px
-    border: 1px solid $border
-    border-radius: $borderRadius
-    background-color: $sidebar
-    color: $textColor
+    border: 1px solid var(--border-base)
+    border-radius: var(--border-radius)
+    background-color: var(--sidebar)
+    color: var(--base-text-color)
     height: 450px
     max-width: 900px
     width: 100%

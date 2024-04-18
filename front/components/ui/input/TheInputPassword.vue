@@ -65,5 +65,5 @@ const typeInput = computed(() => {
   .wrapper__icon
     position: absolute
     right: 10px
-    bottom: calc($baseHeight/2 - 13px)
+    bottom: calc(var(--base-height)/2 - 13px)
 </style>
