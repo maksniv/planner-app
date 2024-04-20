@@ -44,7 +44,7 @@ const { getActivePageTitle } = storeToRefs(store);
     .left-wrapper__icon
       cursor: pointer
       padding: 5px
-      transition: .3s
+      transition: transform .3s ease
       &:hover
         transform: scale(1.15)
         background-color: var(--border-base)

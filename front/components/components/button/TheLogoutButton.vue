@@ -1,9 +1,9 @@
 <template>
-  <TheButton @click="visible = true">
+  <TheButton @click="visible = true" danger>
     Выйти
     <Icon
       name="material-symbols:logout-rounded"
-      size="18"
+      size="19"
       class="button__icon"
     ></Icon>
   </TheButton>

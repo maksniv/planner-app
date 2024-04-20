@@ -1,8 +1,8 @@
 :root {
   --toastify-color-success: #21725e !important;
-  --toastify-color-error: #b94141 !important;
+  --toastify-color-error: #e05b5b !important;
 
-  /* main color */
+  /* primary color */
   --primary: #635fc7;
   --primary-secondary: #f7f5ff;
   --primary-border: #bcb0f5;
@@ -10,7 +10,7 @@
   --primary-focus: #afa5d1;
 
   /* danger */
-  --danger: #b94141;
+  --danger: #e05b5b;
   --danger-secondary: #FFE8E8;
   --danger-border: #E2B6B6;
   --danger-hover: #e05b5b;
@@ -24,10 +24,10 @@
   --success-focus: #C8EBE2;
 
   /* warning */
-  --warning: #E0CE2C;
+  --warning: #d7c32c;
   --warning-secondary: #F9F5D5;
   --warning-border: #F5EFB9;
-  --warning-hover: #fff14b;
+  --warning-hover: #eed83c;
   --warning-focus: #FCF8CE;
 
   /* info */

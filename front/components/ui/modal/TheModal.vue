@@ -1,6 +1,6 @@
 <template>
   <teleport to="#__nuxt" v-if="showModal">
-    <div class="overlay" :class="showModal ? 'active' : ''">
+    <div class="overlay" :class="showModal ? 'active' : ''" @click="$emit('close')">
       <div
         class="modal"
         :class="showModal ? 'active' : ''"

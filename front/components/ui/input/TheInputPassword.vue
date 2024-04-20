@@ -63,6 +63,7 @@ const typeInput = computed(() => {
   :deep(.field__input)
     padding: 10px 45px 10px 12px
   .wrapper__icon
+    cursor: pointer
     position: absolute
     right: 10px
     bottom: calc(var(--base-height)/2 - 13px)
