@@ -4,7 +4,8 @@
           :style="{'background-color': outlined ? null : color, 'border-color': color, 'color': color}"
           v-bind="$attrs"
           @click="$emit('click')"
-          :primary="!color">
+          :primary="!color"
+          >
     <slot> </slot>
   </button>
 </template>

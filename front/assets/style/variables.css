@@ -11,7 +11,7 @@
   --danger-secondary: #FFE8E8;
   --danger-border: #E2B6B6;
   --danger-hover: #e05b5b;
-  --danger-focus: #FFDFDF;
+  --danger-focus: #e3a7a7;
 
   /* success */
   --success: #21725e;
@@ -46,7 +46,7 @@
 
   /* light */
   --white: #FFFFFF;
-  --almost-white: #F5F5F5;
+  --almost-white: #9d9d9d;
   --blue-white: #f4f7fd;
 
   /* skeleton */

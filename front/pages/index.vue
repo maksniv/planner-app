@@ -1,6 +1,8 @@
 <template>
-  <div>
-    <p>Страничка по умолчанию</p>
+  <div class="test">
+    <TheCheckbox label="RRRRRR" v-model="tesr" :disabled="dis"></TheCheckbox>
+    <TheButton @click="dis = !dis">dis {{ dis }}</TheButton>
+    <TheButton @click="tesr = !tesr">val {{ tesr }}</TheButton>
   </div>
 </template>
 
@@ -19,11 +21,13 @@ useHead({
   title: 'Задачи',
   meta: [{ name: 'Задачи', content: 'Задачи' }],
 });
+
+
+const dis = ref(true);
+const tesr = ref(true);
 </script>
 
-<style lang="css" scoped>
-p {
-  width: 100%;
-  background-color: rgb(52, 52, 224);
-}
+<style lang="sass" scoped>
+.test
+  margin: 50px
 </style>

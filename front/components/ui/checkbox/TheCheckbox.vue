@@ -34,9 +34,10 @@ defineEmits<{
   color: var(--base-text-color)
   .field__checkbox
     position: absolute
-    -webkit-appearance: none
-    -moz-appearance: none
-    appearance: none
+    width: 1px
+    height: 1px
+    overflow: hidden
+    clip: rect(0, 0, 0, 0)
   .field__icon
     position: relative
     display: inline-block
@@ -64,7 +65,7 @@ defineEmits<{
       border-bottom: 2px solid var(--base-text-color)
       transform: rotate(45deg) scale(0)
       transition: transform 0.15s ease
-      z-index: 10
+      z-index: 9
     &:hover
       &::after
         content: ""
@@ -76,7 +77,7 @@ defineEmits<{
         left: -75%
         top: -75%
         position: absolute
-        z-index: 9
+        z-index: 8
     &:active
       &::after
         content: ""
@@ -88,7 +89,7 @@ defineEmits<{
         left: -75%
         top: -75%
         position: absolute
-        z-index: 9
+        z-index: 8
 
 .field__checkbox:checked + .field__icon
   background-color: var(--primary)
@@ -96,7 +97,20 @@ defineEmits<{
     transform: rotate(45deg) scale(1)
 
 .field__checkbox:focus + .field__icon
-  width: 20px
-  height: 20px
-  box-shadow: 0 0 0 2px var(--primary-focus)
+  border: 2px solid var(--primary-focus)
+
+.field__checkbox:checked:focus + .field__icon
+  border: 2px solid var(--primary-focus)
+
+.field__checkbox:disabled + .field__icon
+  border: 2px solid var(--disabled)
+  background-color: var(--disabled-text-color)
+  &::before
+    transform: rotate(45deg) scale(0)
+
+.field__checkbox:checked:disabled + .field__icon
+  background-color: var(--disabled)
+  &::before
+    color: var(--disabled-text-color)
+    transform: rotate(45deg) scale(1)
 </style>
