@@ -55,6 +55,8 @@ defineEmits<{
     height: 20px
     transition: all 0.5s ease
     z-index: 10
+    &:hover
+      background-color: var(--primary-hover)
     &::before
       content: ""
       display: inline-block
