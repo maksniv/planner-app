@@ -20,6 +20,7 @@ defineProps<Props>();
   cursor: pointer
   user-select: none
   min-width: 90%
+  min-height: 50px
   font-size: 16px
   color: var(--secondary-text-color)
   display: flex
@@ -40,4 +41,7 @@ defineProps<Props>();
   &.router-link-active
     background-color: var(--primary)
     color: var(--white)
+  .link__icon
+    min-width: 20px
+    min-height: 20px
 </style>

@@ -5,8 +5,8 @@
         class="field__checkbox"
         :checked="modelValue"
         @input="
-        $emit('update:modelValue', ($event.target as HTMLInputElement).checked);
-        $emit('input')"
+          $emit('update:modelValue', ($event.target as HTMLInputElement).checked);
+          $emit('input')"
         v-bind="$attrs"
     />
     <span class="field__icon"></span>
@@ -17,7 +17,7 @@
 <script setup lang="ts">
 interface Props {
   modelValue: boolean;
-  label: string;
+  label?: string;
 }
 
 defineProps<Props>();
@@ -31,7 +31,14 @@ defineEmits<{
 <style scoped lang="sass">
 .field__label
   cursor: pointer
+  height: 20px
   color: var(--base-text-color)
+  display: flex
+  flex-direction: row
+  flex-wrap: nowrap
+  gap: 5px
+  justify-content: center
+  align-items: center
   .field__checkbox
     position: absolute
     width: 1px
@@ -47,8 +54,6 @@ defineEmits<{
     border: 2px solid var(--border-base)
     color: var(--base-text-color)
     background-color: var(--background)
-    vertical-align: sub
-    margin-right: 5px
     transition: all 0.15s ease
     z-index: 10
     &::after
@@ -61,8 +66,8 @@ defineEmits<{
       right: 5px
       width: 6px
       height: 11px
-      border-right: 2px solid var(--base-text-color)
-      border-bottom: 2px solid var(--base-text-color)
+      border-right: 2px solid var(--white)
+      border-bottom: 2px solid var(--white)
       transform: rotate(45deg) scale(0)
       transition: transform 0.15s ease
       z-index: 9
@@ -103,6 +108,7 @@ defineEmits<{
   border: 2px solid var(--primary-focus)
 
 .field__checkbox:disabled + .field__icon
+  cursor: default
   border: 2px solid var(--disabled)
   background-color: var(--disabled-text-color)
   &::before

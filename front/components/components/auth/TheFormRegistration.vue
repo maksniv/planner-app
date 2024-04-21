@@ -25,6 +25,7 @@
 import { useMutation } from '@tanstack/vue-query';
 import { main } from '~/composables/auth.service';
 import { type IAuthForm } from '~/types/auth.types';
+import { errorCatch } from '~/utils/error';
 
 useHead({
   title: 'Регистрация',
@@ -38,7 +39,7 @@ const router = useRouter();
 const email = ref('');
 const password = ref('');
 
-const { mutate, isError } = useMutation({
+const { mutate, error } = useMutation({
   mutationKey: ['auth'],
   mutationFn: (data: IAuthForm) => main('register', data),
   async onSuccess() {
@@ -46,9 +47,11 @@ const { mutate, isError } = useMutation({
     password.value = '';
     await router.push('/');
   },
+  onError: (err: any) => err,
 });
 
-watch(isError, () => {
-  $toast.error(isError?.value?.response?.data?.message[0]);
+watch(error, (val) => {
+  const errorMessage = errorCatch(val);
+  if (errorMessage) $toast.error(errorMessage);
 });
 </script>

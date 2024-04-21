@@ -61,7 +61,7 @@
   --base-height: 42px;
 }
 
-body {
+.light-mode body {
   /*light theme*/
 
   /*bg*/
@@ -78,7 +78,7 @@ body {
   --disabled-text-color: var(--perfect-gray);
 }
 
-body[data-theme='dark'] {
+.dark-mode {
   /*dark theme*/
 
   /*bg*/

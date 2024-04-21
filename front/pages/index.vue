@@ -1,6 +1,6 @@
 <template>
   <div class="test">
-    <TheCheckbox label="RRRRRR" v-model="tesr" :disabled="dis"></TheCheckbox>
+    <TheToggle label="RRRRRR" v-model="tesr" :disabled="dis"></TheToggle>
     <TheButton @click="dis = !dis">dis {{ dis }}</TheButton>
     <TheButton @click="tesr = !tesr">val {{ tesr }}</TheButton>
   </div>
@@ -30,4 +30,6 @@ const tesr = ref(true);
 <style lang="sass" scoped>
 .test
   margin: 50px
+  display: flex
+  gap: 15px
 </style>

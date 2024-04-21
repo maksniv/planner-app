@@ -3,7 +3,6 @@
           :class="{'outlined': outlined}"
           :style="{'background-color': outlined ? null : color, 'border-color': color, 'color': color}"
           v-bind="$attrs"
-          @click="$emit('click')"
           :primary="!color"
           >
     <slot> </slot>
@@ -16,10 +15,6 @@ interface Props {
   outlined?: boolean | false;
 }
 const props = defineProps<Props>();
-
-defineEmits<{
-  (e: 'click'): void;
-}>();
 
 </script>
 

@@ -19,7 +19,7 @@ export default defineNuxtConfig({
       pathPrefix: false,
     },
   ],
-  modules: ['@nuxtjs/google-fonts', 'nuxt-icon', '@pinia/nuxt'],
+  modules: ['@nuxtjs/google-fonts', 'nuxt-icon', '@pinia/nuxt', '@nuxtjs/color-mode'],
   googleFonts: {
     families: {
       'Plus Jakarta Sans': {
@@ -27,4 +27,8 @@ export default defineNuxtConfig({
       },
     },
   },
+  colorMode: {
+    preference: 'light',
+    fallback: 'light',
+  }
 });

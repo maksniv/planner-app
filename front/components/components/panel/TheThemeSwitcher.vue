@@ -5,7 +5,7 @@
         size="19"
         class="wrapper__icon"
     ></Icon>
-    <button @click="switchTheme()">ТЫК</button>
+    <TheToggle v-model="theme" ></TheToggle>
     <Icon
         name="akar-icons:moon-fill"
         size="19"
@@ -15,26 +15,21 @@
 </template>
 
 <script setup lang="ts">
-const theme = ref('light');
+const theme = ref(true);
+const colorMode = useColorMode()
+
+watch(
+  theme,
+  () => {
+   switchTheme()
+  },
+);
 
 const switchTheme = (): void => {
-  theme.value = theme.value === 'dark' ? 'light' : 'dark';
-  installTheme(theme.value)
+  colorMode.preference = theme.value === false ? 'dark' : 'light';
 };
-const installTheme = (val: string): void => {
-  document.body.setAttribute('data-theme', val);
-  localStorage.setItem('theme', val);
-}
 
-const start = () => {
-    if(process.server) return;
-    if(!('theme' in localStorage)) return
-    if (localStorage.getItem('theme') === 'dark') {
-      theme.value = 'dark';
-      installTheme(theme.value)
-    }
-}
-start()
+theme.value = colorMode.value === 'light';
 </script>
 
 <style scoped lang="sass">
