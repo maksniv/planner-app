@@ -36,6 +36,8 @@ a:hover {
 
 body {
   overflow: hidden;
-  scrollbar-width: thin;
-  scrollbar-color: #635fc7 rgba(255, 255, 255, 0.12);
+  scrollbar-color: var(--primary) var(--border-base);
+
+  --toastify-color-success: var(--success) !important;
+  --toastify-color-error: var(--danger) !important;
 }

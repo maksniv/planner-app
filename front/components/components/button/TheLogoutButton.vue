@@ -9,11 +9,13 @@
   </TheButton>
   <TheModal
     :show-modal="visible"
-    contentText="Вы точно хотите выйти?"
     @confirm="mutate()"
     @reject="visible = false"
     @close="visible = false"
-  ></TheModal>
+  >
+    <template #title>Вы собираетесь выйти из системы</template>
+    <template #body>Все несохранённые данные будут утеряны. <br>Вы уверены, что хотите выйти?</template>
+  </TheModal>
 </template>
 
 <script setup lang="ts">

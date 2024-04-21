@@ -1,10 +1,10 @@
 <template>
   <button class="button"
           :class="{'outlined': outlined}"
-          :style="{'background-color': color, 'border-color': color}"
+          :style="{'background-color': outlined ? null : color, 'border-color': color, 'color': color}"
           v-bind="$attrs"
           @click="$emit('click')"
-          primary>
+          :primary="!color">
     <slot> </slot>
   </button>
 </template>
@@ -46,6 +46,8 @@ defineEmits<{
   &[primary]
     background-color: var(--primary)
     border: 1px solid var(--primary)
+    &.outlined
+      color: var(--primary)
     &:enabled:hover
       background-color: var(--primary-hover)
       border: 1px solid var(--primary-hover)
@@ -59,6 +61,8 @@ defineEmits<{
   &[danger]
     background-color: var(--danger)
     border: 1px solid var(--danger)
+    &.outlined
+      color: var(--danger)
     &:enabled:hover
       background-color: var(--danger-hover)
       border: 1px solid var(--danger-hover)
@@ -72,6 +76,8 @@ defineEmits<{
   &[success]
     background-color: var(--success)
     border: 1px solid var(--success)
+    &.outlined
+      color: var(--success)
     &:enabled:hover
       background-color: var(--success-hover)
       border: 1px solid var(--success-hover)
@@ -85,6 +91,8 @@ defineEmits<{
   &[warning]
     background-color: var(--warning)
     border: 1px solid var(--warning)
+    &.outlined
+      color: var(--warning)
     &:enabled:hover
       background-color: var(--warning-hover)
       border: 1px solid var(--warning-hover)
@@ -98,6 +106,8 @@ defineEmits<{
   &[info]
     background-color: var(--info)
     border: 1px solid var(--info)
+    &.outlined
+      color: var(--info)
     &:enabled:hover
       background-color: var(--info-hover)
       border: 1px solid var(--info-hover)

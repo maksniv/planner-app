@@ -7,8 +7,8 @@
     >
       <slot name="title"></slot>
     </h1>
-    <div class="form__line" v-if="!hideTitle && !hideBody" />
-    <div class="form__wrapper" v-if="!hideBody">
+    <div class="form__line" v-if="!hideTitle" />
+    <div class="form__wrapper">
       <slot name="body"></slot>
     </div>
     <div class="form__line" v-if="!hideFooter" />
@@ -23,7 +23,6 @@ interface Props {
   smallTitleSize?: boolean | false;
   hideTitle?: boolean | false;
   hideFooter?: boolean | false;
-  hideBody?: boolean | false;
 }
 
 defineProps<Props>();

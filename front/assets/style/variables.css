@@ -1,7 +1,4 @@
 :root {
-  --toastify-color-success: #21725e !important;
-  --toastify-color-error: #e05b5b !important;
-
   /* primary color */
   --primary: #635fc7;
   --primary-secondary: #f7f5ff;

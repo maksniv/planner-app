@@ -6,16 +6,19 @@
         :class="showModal ? 'active' : ''"
         @keydown.esc="$emit('close')"
       >
-        <TheForm hideBody smallTitleSize>
+        <TheForm smallTitleSize>
           <template #title>
-            <slot name="content">
-              {{ contentText }}
+            <slot name="title">
+            </slot>
+          </template>
+          <template #body>
+            <slot name="body">
             </slot>
           </template>
           <template #footer>
             <slot name="button">
               <TheButton @click="$emit('confirm')">Подтвердить</TheButton>
-              <TheButton @click="$emit('reject')">Отмена</TheButton>
+              <TheButton @click="$emit('reject')" outlined>Отмена</TheButton>
             </slot>
           </template>
         </TheForm>
@@ -59,7 +62,8 @@ const emit = defineEmits<{
         transition: all 0.25s
         pointer-events: all
     .modal
-        width: auto
+        width: 40vw
+        max-width: 600px
         height: auto
         border-radius: var(--border-radius)
         background-color: var(--sidebar)
