@@ -10,7 +10,7 @@
       :value="localValue"
       @focus="$emit('focus')"
       @input="
-        localValue = ($event.target as HTMLInputElement).value;
+        localValue = ($event.target as HTMLInputElement).value.trim();
         $emit('update:modelValue', localValue);
         $emit('input');
       "

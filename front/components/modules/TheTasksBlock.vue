@@ -17,9 +17,10 @@
 </template>
 
 <script setup lang="ts">
-// import { useQuery, keepPreviousData } from '@tanstack/vue-query';
-// import { getGroupsTask } from '@/composables/groupsTask.service';
-// const { $toast } = useNuxtApp();
+import { useQuery, keepPreviousData } from '@tanstack/vue-query';
+import { getGroupsTask } from '@/composables/groupsTask.service';
+import { getTasks } from '@/composables/task.service';
+const { $toast } = useNuxtApp();
 const tabs = [
   { name: 'Листинг', id: 0 },
   { name: 'Канбан', id: 1 },
@@ -27,25 +28,33 @@ const tabs = [
 ];
 const activeTab =  ref(0);
 
-// const { data, error: errorGet } = useQuery({
-//   queryKey: ['groups-task'],
-//   queryFn: () => getGroupsTask(),
-//   throwOnError: (e: any) => e,
-//   placeholderData: keepPreviousData,
-// });
-//
-// watch(errorGet, (val) => {
-//   const errorMessage = errorCatch(val);
-//   if (errorMessage) $toast.error(errorMessage);
-// });
+const { data: tasks, error: errorGetTasks } = useQuery({
+  queryKey: ['tasks'],
+  queryFn: () => getTasks(),
+  throwOnError: (e: any) => e,
+  placeholderData: keepPreviousData,
+});
+
+watch(errorGetTasks, (val) => {
+  const errorMessage = errorCatch(val);
+  if (errorMessage) $toast.error(errorMessage);
+});
+
+const { data: groupsTask, error: errorGetGroups } = useQuery({
+  queryKey: ['groups-task'],
+  queryFn: () => getGroupsTask(),
+  throwOnError: (e: any) => e,
+  placeholderData: keepPreviousData,
+});
+
+watch(errorGetGroups, (val) => {
+  const errorMessage = errorCatch(val);
+  if (errorMessage) $toast.error(errorMessage);
+});
 </script>
 
 <style scoped lang="sass">
 .container
   width: 100%
   height: 100%
-  .header
-    display: flex
-    flex-direction: row
-    justify-content: space-between
 </style>

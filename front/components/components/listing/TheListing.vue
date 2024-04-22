@@ -1,9 +1,16 @@
 <template>
   <div>Листинг</div>
+<!--  <div>{{ tasks }}</div>-->
 </template>
 
 <script setup lang="ts">
+import type { ITaskResponse } from '~/types/task.types';
 
+interface Props {
+  tasks: Array<ITaskResponse>,
+}
+
+defineProps<Props>();
 </script>
 
 <style scoped lang="sass">

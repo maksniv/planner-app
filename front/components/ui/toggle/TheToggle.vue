@@ -49,11 +49,9 @@ defineEmits<{
     position: relative
     display: inline-block
     background-color: var(--primary)
-    border: 2px solid var(--border-base)
     border-radius: 100px
     width: 40px
     height: 20px
-    transition: all 0.5s ease
     z-index: 10
     &:hover
       background-color: var(--primary-hover)
@@ -63,16 +61,16 @@ defineEmits<{
       position: absolute
       border-radius: 100px
       top: calc(50% - 6px)
-      left: 1px
+      left: 3px
       width: 13px
       height: 12px
       background-color: var(--white)
-      transition: all 0.15s ease-in-out
+      transition: all 0.25s ease-in-out
       z-index: 9
 
 .field__toggle:checked + .field__icon
   &::before
-    left: calc(100% - 14px)
+    left: calc(100% - 16px)
 
 .field__toggle:disabled + .field__icon
   cursor: default

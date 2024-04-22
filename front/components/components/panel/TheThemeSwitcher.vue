@@ -29,7 +29,7 @@ const switchTheme = (): void => {
   colorMode.preference = theme.value === false ? 'dark' : 'light';
 };
 
-theme.value = colorMode.value === 'light';
+// theme.value = colorMode.value !== 'dark';
 </script>
 
 <style scoped lang="sass">

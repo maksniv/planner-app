@@ -14,7 +14,7 @@ interface Props {
   color?: string | null;
   outlined?: boolean | false;
 }
-const props = defineProps<Props>();
+defineProps<Props>();
 
 </script>
 

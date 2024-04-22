@@ -11,13 +11,17 @@
             :name="item.name"
             :color="item.color"
           />
-          <TheAddButton
+          <TheIconButton
             v-if="data?.data"
             @click="addHandler({ name: '', color: '' })"
-          />
+            icon="gala:add"
+            size="50"/>
           <div v-else class="groups-task__add-button">
             <span class="add-button__text">Похоже у вас еще нет групп...</span>
-            <TheAddButton @click="addHandler({ name: '', color: '' })" />
+            <TheIconButton
+              @click="addHandler({ name: '', color: '' })"
+              icon="gala:add"
+              size="50"/>
           </div>
         </div>
       </template>

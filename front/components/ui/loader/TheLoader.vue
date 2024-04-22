@@ -5,7 +5,7 @@
 <style lang="sass" scoped>
 .loader
   z-index: 1000
-  color: var(--white)
+  color: var(--base-text-color)
   font-size: 15px
   width: 1em
   height: 1em

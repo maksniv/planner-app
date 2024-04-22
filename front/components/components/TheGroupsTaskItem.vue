@@ -11,13 +11,13 @@
       :value="color"
       @input="updateHandler({ color: localValue.color })"
     />
-    <Icon
+    <TheIconButton
+      class="groups-task-item__icon"
       :disabled="isPendingUpdate"
       @click="deleteHandler"
-      name="material-symbols:delete-outline"
+      icon="material-symbols:delete-outline"
       size="45"
-      class="groups-task-item__icon"
-    />
+      danger/>
   </div>
 </template>
 
@@ -94,11 +94,4 @@ watch(errorDelete, (val) => {
   justify-content: center
   padding: 10px 10px
   gap: 15px
-  .groups-task-item__icon
-    color: var(--danger)
-    transition: .2s ease-out
-    &:hover
-        transform: scale(1.15)
-    &:active
-        transform: scale(0.95)
 </style>

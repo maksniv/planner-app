@@ -9,7 +9,7 @@
       ></Icon>
       <span class="left-wrapper__title">{{ getActivePageTitle }}</span>
     </div>
-    <button>Добавить задачу</button>
+    <TheUserSection/>
   </aside>
 </template>
 

@@ -13,7 +13,7 @@
     @reject="visible = false"
     @close="visible = false"
   >
-    <template #title>Вы собираетесь выйти из системы</template>
+    <template #title>Вы собираетесь выйти</template>
     <template #body>Все несохранённые данные будут утеряны. <br>Вы уверены, что хотите выйти?</template>
   </TheModal>
 </template>
