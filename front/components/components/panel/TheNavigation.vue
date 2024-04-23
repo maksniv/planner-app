@@ -14,9 +14,8 @@
 import { type NavLink } from '~/types/navLink.types';
 
 const links = ref<Array<NavLink>>([
-  { title: 'Задачи', link: '/', icon: 'radix-icons:dashboard' },
+  { title: 'Список задач', link: '/', icon: 'radix-icons:dashboard' },
   { title: 'Группы задач', link: '/groups-task', icon: 'fluent-mdl2:rows-group' },
-  { title: 'Пользователь', link: '/user', icon: 'mingcute:group-line' },
   { title: 'Статистика', link: '/statistics', icon: 'ic:sharp-stacked-line-chart'},
 ]);
 </script>

@@ -1,10 +1,15 @@
 <template>
-  <teleport to="#__nuxt" v-if="showModal">
-    <div class="overlay" :class="showModal ? 'active' : ''" @click="$emit('close')">
+  <teleport
+    to="#__nuxt"
+    v-if="showModal"
+    >
+    <div
+      class="overlay" :class="showModal ? 'active' : ''"
+      @click.self="$emit('close')"
+      >
       <div
         class="modal"
         :class="showModal ? 'active' : ''"
-        @keydown.esc="$emit('close')"
       >
         <TheIconButton
           icon="gg:close"

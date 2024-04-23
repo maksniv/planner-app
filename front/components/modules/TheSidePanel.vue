@@ -9,7 +9,6 @@
     </div>
     <div class="aside__wrapper down">
       <TheThemeSwitcher/>
-      <TheLogoutButton />
     </div>
   </aside>
 </template>

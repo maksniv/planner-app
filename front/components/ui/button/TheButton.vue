@@ -5,7 +5,7 @@
           v-bind="$attrs"
           :primary="!color"
           >
-    <slot> </slot>
+      <slot/>
   </button>
 </template>
 

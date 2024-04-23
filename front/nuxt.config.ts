@@ -20,6 +20,9 @@ export default defineNuxtConfig({
     },
   ],
   modules: ['@nuxtjs/google-fonts', 'nuxt-icon', '@pinia/nuxt', '@nuxtjs/color-mode'],
+  plugins: [
+    {src: '~/plugins/vClickOutside.client.ts', mode: 'all'},
+  ],
   googleFonts: {
     families: {
       'Plus Jakarta Sans': {

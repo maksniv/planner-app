@@ -53,6 +53,7 @@ const getFirstLetters = (name: string | undefined, surname: string | undefined):
   border-radius: 50px
   background-color: var(--primary)
   .avatar__letters
+     user-select: none
      font-size: 20px
      font-weight: 400
      color: var(--white)

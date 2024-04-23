@@ -15,7 +15,7 @@
 </template>
 
 <script setup lang="ts">
-const theme = ref(true);
+const theme = ref(false);
 const colorMode = useColorMode()
 
 watch(
@@ -29,7 +29,12 @@ const switchTheme = (): void => {
   colorMode.preference = theme.value === false ? 'dark' : 'light';
 };
 
-// theme.value = colorMode.value !== 'dark';
+const initVal = () => {
+  if(process.server) return
+  console.log(colorMode.value);
+  theme.value = colorMode.value !== 'dark';
+}
+initVal()
 </script>
 
 <style scoped lang="sass">
