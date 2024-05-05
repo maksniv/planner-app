@@ -15,26 +15,25 @@
 </template>
 
 <script setup lang="ts">
+import { onMounted } from 'vue';
+
 const theme = ref(false);
 const colorMode = useColorMode()
 
 watch(
   theme,
   () => {
-   switchTheme()
+    switchTheme()
   },
 );
 
 const switchTheme = (): void => {
-  colorMode.preference = theme.value === false ? 'dark' : 'light';
+  colorMode.preference = theme.value === true ? 'dark' : 'light';
 };
 
-const initVal = () => {
-  if(process.server) return
-  console.log(colorMode.value);
-  theme.value = colorMode.value !== 'dark';
-}
-initVal()
+onMounted(() => {
+  theme.value = colorMode.value === 'dark';
+});
 </script>
 
 <style scoped lang="sass">

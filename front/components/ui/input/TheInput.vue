@@ -66,6 +66,8 @@ watch(
   flex-direction: column
   flex-wrap: nowrap
   gap: 10px
+  .field__label
+    color: var(--base-text-color)
   .field__input
     padding: 10px 12px 10px 12px
     width: 100%

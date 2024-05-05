@@ -4,7 +4,11 @@
       <template #opening-part>
         <div class="user-section__wrapper">
           <TheAvatar :name="data?.user.name" :surname="data?.user.surname"></TheAvatar>
-          <Icon name="eva:arrow-down-fill" size="20" class="logo__icon"></Icon>
+          <TheIconButton
+            class="logo__icon"
+            icon="bxs:down-arrow"
+            size="20"
+          />
         </div>
       </template>
       <template #menu>

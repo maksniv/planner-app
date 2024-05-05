@@ -12,6 +12,10 @@ export class TaskDto {
   content: string;
 
   @IsOptional()
+  @IsString()
+  taskGroupId: string;
+
+  @IsOptional()
   @IsBoolean()
   isCompleted: boolean;
 

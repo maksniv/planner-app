@@ -20,12 +20,13 @@ defineProps<Props>();
   cursor: pointer
   user-select: none
   min-width: 90%
-  min-height: 50px
+  height: 50px
   font-size: 16px
   color: var(--secondary-text-color)
   display: flex
   flex-direction: row
   flex-wrap: nowrap
+  text-wrap: nowrap
   justify-content: flex-start
   align-items: center
   gap: 12px
@@ -44,4 +45,5 @@ defineProps<Props>();
   .link__icon
     min-width: 20px
     min-height: 20px
+
 </style>

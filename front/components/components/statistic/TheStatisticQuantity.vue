@@ -38,7 +38,7 @@ const chartOptions = ref<ChartOptions<'bar'>>({
 watch(props, (val) => {
   if (!val.statistics) return;
   chartData.value.labels = val?.statistics.label;
-  chartData.value.datasets[0].data = val?.statistics.value;
+  chartData.value.datasets[0].data = val?.statistics.value.map(num => Number(num));
 });
 </script>
 

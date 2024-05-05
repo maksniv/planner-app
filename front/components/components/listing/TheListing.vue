@@ -7,7 +7,7 @@
 import type { ITaskResponse } from '~/types/task.types';
 
 interface Props {
-  tasks: Array<ITaskResponse>,
+  list: Array<ITaskResponse>,
 }
 
 defineProps<Props>();

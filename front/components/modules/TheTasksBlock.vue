@@ -1,18 +1,19 @@
 <template>
  <div class="container">
-     <TheTabs :tabs="tabs" v-model="activeTab">
-       <template v-slot:content="{ active }">
-         <template v-if="active === 0">
-           <TheListing></TheListing>
-         </template>
-         <template v-if="active === 1">
-           <TheCanban></TheCanban>
-         </template>
-         <template v-if="active === 2">
-           <TheCalendar></TheCalendar>
-         </template>
-       </template>
-     </TheTabs>
+   <TheSelect
+     v-model="localValue"
+     :items="groupsTask?.data"
+     label-text="Test"
+     item-text="name"
+     search-in-dropdown
+   />
+   {{ localValue }}
+   <TheInput
+     v-model="localValue"
+     placeholder-text="Email"
+     labelText="Email"
+   />
+<!--   <TheListing :list="tasks"></TheListing>-->
  </div>
 </template>
 
@@ -21,12 +22,8 @@ import { useQuery, keepPreviousData } from '@tanstack/vue-query';
 import { getGroupsTask } from '@/composables/groupsTask.service';
 import { getTasks } from '@/composables/task.service';
 const { $toast } = useNuxtApp();
-const tabs = [
-  { name: 'Листинг', id: 0 },
-  { name: 'Канбан', id: 1 },
-  { name: 'Календарь', id: 2 }
-];
-const activeTab =  ref(0);
+
+const localValue = ref('');
 
 const { data: tasks, error: errorGetTasks } = useQuery({
   queryKey: ['tasks'],
@@ -57,4 +54,8 @@ watch(errorGetGroups, (val) => {
 .container
   width: 100%
   height: 100%
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
 </style>

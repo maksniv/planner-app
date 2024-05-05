@@ -1,11 +1,14 @@
 <template>
   <div class="avatar__container">
-    <img v-if=picture :src="picture" class="avatar__img"  alt="user photo"/>
-    <div class="avatar__letters">{{ letter }}</div>
+    <img v-if="picture" :src="picture" class="avatar__img"  alt="user photo"/>
+    <div v-else-if="letter" class="avatar__letters">{{ letter }}</div>
+    <icon v-else name="ph:user-bold" size="44"></icon>
   </div>
 </template>
 
 <script lang="ts" setup>
+import { onMounted } from 'vue';
+
 interface Props {
   picture?: string | undefined;
   name?: string | undefined;
@@ -16,15 +19,21 @@ const props = defineProps<Props>();
 
 const letter = ref('');
 
+onMounted(() => {
+  letter.value = getFirstLetters(props.name, props.surname)
+});
+
 watch(
   () => props.name,
-  () => {
+  (val) => {
+    if(!val) return
     letter.value = getFirstLetters(props.name, props.surname)
   },
 );
 watch(
   () => props.surname,
-  () => {
+  (val) => {
+    if(!val) return
     letter.value = getFirstLetters(props.name, props.surname)
   },
 );
@@ -38,7 +47,7 @@ const getFirstLetters = (name: string | undefined, surname: string | undefined):
   if (surname) {
     return `${surname.charAt(0)}`;
   }
-  return 'U';
+  return '';
 }
 </script>
 
