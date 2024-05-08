@@ -1,16 +1,16 @@
 <template>
   <div class="theme-switcher">
     <Icon
-        name="heroicons-solid:sun"
-        size="19"
-        class="wrapper__icon"
-    ></Icon>
+      name="heroicons-solid:sun"
+      size="19"
+      class="wrapper__icon"
+    />
     <TheToggle v-model="theme" ></TheToggle>
     <Icon
-        name="akar-icons:moon-fill"
-        size="19"
-        class="wrapper__icon"
-    ></Icon>
+      name="akar-icons:moon-fill"
+      size="19"
+      class="wrapper__icon"
+    />
   </div>
 </template>
 

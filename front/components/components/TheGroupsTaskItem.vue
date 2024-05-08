@@ -5,7 +5,7 @@
       placeholder-text="Название"
       :value="name"
       @input="updateHandler({ name: localValue.name })"
-    ></TheInput>
+    />
     <TheColorPicker
       v-model="localValue.color"
       :value="color"
@@ -17,7 +17,8 @@
       @click="deleteHandler"
       icon="material-symbols:delete-outline"
       size="45"
-      danger/>
+      danger
+    />
   </div>
 </template>
 

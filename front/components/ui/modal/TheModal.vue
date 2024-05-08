@@ -1,38 +1,41 @@
 <template>
-  <teleport
-    to="#__nuxt"
-    v-if="showModal"
-    >
-    <div
-      class="overlay" :class="showModal ? 'active' : ''"
-      @click.self="$emit('close')"
+  <ClientOnly>
+    <teleport
+      to="#__nuxt"
+      v-if="showModal"
       >
       <div
-        class="modal"
-        :class="showModal ? 'active' : ''"
-      >
-        <TheIconButton
-          icon="gg:close"
-          class="modal__icon"
-          size="30"/>
-        <h1 class="modal__title">
-          <slot name="title">
-          </slot>
-        </h1>
-        <div class="modal__content">
-          <slot name="body">
-          </slot>
-        </div>
-        <div class="modal__line"/>
-        <div class="modal__button-wrapper">
-          <slot name="button">
-            <TheButton @click="$emit('confirm')">Подтвердить</TheButton>
-            <TheButton @click="$emit('reject')" outlined>Отмена</TheButton>
-          </slot>
+        class="overlay" :class="showModal ? 'active' : ''"
+        @click.self="$emit('close')"
+        >
+        <div
+          class="modal"
+          :class="showModal ? 'active' : ''"
+        >
+          <TheIconButton
+            @click.capture.stop="$emit('close')"
+            icon="gg:close"
+            class="modal__icon"
+            size="30"/>
+          <h1 class="modal__title">
+            <slot name="title">
+            </slot>
+          </h1>
+          <div class="modal__content">
+            <slot name="body">
+            </slot>
+          </div>
+          <div class="modal__line"/>
+          <div class="modal__button-wrapper">
+            <slot name="button">
+              <TheButton @click="$emit('confirm')">Подтвердить</TheButton>
+              <TheButton @click="$emit('reject')" outlined>Отмена</TheButton>
+            </slot>
+          </div>
         </div>
       </div>
-    </div>
-  </teleport>
+    </teleport>
+  </ClientOnly>
 </template>
 
 <script setup lang="ts">

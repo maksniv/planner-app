@@ -15,7 +15,7 @@
         <TheDropDownMenuItem @click="router.push('/user')">
           <Icon name="uil:setting" size="15"/>Настройки
         </TheDropDownMenuItem>
-        <TheDropDownMenuItem @click="mutate()">
+        <TheDropDownMenuItem @click="mutate()" class="delete">
           <Icon name="material-symbols:logout-rounded" size="15"/>Выйти
         </TheDropDownMenuItem>
       </template>
@@ -73,4 +73,7 @@ watch(errorLogout, (val) => {
     justify-content: center
     width: 100%
     height: 100%
+
+.delete
+  color: var(--danger)
 </style>

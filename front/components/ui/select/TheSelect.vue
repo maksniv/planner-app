@@ -161,11 +161,13 @@ watch(
   () => localValue,
   (val) => {
     if (!val) return;
-    console.log('work');
     if (JSON.stringify(val) !== JSON.stringify(props.value)) {
-      console.log('work 2');
-      if (val.id !== props.value?.id) {
-        console.log('work 3');
+      if (props.value) {
+        if (val.id !== props.value?.id) {
+          emit('update:modelValue', localValue.value);
+          emit('input');
+        }
+      } else {
         emit('update:modelValue', localValue.value);
         emit('input');
       }

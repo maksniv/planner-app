@@ -10,21 +10,21 @@
       @blur="$emit('blur')"
       @focus="$emit('focus')"
       @update:model-value="$emit('update:modelValue', localValue)"
-    ></TheInput>
+    />
     <Icon
       v-if="flagVisible"
       name="solar:eye-bold"
       size="25"
       class="wrapper__icon"
       @click="toggleVisiblePassword()"
-    ></Icon>
+    />
     <Icon
       v-if="!flagVisible"
       name="ph:eye-closed-bold"
       size="25"
       class="wrapper__icon"
       @click="toggleVisiblePassword()"
-    ></Icon>
+    />
   </div>
 </template>
 
