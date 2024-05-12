@@ -60,6 +60,8 @@ const typeInput = computed(() => {
 <style lang="sass" scoped>
 .wrapper
   position: relative
+  width: 100%
+  max-width: var(--max-width-field)
   :deep(.field__input)
     padding: 10px 45px 10px 12px
   .wrapper__icon
