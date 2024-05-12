@@ -25,11 +25,22 @@ export class TaskController {
     return this.taskService.getAll(userId);
   }
 
+  @Get(':id')
+  @Auth()
+  async getTaskById(
+    @Param('id') id: string,
+    ) {
+    return this.taskService.getTaskById(id);
+  }
+
   @UsePipes(new ValidationPipe())
   @HttpCode(200)
   @Post()
   @Auth()
-  async create(@Body() dto: TaskDto, @CurrentUser('id') userId: string) {
+  async create(
+    @Body() dto: TaskDto,
+    @CurrentUser('id') userId: string
+  ) {
     return this.taskService.create(dto, userId);
   }
 

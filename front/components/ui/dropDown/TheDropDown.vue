@@ -27,10 +27,10 @@ const clickOutside = () => {
   position: relative
   max-height: 50px
   .dropdown__menu
+    z-index: var(--z-dropdown)
     position: absolute
     min-width: 150px
     right: 0
-    top: 55px
     display: flex
     flex-direction: column
     padding: 8px 0

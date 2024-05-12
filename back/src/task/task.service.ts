@@ -10,7 +10,7 @@ export class TaskService {
     return this.prisma.task.findMany({
       orderBy: [
         {
-          createdAt: 'desc',
+          deadlines: 'asc',
         },
       ],
       where: {
@@ -19,8 +19,25 @@ export class TaskService {
     });
   }
 
+  async getTaskById(taskId: string) {
+    return this.prisma.task.findUnique({
+      where: {
+        id: taskId,
+      },
+      include: {
+        taskGroup: {
+          select: {
+            id: true,
+            name: true,
+          },
+        },
+      },
+    });
+  }
+
   async create(dto: TaskDto, userId: string) {
-    const { taskGroupId, ...taskData } = dto;
+    console.log(dto);
+    const { taskGroupId,...taskData } = dto;
     return this.prisma.task.create({
       data: {
         ...taskData,
@@ -29,11 +46,7 @@ export class TaskService {
             id: userId,
           },
         },
-        taskGroup: {
-          connect: {
-            id: dto.taskGroupId || undefined,
-          },
-        },
+        taskGroup: taskGroupId? { connect: { id: taskGroupId } } : undefined,
       },
     });
   }

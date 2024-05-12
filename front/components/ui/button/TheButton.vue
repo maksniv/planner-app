@@ -1,11 +1,12 @@
 <template>
-  <button class="button"
-          :class="{'outlined': outlined}"
-          :style="{'background-color': outlined ? null : color, 'border-color': color, 'color': color}"
-          v-bind="$attrs"
-          :primary="!color"
-          >
-      <slot/>
+  <button
+    class="button"
+    :class="{'outlined': outlined}"
+    :style="{'background-color': outlined ? null : color, 'border-color': color, 'color': color}"
+    v-bind="$attrs"
+    :primary="!color"
+  >
+    <slot/>
   </button>
 </template>
 
@@ -31,6 +32,7 @@ defineProps<Props>();
   display: flex
   flex-direction: row
   flex-wrap: nowrap
+  text-wrap: nowrap
   justify-content: space-between
   align-items: center
   gap: 5px

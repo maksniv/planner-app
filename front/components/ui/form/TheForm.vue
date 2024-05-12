@@ -1,19 +1,19 @@
 <template>
-  <form class="form__container" autocomplete="false">
+  <form class="form__container" autocomplete="off">
     <h1
       class="form__title"
       :class="smallTitleSize ? 'small' : 'big'"
       v-if="!hideTitle"
     >
-      <slot name="title"></slot>
+      <slot name="title"/>
     </h1>
     <div class="form__line" v-if="!hideTitle" />
     <div class="form__wrapper">
-      <slot name="body"></slot>
+      <slot name="body"/>
     </div>
     <div class="form__line" v-if="!hideFooter" />
     <div class="form__button-wrapper" v-if="!hideFooter">
-      <slot name="footer"></slot>
+      <slot name="footer"/>
     </div>
   </form>
 </template>

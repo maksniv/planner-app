@@ -41,3 +41,7 @@ body {
   --toastify-color-success: var(--success) !important;
   --toastify-color-error: var(--danger) !important;
 }
+
+.highlight-text {
+  color: var(--primary)
+}

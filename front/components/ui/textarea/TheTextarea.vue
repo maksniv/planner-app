@@ -83,6 +83,7 @@ onUnmounted(()=>{
 <style lang="sass" scoped>
 .field
   width: 100%
+  max-width: var(--max-width-field)
   position: relative
   display: flex
   flex-direction: column

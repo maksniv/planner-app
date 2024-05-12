@@ -9,6 +9,13 @@ const getTasks = async () => {
   return response;
 };
 
+const getTaskById = async (id: string) => {
+  const { $AxiosWithAuth } = useNuxtApp();
+
+  const response = await $AxiosWithAuth.get<ITaskResponse>(`${BASE_URL}/${id}`);
+  return response;
+};
+
 const createTask = async (data: TypeTaskFormState) => {
   const { $AxiosWithAuth } = useNuxtApp();
 
@@ -30,4 +37,4 @@ const deleteTask = async (id: string) => {
   return response;
 };
 
-export { getTasks, createTask, updateTask, deleteTask };
+export { getTasks, getTaskById, createTask, updateTask, deleteTask };

@@ -1,8 +1,8 @@
 <template>
-    <div
-      class="dropdown-menu__item"
-      :class="{ 'chosen': chosen, 'selected': selected }"
-      @click.capture.stop="selectItem"
+  <div
+    class="dropdown-menu__item"
+    :class="{ 'chosen': chosen, 'selected': selected }"
+    @click.capture.stop="selectItem"
     >
       <div
         v-html="nameText"
@@ -37,7 +37,7 @@ const nameText = computed(() => {
       let resultInsert = match
         .split('')
         .reduce((acc, letter, index) => acc + name[offset + index], '');
-      return `<span class="highlight">${resultInsert}</span>`;
+      return `<span class="highlight-text">${resultInsert}</span>`;
     }
   );
 });
@@ -69,9 +69,4 @@ const selectItem = () => {
     background-color: var(--background)
     border-radius: var(--border-radius)
     border: 1px solid var(--border-base)
-</style>
-
-<style lang="sass">
-  .highlight
-    color: var(--primary)
 </style>

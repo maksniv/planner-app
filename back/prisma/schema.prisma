@@ -22,16 +22,17 @@ model User {
 }
 
 model Task {
-  id           String    @id @default(cuid())
-  userId       String    @map("user_id")
-  taskGroupId  String    @map("task_group_id")
-  name         String
+  id           String     @id @default(cuid())
+  userId       String     @map("user_id")
+  taskGroupId  String     @default("") @map("task_group_id")
+  name         String?
   content      String?
   priority     Priority?
-  isCompleted  Boolean   @default(false) @map("is_completed")
-  createdAt    DateTime  @default(now()) @map("created_at")
-  updatedAt    DateTime  @updatedAt @map("updated_at")
-  user         User      @relation(fields: [userId], references: [id])
+  isCompleted  Boolean?   @default(false) @map("is_completed")
+  deadlines    DateTime?
+  createdAt    DateTime   @default(now()) @map("created_at")
+  updatedAt    DateTime   @updatedAt @map("updated_at")
+  user         User       @relation(fields: [userId], references: [id])
   taskGroup    TaskGroup? @relation(fields: [taskGroupId], references: [id])
 
   @@map("task")
@@ -40,7 +41,7 @@ model Task {
 model TaskGroup {
   id        String   @id @default(cuid())
   userId    String   @map("user_id")
-  name      String
+  name      String?
   color     String?
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")

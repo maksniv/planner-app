@@ -33,6 +33,7 @@ defineEmits<{
   cursor: pointer
   color: var(--base-text-color)
   height: 20px
+  max-width: var(--max-width-field)
   display: flex
   flex-direction: row
   flex-wrap: nowrap

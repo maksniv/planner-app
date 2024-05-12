@@ -113,7 +113,7 @@ import { getObjectField } from '@/utils/getObjectField';
 import { onMounted } from 'vue';
 
 interface Props {
-  modelValue?: null | object | string;
+  modelValue?: null | object;
   value?: null | object;
   items?: Array<any>;
   placeholderText?: string;
@@ -158,21 +158,21 @@ watch(
 );
 
 watch(
-  () => localValue,
+  () => props.modelValue,
   (val) => {
     if (!val) return;
-    if (JSON.stringify(val) !== JSON.stringify(props.value)) {
-      if (props.value) {
-        if (val.id !== props.value?.id) {
-          emit('update:modelValue', localValue.value);
-          emit('input');
-        }
-      } else {
-        emit('update:modelValue', localValue.value);
-        emit('input');
-      }
-    }
+    localValue.value = { ...val };
   },
+);
+
+watch(
+  () => localValue,
+  () => {
+    if (JSON.stringify(toRaw(localValue.value)) === JSON.stringify(toRaw(props.value))) return
+    if (JSON.stringify(toRaw(localValue.value.id)) === JSON.stringify(toRaw(props.value.id))) return
+      emit('update:modelValue', localValue.value);
+      emit('input');
+    },
   { deep: true },
 );
 
@@ -229,8 +229,8 @@ const selectItem = (item: object) => {
 }
 const clearValue = () => {
   localValue.value = null;
-  emit('update:modelValue', localValue.value);
-  emit('input');
+  // emit('update:modelValue', localValue.value);
+  // emit('input');
 }
 const setItemToInput = () => {
     if (list.value.length && props.value)  {
@@ -336,8 +336,8 @@ const getItemKey = (item: object, index: number) => {
   position: relative
   display: flex
   flex-flow: column nowrap
-  justify-content: flex-end
   width: 100%
+  max-width: var(--max-width-field)
   margin-bottom: 0
   gap: 10px
   &.readonly

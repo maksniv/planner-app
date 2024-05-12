@@ -10,7 +10,7 @@ export class GroupsTaskService {
     return this.prisma.taskGroup.findMany({
       orderBy: [
         {
-          createdAt: 'desc',
+          createdAt: 'asc',
         },
       ],
       where: {

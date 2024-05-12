@@ -13,14 +13,14 @@
           />
           <TheIconButton
             v-if="data?.data"
-            @click="addHandler({ name: '', color: '' })"
+            @click="addHandler({})"
             icon="gala:add"
             size="50"
           />
           <div v-else class="groups-task__add-button">
             <span class="add-button__text">Похоже у вас еще нет групп...</span>
             <TheIconButton
-              @click="addHandler({ name: '', color: '' })"
+              @click="addHandler({})"
               icon="gala:add"
               size="50"
             />
@@ -58,7 +58,7 @@ const queryClient = useQueryClient();
 const { mutate: addHandler, error: errorAdd } = useMutation({
   mutationKey: ['add-group-task'],
   mutationFn: (data: TypeGroupsTaskFormState) => createGroupTask(data),
-  async onSuccess() {
+  onSuccess() {
     queryClient.invalidateQueries({ queryKey: ['groups-task'] });
     $toast.success('Сохранено');
   },

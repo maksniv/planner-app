@@ -5,13 +5,16 @@ export enum EnumTaskPriority {
 }
 
 export interface ITaskResponse {
-  id: String;
-  name: String;
-  content?: String;
+  id: string;
+  name: string;
+  content?: string;
   priority?: EnumTaskPriority;
-  isCompleted: Boolean;
-  createdAt: String;
-  updatedAt: String;
+  taskGroupId: string;
+  taskGroup: { id: string, name: string }
+  isCompleted: boolean;
+  deadlines: string;
+  createdAt: string;
+  updatedAt: string;
 }
 
 export type TypeTaskFormState = Partial<Omit<ITaskResponse, 'id' | 'updateAt'>>;

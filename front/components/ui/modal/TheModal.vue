@@ -66,7 +66,7 @@ defineEmits<{
     background-color: var(--overlay)
     opacity: 0
     pointer-events: none
-    z-index: 100
+    z-index: var(--z-modal)
     transition: all 0.25s
     &.active
         opacity: 1

@@ -6,12 +6,12 @@
         v-model="email"
         placeholder-text="Email"
         labelText="Email"
-      ></TheInput
-      ><TheInputPassword
+      />
+      <TheInputPassword
         v-model="password"
         placeholder-text="Пароль"
         labelText="Пароль"
-      ></TheInputPassword>
+      />
     </template>
     <template #footer>
       <TheButton @click.prevent="mutate({ email: email, password: password })"

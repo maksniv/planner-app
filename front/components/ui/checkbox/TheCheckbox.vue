@@ -3,10 +3,12 @@
     <input
         type="checkbox"
         class="field__checkbox"
-        :checked="modelValue"
+        :checked="localValue"
         @input="
-          $emit('update:modelValue', ($event.target as HTMLInputElement).checked);
-          $emit('input')"
+          localValue = ($event.target as HTMLInputElement).checked;
+          $emit('update:modelValue', localValue);
+          $emit('input')
+        "
         v-bind="$attrs"
     />
     <span class="field__icon"></span>
@@ -16,16 +18,40 @@
 
 <script setup lang="ts">
 interface Props {
-  modelValue: boolean;
+  modelValue?: boolean;
+  value?: boolean;
   label?: string;
 }
 
-defineProps<Props>();
+const props = defineProps<Props>();
+
+const localValue = ref(false);
 
 defineEmits<{
   (e: 'update:modelValue', value: boolean): void;
   (e: 'input'): void;
+  (e: 'blur'): void;
+  (e: 'focus'): void;
 }>();
+
+watch(
+  () => props.value,
+  (val) => {
+    if (!val) return;
+    if (!localValue.value && val) {
+      localValue.value = val;
+    }
+  },
+  { immediate: true },
+);
+
+watch(
+  () => props.modelValue,
+  (val) => {
+    if (!val) return;
+    localValue.value = val;
+  },
+);
 </script>
 
 <style scoped lang="sass">
@@ -33,6 +59,7 @@ defineEmits<{
   cursor: pointer
   height: 20px
   color: var(--base-text-color)
+  max-width: var(--max-width-field)
   display: flex
   flex-direction: row
   flex-wrap: nowrap

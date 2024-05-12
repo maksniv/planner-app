@@ -21,6 +21,10 @@ export class TaskDto {
 
   @IsOptional()
   @IsString()
+  deadlines: string;
+
+  @IsOptional()
+  @IsString()
   createdAt: string;
 
   @IsEnum(Priority)
