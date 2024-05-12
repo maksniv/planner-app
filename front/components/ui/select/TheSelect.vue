@@ -78,7 +78,7 @@
                 <TheIconButton
                   class="dropdown-menu__clear-filter"
                   @click="stringFilter = ''"
-                  icon="material-symbols:close"
+                  icon="mdi:clear-bold"
                   size="18"
                 />
               </div>
@@ -373,12 +373,14 @@ const getItemKey = (item: object, index: number) => {
       z-index: 10
       position: absolute
       right: 45px
+      color: var(--base-text-color)
       bottom: calc(var(--base-height)/2 - 10px)
     .select-field__triangle
       z-index: 10
       position: absolute
       right: 20px
       bottom: calc(var(--base-height)/2 - 10px)
+      color: var(--base-text-color)
     .select-field__values
       position: relative
       flex-grow: 2
@@ -430,6 +432,7 @@ const getItemKey = (item: object, index: number) => {
           .dropdown-menu__clear-filter
             position: absolute
             right: 15px
+            color: var(--base-text-color)
             bottom: calc(var(--base-height)/2 - 10px)
             z-index: 1
 </style>

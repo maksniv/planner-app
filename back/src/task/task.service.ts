@@ -14,6 +14,7 @@ export class TaskService {
         },
       ],
       where: {
+        isCompleted: false,
         userId,
       },
     });

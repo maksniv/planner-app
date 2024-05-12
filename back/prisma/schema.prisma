@@ -27,7 +27,6 @@ model Task {
   taskGroupId  String     @default("") @map("task_group_id")
   name         String?
   content      String?
-  priority     Priority?
   isCompleted  Boolean?   @default(false) @map("is_completed")
   deadlines    DateTime?
   createdAt    DateTime   @default(now()) @map("created_at")
@@ -49,10 +48,4 @@ model TaskGroup {
   task      Task[]
 
   @@map("task_group")
-}
-
-enum Priority {
-  low
-  medium
-  high
 }

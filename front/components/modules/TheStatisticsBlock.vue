@@ -40,5 +40,5 @@ watch(error, (val) => {
   .statistics__statistic
     height: 300px
     width: 100%
-    max-width: 500px
+    //max-width: 500px
 </style>

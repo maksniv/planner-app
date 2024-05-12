@@ -80,14 +80,6 @@ watch(
   },
 );
 
-// watch(
-//   visibleLocalValue,
-//   (val) => {
-//     if (!val) return;
-//     visibleLocalValue.value = formatVisibleDate(val)
-//   },
-// );
-
 const updateVisibleLocalValue = () => {
   visibleLocalValue.value = formatValue(localValue.value);
 }

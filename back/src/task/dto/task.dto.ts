@@ -1,6 +1,4 @@
-import { Priority } from '@prisma/client';
-import { Transform } from 'class-transformer';
-import { IsBoolean, IsOptional, IsString, IsEnum } from 'class-validator';
+import { IsBoolean, IsOptional, IsString } from 'class-validator';
 
 export class TaskDto {
   @IsOptional()
@@ -26,9 +24,4 @@ export class TaskDto {
   @IsOptional()
   @IsString()
   createdAt: string;
-
-  @IsEnum(Priority)
-  @IsOptional()
-  @Transform(({value}) => ('' + value).toLocaleLowerCase())
-  priority?: Priority
 }

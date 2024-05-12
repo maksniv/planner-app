@@ -1,14 +1,7 @@
-export enum EnumTaskPriority {
-  low = 'low',
-  medium = 'medium',
-  high = 'high',
-}
-
 export interface ITaskResponse {
   id: string;
   name: string;
   content?: string;
-  priority?: EnumTaskPriority;
   taskGroupId: string;
   taskGroup: { id: string, name: string }
   isCompleted: boolean;

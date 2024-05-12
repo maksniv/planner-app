@@ -20,7 +20,8 @@ const isMutating = useIsMutating();
 
 <style lang="sass" scoped>
 .container
-  width: 100vw
+  width: 100%
+  max-width: 100vw
   height: 100vh
   display: flex
   flex-direction: row

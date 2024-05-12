@@ -80,9 +80,8 @@ const {
   error: errorUpdate,
 } = useMutation({
   mutationKey: ['update-task'],
-  mutationFn: (data: TypeTaskFormState) =>
-    updateTask(props.task.id, data),
-  async onSuccess() {
+  mutationFn: (data: TypeTaskFormState) => updateTask(props.task.id, data),
+  onSuccess() {
     queryClient.invalidateQueries({ queryKey: ['get-all-task'] });
     $toast.success('Сохранено');
   },
