@@ -37,7 +37,7 @@
             Редактировать
           </TheDropDownMenuItem>
           <TheDropDownMenuItem
-            @click="deleteHandler(task.id)"
+            @click="deleteHandler"
             class="delete">
             <Icon
               name="ic:baseline-delete"
@@ -79,7 +79,7 @@ const {
   mutate: updateHandler,
   error: errorUpdate,
 } = useMutation({
-  mutationKey: ['update-task'],
+  mutationKey: ['update-task', props.task.id],
   mutationFn: (data: TypeTaskFormState) => updateTask(props.task.id, data),
   onSuccess() {
     queryClient.invalidateQueries({ queryKey: ['get-all-task'] });
@@ -94,8 +94,8 @@ watch(errorUpdate, (val) => {
 });
 
 const { mutate: deleteHandler, error } = useMutation({
-  mutationKey: ['delete-task'],
-  mutationFn: (id: string) => deleteTask(id),
+  mutationKey: ['delete-task', props.task.id],
+  mutationFn: () => deleteTask(props.task.id),
   onSuccess() {
     queryClient.invalidateQueries({ queryKey: ['get-all-task'] });
     $toast.success('Удалено');

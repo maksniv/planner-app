@@ -39,11 +39,13 @@
           <span
             v-if="day.day"
             class="day-title"
-            :class="{'selected': dayjs(day.date).toISOString() === dayjs(localValue).toISOString()}"
+            :class="{
+              'selected': localValue ? dayjs(day.date).toISOString() === dayjs(localValue).toISOString() : false,
+              'today': dayjs(day.date).format('DD.MM.YYYY') === todayValue,
+            }"
           >
             {{ day.day }}
           </span>
-
         </div>
       </div>
     </div>
@@ -54,6 +56,7 @@
 <script setup lang="ts">
 import dayjs from 'dayjs';
 import 'dayjs/locale/ru';
+import { onMounted } from 'vue';
 dayjs.locale('ru');
 type Date = {
   day: number | null,
@@ -71,7 +74,9 @@ defineEmits<{
 }>()
 
 
-const localValue = ref<null | string>(dayjs().toString());
+const localValue = ref<null | string>(null);
+const generatedDateValue = ref(dayjs().toISOString());
+const todayValue = ref(dayjs().format('DD.MM.YYYY'));
 const daysMonth = ref<Date[]>([]);
 const year = ref('');
 const month = ref('');
@@ -79,6 +84,7 @@ const month = ref('');
 const weekdays = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'];
 
 const generateCalendar = (dateToGenerate: string) => {
+
   const firstDayOfMonth = dayjs(dateToGenerate).startOf('month').day();
   const daysInMonth = dayjs(dateToGenerate).daysInMonth();
 
@@ -99,11 +105,17 @@ const generateCalendar = (dateToGenerate: string) => {
 };
 
 const changeMonthUp = () => {
-  localValue.value = dayjs(localValue.value).add(1, 'month').toISOString()
+  generatedDateValue.value = dayjs(generatedDateValue.value).add(1, 'month').toISOString()
+  if(localValue.value) localValue.value = dayjs(localValue.value).add(1, 'month').toISOString()
 }
 const changeMonthBack = () => {
-  localValue.value = dayjs(localValue.value).subtract(1, 'month').toISOString()
+  generatedDateValue.value = dayjs(generatedDateValue.value).subtract(1, 'month').toISOString()
+  if(localValue.value) localValue.value = dayjs(localValue.value).subtract(1, 'month').toISOString()
 }
+
+onMounted(() => {
+  if(localValue.value === null) generateCalendar(generatedDateValue.value);
+});
 
 watch(
   () => props.value,
@@ -122,15 +134,27 @@ watch(
   (val) => {
     if (!val) return;
     if (!dayjs(val).isValid()) return;
-    localValue.value = val;
+    if (!localValue.value && val) {
+      localValue.value = val;
+    }
   },
+  { immediate: true },
 );
 
 watch(
   localValue,
   (val) => {
-    if (!val) return;
     if (!dayjs(val).isValid()) return;
+    if (!val) return;
+  },
+  { immediate: true },
+);
+
+watch(
+  generatedDateValue,
+  (val) => {
+    if (!dayjs(val).isValid()) return;
+    if (!val) return;
     generateCalendar(val);
   },
   { immediate: true, deep: true },
@@ -211,8 +235,11 @@ watch(
           height: 100%
           border-radius: var(--border-radius)
           user-select: none
+          &.today
+            border: 1px solid var(--primary)
           &.selected
             background-color: var(--primary) !important
+            color: var(--white)
           &:hover
             background-color: var(--background)
 

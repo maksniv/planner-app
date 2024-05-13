@@ -32,12 +32,12 @@
         label-text="Группа"
         item-text="name"
         search-in-dropdown
-        @input="updateHandler({ taskGroup: localValue.groupsTask })"
+        @input="update({ taskGroupId: localValue.groupsTask.id })"
       />
     </template>
     <template #button>
       <TheButton
-        @click="update({isCompleted: true})">
+        @click="update({isCompleted: true}); $router.back()">
         Задача выполнена
       </TheButton>
       <TheButton
@@ -88,8 +88,6 @@ watch(errorGetGroups, (val) => {
   if (errorMessage) $toast.error(errorMessage);
 });
 
-// const queryClient = useQueryClient();
-
 const {
   mutate: update,
   error: errorUpdate,
@@ -98,7 +96,6 @@ const {
   mutationFn: (data: TypeTaskFormState) =>
     updateTask(id.value, data),
   async onSuccess() {
-    // await queryClient.invalidateQueries({queryKey: ['get-task-by-id', id]});
     $toast.success('Сохранено');
   },
   onError: (err: any) => err,
@@ -110,10 +107,6 @@ watch(errorUpdate, (val) => {
 });
 
 const updateHandler = debounce(update, 800);
-
-// onUnmounted(()=>{
-//   localValue.value = { name: '', content: '', isCompleted: false, groupsTask: null, deadlines: '' };
-// })
 </script>
 
 <style lang="sass" scoped>
