@@ -9,11 +9,11 @@
       item-text="name"
       search-in-dropdown
     />
-    <TheInput
-      class="top-listing-input"
-      v-model="localValue.search"
-      placeholder-text="Поиск"
-    />
+<!--    <TheInput-->
+<!--      class="top-listing-input"-->
+<!--      v-model="localValue.search"-->
+<!--      placeholder-text="Поиск"-->
+<!--    />-->
     <TheButton
       @click="addTask"
       outlined
@@ -90,9 +90,9 @@ const addTask = () => {
   position: sticky
   z-index: var(--z-top-listing)
   top: 15px
-  .top-listing-select
-     width: 250px
-     min-width: 250px
+  //.top-listing-select
+  //   width: 250px
+  //   min-width: 250px
   .top-listing-input
      max-width: 500px
 </style>

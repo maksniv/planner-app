@@ -32,7 +32,7 @@
         label-text="Группа"
         item-text="name"
         search-in-dropdown
-        @input="update({ taskGroupId: localValue.groupsTask.id })"
+        @input="update({ taskGroupId: localValue.groupsTask?.id || null })"
       />
     </template>
     <template #button>
