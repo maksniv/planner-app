@@ -13,14 +13,14 @@
           />
           <TheIconButton
             v-if="data?.data"
-            @click="addHandler({})"
+            @click="addHandler({color: '#000000'})"
             icon="gala:add"
             size="50"
           />
           <div v-else class="groups-task__add-button">
             <span class="add-button__text">Похоже у вас еще нет групп...</span>
             <TheIconButton
-              @click="addHandler({})"
+              @click="addHandler({color: '#000000'})"
               icon="gala:add"
               size="50"
             />

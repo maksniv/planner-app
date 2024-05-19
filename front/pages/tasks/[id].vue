@@ -1,16 +1,14 @@
 <template>
   <TheModal :show-modal="true" @close="$router.back()">
     <template #title>
-      Редактирование
-    </template>
-    <template #body>
-      <TheInput
+      <TheTitleInput
         v-model="localValue.name"
         :value="taskData?.data?.name"
         placeholder-text="Название задачи"
-        labelText="Задача"
         @input="updateHandler({ name: localValue.name })"
       />
+    </template>
+    <template #body>
       <TheTextarea
         v-model="localValue.content"
         :value="taskData?.data?.content"
@@ -32,6 +30,7 @@
         label-text="Группа"
         item-text="name"
         search-in-dropdown
+        colorize
         @input="update({ taskGroupId: localValue.groupsTask?.id || null })"
       />
     </template>

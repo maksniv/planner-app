@@ -10,11 +10,11 @@
       colorize
       search-in-dropdown
     />
-<!--    <TheInput-->
-<!--      class="top-listing-input"-->
-<!--      v-model="localValue.search"-->
-<!--      placeholder-text="Поиск"-->
-<!--    />-->
+    <TheInput
+      class="top-listing-input"
+      v-model="localValue.search"
+      placeholder-text="Поиск"
+    />
     <TheButton
       @click="addTask"
       outlined

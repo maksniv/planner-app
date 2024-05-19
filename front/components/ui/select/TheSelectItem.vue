@@ -94,7 +94,6 @@ const selectItem = () => {
     min-height: var(--base-height)
     border: 1px solid var(--border-base)
   .dropdown-menu__item-name.colorize
-    //background-contrastTextColor.ts: #2b9b7d
     padding: 5px 8px
     border-radius: var(--border-radius)
 

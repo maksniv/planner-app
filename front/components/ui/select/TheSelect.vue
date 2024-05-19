@@ -18,16 +18,11 @@
       @click="openList"
       v-click-outside="closeList"
     >
-      <span
-        v-if="!localValue"
-        class="select-field__placeholder">
-        {{ placeholderTextDefault }}
-      </span>
-      <span
-        v-if="localValue"
-        class="select-field__selected">
-        {{ getName(localValue) }}
-      </span>
+      <TheSelectChosenItem
+        :local-value="localValue"
+        :placeholder-text="placeholderText"
+        :colorize="colorize"
+      />
       <TheIconButton
         v-if="localValue && clearable"
         class="select-field__clear-value"
@@ -59,9 +54,6 @@
 </template>
 
 <script setup lang="ts">
-import { getType } from '@/utils/getType';
-import { getObjectField } from '@/utils/getObjectField';
-
 type SelectItem = {
   id: string,
   name: string,
@@ -127,15 +119,6 @@ watch(
     },
   { deep: true },
 );
-const placeholderTextDefault = computed(() => {
-  return props.placeholderText || 'Выберете значение';
-})
-// methods
-const getName = (value: any) => {
-  const type = getType(value);
-  if (type === 'String' || type === 'Number') return value;
-  return type === 'Object' ? getObjectField(value, props.itemText || 'name') : '';
-}
 const toggleList = () => {
   if(showList.value){
     closeList()
@@ -172,25 +155,22 @@ const clearValue = () => {
     display: inline-block
   .select-field
     cursor: pointer
+    display: flex
     height: var(--base-height)
     border-radius: var(--border-radius)
     border: 1px solid var(--border-base)
     color: var(--base-text-color)
     background-color: var(--background)
-    padding: 10px 45px 10px 12px
+    padding: 0 45px 0 12px
     transition: color .15s, border .15s ease-out
+    justify-content: flex-start
+    align-items: center
     &:hover
       border: 1px solid var(--primary-hover)
     &:active
       border: 1px solid var(--primary)
     &:focus
       box-shadow: 0 0 0 2px var(--primary-focus)
-    .select-field__placeholder
-      color: var(--secondary-text-color)
-      display: inline-block
-    .select-field__selected
-      color: var(--base-text-color)
-      display: inline-block
     .select-field__clear-value
       z-index: 10
       position: absolute

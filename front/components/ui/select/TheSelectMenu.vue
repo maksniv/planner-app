@@ -167,7 +167,7 @@ const getItemKey = (item: SelectItem, index: number) => {
 <style scoped lang="sass">
 .dropdown-menu
   position: absolute
-  z-index: 102
+  z-index: var(--z-dropdown)
   display: flex
   max-width: var(--max-width-field)
   width: 100%
