@@ -7,6 +7,11 @@
       <div
         v-html="nameText"
         class="dropdown-menu__item-name"
+        :class="{'colorize': colorize}"
+        :style="{
+          'background-color': itemColor,
+          color: textColor,
+        }"
       />
     </div>
 </template>
@@ -14,13 +19,21 @@
 <script setup lang="ts">
 import { getType } from '~/utils/getType';
 import { getObjectField } from '~/utils/getObjectField';
+import { contrastTextColor } from '~/utils/contrastTextColor';
+
+type SelectItem = {
+  id: string,
+  name: string,
+  color?: string,
+}
 
 interface Props {
-  item: object;
+  item: SelectItem;
   itemText?: 'name' | string;
   chosen: boolean;
   selected: boolean;
   searchValue?: string;
+  colorize?: boolean | false;
 }
 const props = defineProps<Props>();
 
@@ -41,6 +54,16 @@ const nameText = computed(() => {
     }
   );
 });
+
+const itemColor = computed(() => {
+  if(!props.colorize) return
+  return props.item && props.item.color? props.item.color : '';
+})
+
+const textColor = computed(() => {
+  if(!props.colorize) return
+  return props.item && props.item.color? contrastTextColor(props.item.color) : '';
+})
 
 const getName = (value: any) => {
   const type = getType(value);
@@ -63,10 +86,16 @@ const selectItem = () => {
   color: var(--base-text-color)
   &.selected
     color: var(--disabled-text-color)
+    min-height: var(--base-height)
     border-radius: var(--border-radius)
-    //border: 1px solid var(--primary)
   &.chosen
     background-color: var(--background)
     border-radius: var(--border-radius)
+    min-height: var(--base-height)
     border: 1px solid var(--border-base)
+  .dropdown-menu__item-name.colorize
+    //background-contrastTextColor.ts: #2b9b7d
+    padding: 5px 8px
+    border-radius: var(--border-radius)
+
 </style>

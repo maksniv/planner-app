@@ -36,6 +36,7 @@
           :item="item"
           :item-text="itemText"
           :search-value="stringFilter"
+          :colorize="colorize"
           @select-item="selectItem($event)"
           @mouseenter.native="chosenElement = index"
         />
@@ -69,7 +70,8 @@ interface Props {
   itemText?: 'name' | string;
   localValue: null | SelectItem;
   searchInDropdown?: boolean | false;
-  readonly?: boolean | false
+  colorize?: boolean | false;
+  readonly?: boolean | false;
 }
 const props = defineProps<Props>();
 

@@ -3,10 +3,13 @@
     v-if="tasksGroups.length"
     class="listing__container"
     >
-   <TheTasksListingBlock
-      v-for="tasksGroup in tasksGroups"
-      :key="tasksGroup"
-      :tasksGroup="tasksGroup"/>
+    <div class="listing__content">
+      <TheTasksListingBlock
+        v-for="tasksGroup in tasksGroups"
+        :key="tasksGroup"
+        :tasksGroup="tasksGroup"
+      />
+    </div>
  </div>
 </template>
 
@@ -78,16 +81,20 @@ const tasksGroups = computed(() => {
 <style scoped lang="sass">
 .listing__container
   width: 680px
-  height: fit-content
+  max-height: 100%
   margin: auto
   min-width: 500px
   min-height: 500px
   display: flex
   flex-direction: column
-  padding: 15px
+  padding: 15px 0 15px 15px
   box-shadow: 0 4px 6px var(--box-shadow)
   border: 1px solid var(--border-base)
   border-radius: var(--border-radius)
   background-color: var(--sidebar)
   color: var(--base-text-color)
+  .listing__content
+    overflow: auto
+    height: fit-content
+    scroll-behavior: smooth
 </style>

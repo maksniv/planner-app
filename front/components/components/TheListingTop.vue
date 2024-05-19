@@ -7,6 +7,7 @@
       :items="groupsTaskData?.data"
       placeholder-text="Группа задач"
       item-text="name"
+      colorize
       search-in-dropdown
     />
 <!--    <TheInput-->

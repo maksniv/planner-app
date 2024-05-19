@@ -49,8 +49,9 @@
       :value="value"
       :localValue="localValue"
       :items="items"
-      :with-label="labelText !== ''"
+      :with-label="labelText !== undefined"
       :itemText="itemText"
+      :colorize="colorize"
       @select="localValue = $event"
       @close="closeList"
     />
@@ -74,9 +75,10 @@ interface Props {
   labelText?: string;
   emptyText?: string;
   itemText?: 'name' | string;
-  searchInDropdown?: boolean;
+  searchInDropdown?: boolean | false;
   readonly?: boolean | false
   clearable?: boolean | false;
+  colorize?: boolean | false;
 }
 const props = defineProps<Props>();
 // data
