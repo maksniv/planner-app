@@ -1,0 +1,58 @@
+<template>
+  <div class="show-button-container">
+    <TheIconButton
+      class="show-button__icon"
+      :class="{'visible': showList}"
+      @click="handleClick"
+      icon="bxs:right-arrow"
+      size="20"
+    />
+    <span>Показать выполненные</span>
+  </div>
+    <TheTasksListingBlock
+      v-show="showList"
+      title="Выполненные"
+      :tasks-group="completedTask?.data"
+    />
+</template>
+
+<script setup lang="ts">
+import { useQuery } from '@tanstack/vue-query';
+import { getTasks } from '~/composables/task.service';
+const { $toast } = useNuxtApp();
+const showList = ref(false);
+
+const { data: completedTask, refetch, error: errorGetTasks } = useQuery({
+  queryKey: ['all-tasks-completed'],
+  queryFn: () => getTasks(true),
+  throwOnError: (e: any) => e,
+  enabled: false,
+});
+
+watch(errorGetTasks, (val) => {
+  const errorMessage = errorCatch(val);
+  if (errorMessage) $toast.error(errorMessage);
+});
+
+const handleClick = () => {
+  showList.value = !showList.value;
+  if (showList.value === true) {
+    refetch();
+  }
+};
+</script>
+
+<style scoped lang="sass">
+.show-button-container
+  width: 100%
+  height: fit-content
+  display: flex
+  gap: 15px
+  flex-direction: row
+  padding: 0 10px 25px 15px
+  font-size: 25px
+  .show-button__icon
+    transition: .15s ease-out
+    &.visible
+     transform: rotate(90deg)
+</style>

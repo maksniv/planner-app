@@ -7,8 +7,9 @@
       <TheTasksListingBlock
         v-for="tasksGroup in tasksGroups"
         :key="tasksGroup"
-        :tasksGroup="tasksGroup"
+        :tasks-group="tasksGroup"
       />
+      <TheTasksListingCompletedBlock />
     </div>
  </div>
 </template>
@@ -21,8 +22,8 @@ import dayjs from 'dayjs';
 const { $toast } = useNuxtApp();
 
 const { data: tasks, error: errorGetTasks } = useQuery({
-  queryKey: ['all-tasks'],
-  queryFn: () => getTasks(),
+  queryKey: ['all-tasks-uncompleted'],
+  queryFn: () => getTasks(false),
   throwOnError: (e: any) => e,
   placeholderData: keepPreviousData,
 });
@@ -73,9 +74,6 @@ const tasksGroups = computed(() => {
     ?  breakIntoGroups(toRaw(tasks.value?.data))
     : []
 });
-
-
-
 </script>
 
 <style scoped lang="sass">

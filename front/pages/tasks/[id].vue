@@ -106,6 +106,14 @@ watch(errorUpdate, (val) => {
 });
 
 const updateHandler = debounce(update, 800);
+
+const title = computed(() => {
+  return taskData?.value?.data?.name || 'Задача';
+});
+
+useHead({
+  title: title.value,
+});
 </script>
 
 <style lang="sass" scoped>

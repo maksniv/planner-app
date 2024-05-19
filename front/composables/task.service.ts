@@ -2,10 +2,10 @@ import { type ITaskResponse, type TypeTaskFormState } from '~/types/task.types';
 
 const BASE_URL = 'user/tasks';
 
-const getTasks = async () => {
+const getTasks = async (isCompleted: boolean = false) => {
   const { $AxiosWithAuth } = useNuxtApp();
 
-  const response = await $AxiosWithAuth.get<ITaskResponse[]>(BASE_URL);
+  const response = await $AxiosWithAuth.get<ITaskResponse[]>(`${BASE_URL}?isCompleted=${isCompleted}`);
   return response;
 };
 

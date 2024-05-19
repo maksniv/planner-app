@@ -43,7 +43,7 @@ const { mutate: addHandler, error: errorAdd } = useMutation({
   },
   onSuccess(response) {
     router.push(`/tasks/${response.data.id}`)
-    queryClient.invalidateQueries({ queryKey: ['all-tasks'] });
+    queryClient.invalidateQueries({ queryKey: ['all-tasks-uncompleted'] });
     $toast.success('Создана');
   },
   onError: (err: any) => err,
@@ -91,9 +91,9 @@ const addTask = () => {
   position: sticky
   z-index: var(--z-top-listing)
   top: 15px
-  //.top-listing-select
-  //   width: 250px
-  //   min-width: 250px
+  .top-listing-select
+     width: 250px
+     min-width: 250px
   .top-listing-input
      max-width: 500px
 </style>

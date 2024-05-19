@@ -82,7 +82,8 @@ const {
   mutationKey: ['update-task', props.task.id],
   mutationFn: (data: TypeTaskFormState) => updateTask(props.task.id, data),
   onSuccess() {
-    queryClient.invalidateQueries({ queryKey: ['all-tasks'] });
+    queryClient.invalidateQueries({ queryKey: ['all-tasks-uncompleted'] });
+    queryClient.invalidateQueries({ queryKey: ['all-tasks-completed'] });
     $toast.success('Сохранено');
   },
   onError: (err: any) => err,
@@ -97,7 +98,8 @@ const { mutate: deleteHandler, error } = useMutation({
   mutationKey: ['delete-task', props.task.id],
   mutationFn: () => deleteTask(props.task.id),
   onSuccess() {
-    queryClient.invalidateQueries({ queryKey: ['all-tasks'] });
+    queryClient.invalidateQueries({ queryKey: ['all-tasks-uncompleted'] });
+    queryClient.invalidateQueries({ queryKey: ['all-tasks-completed'] });
     $toast.success('Удалено');
   },
   onError: (err: any) => err,

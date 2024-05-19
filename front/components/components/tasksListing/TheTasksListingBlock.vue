@@ -20,7 +20,8 @@ import 'dayjs/locale/ru';
 import type { ITaskResponse } from '~/types/task.types';
 
 interface Props {
-  tasksGroup: Array<ITaskResponse>;
+  tasksGroup: Array<ITaskResponse> | undefined;
+  title?: string;
 }
 const props = defineProps<Props>();
 
@@ -29,7 +30,9 @@ const flagOverdue = ref(false);
 dayjs.locale('ru');
 
 const formattedDate = computed(() => {
-  if(!props.tasksGroup[0].deadlines) return 'Без даты'
+  if(props.title) return props.title
+
+  if(!props.tasksGroup || !props.tasksGroup[0].deadlines) return 'Без даты'
 
   const today = dayjs().startOf('day');
 
@@ -40,9 +43,6 @@ const formattedDate = computed(() => {
 
   return dayjs(props.tasksGroup[0].deadlines).format('D MMMM');
 });
-
-
-
 </script>
 
 <style scoped lang="sass">

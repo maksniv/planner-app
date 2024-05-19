@@ -6,7 +6,9 @@ import { PrismaService } from 'src/prisma.service';
 export class TaskService {
   constructor(private prisma: PrismaService) {}
 
-  async getAll(userId: string) {
+  async getAll(userId: string, isCompleted: string)
+  {
+    const parsedIsCompleted = isCompleted === 'true';
     return this.prisma.task.findMany({
       orderBy: [
         {
@@ -14,7 +16,7 @@ export class TaskService {
         },
       ],
       where: {
-        isCompleted: false,
+        isCompleted: parsedIsCompleted,
         userId,
       },
     });
@@ -30,6 +32,7 @@ export class TaskService {
           select: {
             id: true,
             name: true,
+            color: true,
           },
         },
       },

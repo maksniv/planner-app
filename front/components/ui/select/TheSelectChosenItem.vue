@@ -9,9 +9,9 @@
     class="select-field__selected"
     :class="{'colorize': colorize}"
     :style="{
-          'background-color': itemColor,
-          color: textColor,
-        }"
+      'background-color': itemColor,
+       color: textColor,
+    }"
   >
       {{ getName(localValue) }}
   </span>
@@ -63,6 +63,6 @@ const getName = (value: any) => {
   color: var(--base-text-color)
   display: inline-block
   &.colorize
-    padding: 5px 8px
+    padding: 3px 5px
     border-radius: var(--border-radius)
 </style>

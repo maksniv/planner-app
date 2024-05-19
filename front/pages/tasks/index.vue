@@ -31,5 +31,5 @@ useHead({
   display: grid
   grid-template-columns: repeat(1, 1fr)
   gap: 15px
-  padding: 15px 15px 80px 15px
+  padding: 15px 15px 15px 15px
 </style>

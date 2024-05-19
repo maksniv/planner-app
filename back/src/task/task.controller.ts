@@ -8,7 +8,7 @@ import {
   Put,
   Post,
   Delete,
-  Param,
+  Param, Query,
 } from '@nestjs/common';
 import { TaskService } from './task.service';
 import { TaskDto } from './dto/task.dto';
@@ -21,8 +21,11 @@ export class TaskController {
 
   @Get()
   @Auth()
-  async getAll(@CurrentUser('id') userId: string) {
-    return this.taskService.getAll(userId);
+  async getAll(
+    @CurrentUser('id') userId: string,
+    @Query('isCompleted') isCompleted: string,
+  ) {
+    return this.taskService.getAll(userId, isCompleted);
   }
 
   @Get(':id')

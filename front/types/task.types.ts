@@ -3,7 +3,7 @@ export interface ITaskResponse {
   name: string;
   content?: string;
   taskGroupId: string;
-  taskGroup: { id: string, name: string }
+  taskGroup: { id: string, name: string, color?: string }
   isCompleted: boolean;
   deadlines: string;
   createdAt: string;

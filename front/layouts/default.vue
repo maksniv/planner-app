@@ -26,7 +26,6 @@ const isMutating = useIsMutating();
   display: flex
   flex-direction: row
   flex-wrap: nowrap
-  overflow: hidden
   .main__wrapper
     position: relative
     display: flex
@@ -35,6 +34,7 @@ const isMutating = useIsMutating();
     width: 100%
     height: 100%
     .content
+      overflow: hidden
       height: 100%
       background-color: var(--background)
 </style>

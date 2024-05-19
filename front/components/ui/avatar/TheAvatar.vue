@@ -2,7 +2,7 @@
   <div class="avatar__container">
     <img v-if="picture" :src="picture" class="avatar__img"  alt="user photo"/>
     <div v-else-if="letter" class="avatar__letters">{{ letter }}</div>
-    <icon v-else name="ph:user-bold" size="44"></icon>
+    <icon v-else name="ph:user-bold" size="44" class="avatar__icon"></icon>
   </div>
 </template>
 
@@ -62,12 +62,14 @@ const getFirstLetters = (name: string | undefined, surname: string | undefined):
   border-radius: 50px
   background-color: var(--primary)
   .avatar__letters
-     user-select: none
-     font-size: 20px
-     font-weight: 400
-     color: var(--white)
+    user-select: none
+    font-size: 20px
+    font-weight: 400
+    color: var(--white)
   .avatar__img
     object-fit: cover
     width: 100%
     height: 100%
+  .avatar__icon
+    color: var(--white)
 </style>
