@@ -2,8 +2,7 @@
   <div class="top-listing__container">
     <TheSelect
       class="top-listing-select"
-      v-model="localValue.groupsTask"
-      :value="groupsTaskData?.data[0]"
+      @selectId="changeGroupId($event)"
       :items="groupsTaskData?.data"
       placeholder-text="Группа задач"
       item-text="name"
@@ -12,7 +11,7 @@
     />
     <TheInput
       class="top-listing-input"
-      v-model="localValue.search"
+      @input="updateSearch($event)"
       placeholder-text="Поиск"
     />
     <TheButton
@@ -30,11 +29,12 @@ import { keepPreviousData, useMutation, useQuery, useQueryClient } from '@tansta
 import type { TypeTaskFormState } from '~/types/task.types';
 import { createTask } from '~/composables/task.service';
 import { getGroupsTask } from '~/composables/groupsTask.service';
+import { useTasksStore } from '~/store/tasks';
+import { debounce } from '~/utils/debounce';
+const { changeSearch, changeGroupId } = useTasksStore();
 const queryClient = useQueryClient();
 const { $toast } = useNuxtApp();
 const router = useRouter();
-
-const localValue = ref({ groupsTask: null, search: null });
 
 const { mutate: addHandler, error: errorAdd } = useMutation({
   mutationKey: ['add-task'],
@@ -66,11 +66,12 @@ watch(errorGetGroups, (val) => {
   if (errorMessage) $toast.error(errorMessage);
 });
 
+const updateSearch = debounce(changeSearch, 1000);
 const addTask = () => {
-  if (!localValue.value.groupsTask) {
-    addHandler({ taskGroupId: groupsTaskData?.value.data[0].id });
+  if (groupId.value?.id) {
+    addHandler({ taskGroupId: groupId.value.id });
   } else {
-    addHandler({ taskGroupId: localValue.value.groupsTask.id });
+    addHandler({})
   }
 }
 </script>

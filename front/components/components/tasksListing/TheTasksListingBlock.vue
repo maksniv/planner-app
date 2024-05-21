@@ -48,7 +48,7 @@ const formattedDate = computed(() => {
 <style scoped lang="sass">
 .tasks-block__container
   width: 100%
-  height: 100%
+  height: fit-content
   display: flex
   flex-direction: column
   padding-bottom: 15px

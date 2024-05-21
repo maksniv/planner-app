@@ -12,7 +12,7 @@
       @input="
         localValue = ($event.target as HTMLInputElement).value.trim();
         $emit('update:modelValue', localValue);
-        $emit('input');
+        $emit('input', localValue);
       "
       @blur="$emit('blur')"
     />
@@ -33,7 +33,7 @@ const localValue = ref('');
 
 const emit = defineEmits<{
   (e: 'update:modelValue', value: string): void;
-  (e: 'input'): void;
+  (e: 'input', value: string): void;
   (e: 'blur'): void;
   (e: 'focus'): void;
 }>();

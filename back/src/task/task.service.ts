@@ -1,14 +1,15 @@
 import { Injectable } from '@nestjs/common';
 import { TaskDto } from './dto/task.dto';
 import { PrismaService } from 'src/prisma.service';
+import { toBoolean } from '../utils/toBoolean';
 
 @Injectable()
 export class TaskService {
   constructor(private prisma: PrismaService) {}
 
-  async getAll(userId: string, isCompleted: string)
+  async getAll(userId: string, isCompleted?: string, search?: string, groupId?: string)
   {
-    const parsedIsCompleted = isCompleted === 'true';
+    console.log(search);
     return this.prisma.task.findMany({
       orderBy: [
         {
@@ -16,7 +17,11 @@ export class TaskService {
         },
       ],
       where: {
-        isCompleted: parsedIsCompleted,
+        name: {
+          search: toBoolean(search) !== undefined ? search : undefined,
+        },
+        taskGroupId: toBoolean(groupId) !== null ? groupId : undefined,
+        isCompleted: toBoolean(isCompleted),
         userId,
       },
     });
@@ -41,6 +46,7 @@ export class TaskService {
 
   async create(dto: TaskDto, userId: string) {
     const { taskGroupId,...taskData } = dto;
+
     return this.prisma.task.create({
       data: {
         ...taskData,
@@ -48,11 +54,6 @@ export class TaskService {
           connect: {
             id: userId,
           },
-        },
-        taskGroup: {
-          connect: {
-            id: taskGroupId
-          }
         },
       },
     });

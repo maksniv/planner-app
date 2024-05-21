@@ -79,7 +79,8 @@ const showList = ref(false);
 
 // emit
 const emit = defineEmits<{
-  (e: 'update:modelValue', value: null | object | string): void;
+  (e: 'update:modelValue', value: null | SelectItem | string): void;
+  (e: 'selectId', value: string | null): void;
   (e: 'input'): void;
   (e: 'blur'): void;
   (e: 'focus'): void;
@@ -115,6 +116,7 @@ watch(
       if (toRaw(props.value.id) === toRaw(localValue.value.id)) return;
     }
       emit('update:modelValue', localValue.value);
+      emit('selectId', localValue.value.id);
       emit('input');
     },
   { deep: true },

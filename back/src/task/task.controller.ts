@@ -24,8 +24,10 @@ export class TaskController {
   async getAll(
     @CurrentUser('id') userId: string,
     @Query('isCompleted') isCompleted: string,
+    @Query('search') search: string,
+    @Query('groupId') groupId: string,
   ) {
-    return this.taskService.getAll(userId, isCompleted);
+    return this.taskService.getAll(userId, isCompleted, search, groupId);
   }
 
   @Get(':id')

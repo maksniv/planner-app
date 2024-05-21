@@ -15,6 +15,8 @@
 </template>
 
 <script setup lang="ts">
+import { useTasksStore } from '~/store/tasks';
+const { search, groupId } = toRefs(useTasksStore());
 import { useQuery, keepPreviousData } from '@tanstack/vue-query';
 import { getTasks } from '@/composables/task.service';
 import type { ITaskResponse } from '~/types/task.types';
@@ -22,8 +24,8 @@ import dayjs from 'dayjs';
 const { $toast } = useNuxtApp();
 
 const { data: tasks, error: errorGetTasks } = useQuery({
-  queryKey: ['all-tasks-uncompleted'],
-  queryFn: () => getTasks(false),
+  queryKey: ['all-tasks-uncompleted', search, groupId],
+  queryFn: () => getTasks(false, search.value, groupId.value),
   throwOnError: (e: any) => e,
   placeholderData: keepPreviousData,
 });
@@ -79,10 +81,9 @@ const tasksGroups = computed(() => {
 <style scoped lang="sass">
 .listing__container
   width: 680px
-  max-height: 100%
-  margin: auto
-  min-width: 500px
+  height: 100%
   min-height: 500px
+  margin: auto
   display: flex
   flex-direction: column
   padding: 15px 0 15px 15px
@@ -93,6 +94,6 @@ const tasksGroups = computed(() => {
   color: var(--base-text-color)
   .listing__content
     overflow: auto
-    height: fit-content
+    //height: 100px
     scroll-behavior: smooth
 </style>

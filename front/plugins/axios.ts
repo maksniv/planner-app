@@ -1,5 +1,5 @@
 import axios, { type CreateAxiosDefaults } from 'axios';
-import { getAccessToken, removeFromStorage } from '@/utils/auth-token';
+import { getAccessToken, removeFromStorage } from '~/utils/authToken';
 import { errorCatch } from '@/utils/error';
 import { getNewToken } from '~/composables/auth.service';
 

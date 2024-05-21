@@ -42,9 +42,7 @@ export class AuthController {
     const { refreshToken, ...response } = await this.authService.getNewTokens(
       refreshTokenFromCookies,
     );
-
     this.authService.addRefreshTokenToResponse(res, refreshToken);
-
     return response;
   }
 
