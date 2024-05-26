@@ -5,39 +5,36 @@
       v-model="localValue"
       :placeholder-text="placeholderText"
       :label-text="labelText"
-      :type="typeInput"
-      @input="$emit('input', localValue)"
+      @input="$emit('input', localValue);"
       @blur="$emit('blur')"
       @focus="$emit('focus')"
       @update:model-value="$emit('update:modelValue', localValue)"
     />
-    <Icon
-      v-if="flagVisible"
-      name="solar:eye-bold"
-      size="25"
-      class="wrapper__icon"
-      @click="toggleVisiblePassword()"
+    <TheIconButton
+      v-if="localValue"
+      class="wrapper__icon-clear-value"
+      @click="clearValue"
+      icon="mdi:clear-bold"
+      size="20"
     />
     <Icon
-      v-if="!flagVisible"
-      name="ph:eye-closed-bold"
-      size="25"
-      class="wrapper__icon"
-      @click="toggleVisiblePassword()"
+      name="bi:search"
+      size="20"
+      class="wrapper__icon-search"
     />
   </div>
 </template>
 
 <script setup lang="ts">
 interface Props {
-  modelValue: string;
+  modelValue?: string;
   placeholderText?: string | 'Введите пароль...';
   labelText?: string;
   value?: string;
 }
-defineProps<Props>();
+const props = defineProps<Props>();
 
-defineEmits<{
+const emit = defineEmits<{
   (e: 'update:modelValue', value: string): void;
   (e: 'input', value: string): void;
   (e: 'blur'): void;
@@ -46,15 +43,11 @@ defineEmits<{
 
 const localValue = ref('');
 
-const flagVisible = ref(false);
-
-const toggleVisiblePassword = () => {
-  flagVisible.value = !flagVisible.value;
-};
-
-const typeInput = computed(() => {
-  return flagVisible.value ? 'text' : 'password';
-});
+const clearValue = () => {
+  localValue.value = '';
+  emit('update:modelValue', localValue.value);
+  emit('input', localValue.value);
+}
 </script>
 
 <style lang="sass" scoped>
@@ -64,10 +57,15 @@ const typeInput = computed(() => {
   max-width: var(--max-width-field)
   :deep(.field__input)
     padding: 10px 45px 10px 12px
-  .wrapper__icon
-    cursor: pointer
+  .wrapper__icon-search
     position: absolute
     right: 10px
     color: var(--base-text-color)
-    bottom: calc(var(--base-height)/2 - 13px)
+    bottom: calc(var(--base-height)/2 - 10px)
+  .wrapper__icon-clear-value
+    cursor: pointer
+    position: absolute
+    right: 40px
+    color: var(--base-text-color)
+    bottom: calc(var(--base-height)/2 - 10px)
 </style>

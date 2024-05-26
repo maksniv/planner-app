@@ -12,6 +12,7 @@
       @blur="$emit('blur')"
       @focus="$emit('focus')"
       @input="updateLocalValue()"
+      maxlength="10"
     />
     <Icon
       name="bx:calendar"
@@ -40,19 +41,19 @@ interface Props {
   modelValue: string;
   placeholderText?: string | 'Выберите дату';
   labelText?: string;
-  value?: string;
+  value?: string | null;
 }
 const props = defineProps<Props>();
 
 const emit = defineEmits<{
-  (e: 'update:modelValue', value: string): void;
+  (e: 'update:modelValue', value: string | null | undefined): void;
   (e: 'input'): void;
   (e: 'blur'): void;
   (e: 'focus'): void;
 }>();
 
 const visibleLocalValue = ref('');
-const localValue = ref('');
+const localValue = ref<null | string | undefined>(null);
 const isVisible = ref(false);
 
 const formatValue = (val: string) => {
@@ -62,11 +63,9 @@ const formatValue = (val: string) => {
 watch(
   () => props.value,
   (val) => {
-    if (!val) return;
-    if (!localValue.value && val) {
       localValue.value = val;
+      if(!val) return
       visibleLocalValue.value = formatValue(val);
-    }
   },
   { immediate: true },
 );
@@ -74,21 +73,19 @@ watch(
 watch(
   () => props.modelValue,
   (val) => {
-    if (!val) return;
     localValue.value = val
     visibleLocalValue.value = formatValue(val);
   },
 );
 
 const updateVisibleLocalValue = () => {
-  visibleLocalValue.value = formatValue(localValue.value);
+  if(localValue.value) visibleLocalValue.value = formatValue(localValue.value);
 }
 
 const updateLocalValue = () => {
   if(visibleLocalValue.value.length === 10) {
-    if (!dayjs(visibleLocalValue.value).isValid()) return;
     const [day, month, year] = visibleLocalValue.value.split('.').map(Number);
-    localValue.value = dayjs(visibleLocalValue.value).date(day).month(month - 1).year(year).toISOString();
+    localValue.value = dayjs().date(day).month(month - 1).year(year).toISOString();
     emit('update:modelValue', localValue.value);
     emit('input')
   }

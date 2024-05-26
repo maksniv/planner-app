@@ -16,7 +16,6 @@ export interface IUser {
   password: string;
 }
 
-// export type TypeUserForm = Omit<IUser, 'id'> & { password: String };
 export type TypeUserForm = {
   name: string;
   surname: string;

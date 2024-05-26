@@ -7,9 +7,10 @@
       placeholder-text="Группа задач"
       item-text="name"
       colorize
+      clearable
       search-in-dropdown
     />
-    <TheInput
+    <TheInputSearch
       class="top-listing-input"
       @input="updateSearch($event)"
       placeholder-text="Поиск"
@@ -31,7 +32,7 @@ import { createTask } from '~/composables/task.service';
 import { getGroupsTask } from '~/composables/groupsTask.service';
 import { useTasksStore } from '~/store/tasks';
 import { debounce } from '~/utils/debounce';
-const { changeSearch, changeGroupId } = useTasksStore();
+const { changeSearch, changeGroupId, groupId } = useTasksStore();
 const queryClient = useQueryClient();
 const { $toast } = useNuxtApp();
 const router = useRouter();
@@ -68,8 +69,8 @@ watch(errorGetGroups, (val) => {
 
 const updateSearch = debounce(changeSearch, 1000);
 const addTask = () => {
-  if (groupId.value?.id) {
-    addHandler({ taskGroupId: groupId.value.id });
+  if (groupId) {
+    addHandler({taskGroupId: groupId });
   } else {
     addHandler({})
   }

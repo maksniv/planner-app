@@ -1,5 +1,5 @@
 <template>
-  <TheForm>
+  <TheForm title-size="small">
     <template #title>Форма регистрации</template>
     <template #body>
       <TheInput
@@ -45,7 +45,7 @@ const { mutate, error } = useMutation({
   async onSuccess() {
     email.value = '';
     password.value = '';
-    await router.push('/');
+    await router.push('/tasks');
   },
   onError: (err: any) => err,
 });

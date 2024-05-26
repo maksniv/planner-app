@@ -4,7 +4,6 @@
     <TheTasksListing/>
     <NuxtPage />
   </div>
-
 </template>
 
 <script setup lang="ts">
@@ -28,8 +27,8 @@ useHead({
 .task-page
   width: 100%
   height: 100%
-  display: grid
-  grid-template-columns: repeat(1, 1fr)
+  display: flex
+  flex-direction: column
   gap: 15px
   padding: 15px 15px 15px 15px
 </style>

@@ -9,7 +9,6 @@ export class TaskService {
 
   async getAll(userId: string, isCompleted?: string, search?: string, groupId?: string)
   {
-    console.log(search);
     return this.prisma.task.findMany({
       orderBy: [
         {
@@ -18,7 +17,7 @@ export class TaskService {
       ],
       where: {
         name: {
-          search: toBoolean(search) !== undefined ? search : undefined,
+          search: search !== '' ? search : undefined,
         },
         taskGroupId: toBoolean(groupId) !== null ? groupId : undefined,
         isCompleted: toBoolean(isCompleted),
@@ -45,11 +44,10 @@ export class TaskService {
   }
 
   async create(dto: TaskDto, userId: string) {
-    const { taskGroupId,...taskData } = dto;
+    const { taskGroupId, ...taskData } = dto;
 
     return this.prisma.task.create({
       data: {
-        ...taskData,
         user: {
           connect: {
             id: userId,

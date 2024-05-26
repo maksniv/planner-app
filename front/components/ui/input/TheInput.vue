@@ -21,18 +21,18 @@
 
 <script setup lang="ts">
 interface Props {
-  modelValue?: string;
-  value?: string;
+  modelValue?: string | null;
+  value?: string | null;
   type?: string | 'text';
   placeholderText?: string | 'Введите значение...';
   labelText?: string;
 }
 const props = defineProps<Props>();
 
-const localValue = ref('');
+const localValue = ref<null | string | undefined>(null);
 
 const emit = defineEmits<{
-  (e: 'update:modelValue', value: string): void;
+  (e: 'update:modelValue', value: string | null): void;
   (e: 'input', value: string): void;
   (e: 'blur'): void;
   (e: 'focus'): void;
@@ -41,10 +41,7 @@ const emit = defineEmits<{
 watch(
   () => props.value,
   (val) => {
-    if (!val) return;
-    if (!localValue.value && val) {
-      localValue.value = val;
-    }
+    localValue.value = val;
   },
   { immediate: true },
 );
@@ -52,7 +49,6 @@ watch(
 watch(
   () => props.modelValue,
   (val) => {
-    if (!val) return;
     localValue.value = val;
   },
 );

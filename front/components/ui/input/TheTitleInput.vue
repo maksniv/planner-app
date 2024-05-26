@@ -8,9 +8,9 @@
     :value="localValue"
     @focus="$emit('focus')"
     @input="
-      localValue = ($event.target as HTMLInputElement).value.trim();
+       localValue = ($event.target as HTMLInputElement).value.trim();
        $emit('update:modelValue', localValue);
-       $emit('input');
+       $emit('input', localValue);
      "
     @blur="$emit('blur')"
     />
@@ -29,7 +29,7 @@ const localValue = ref('');
 
 const emit = defineEmits<{
   (e: 'update:modelValue', value: string): void;
-  (e: 'input'): void;
+  (e: 'input', value: string): void;
   (e: 'blur'): void;
   (e: 'focus'): void;
 }>();
@@ -61,6 +61,7 @@ watch(
   padding: 10px 5px 0 5px
   height: calc(var(--base-height) * 1.20)
   border-bottom: 1px solid var(--border-base)
+  border-radius: var(--border-radius) var(--border-radius) 0 0
   font-size: 25px
   color: var(--base-text-color)
   background-color: transparent
@@ -68,11 +69,9 @@ watch(
   &::placeholder
     color: var(--secondary-text-color)
   &:hover
-    background-color: var(--background)
+    background: linear-gradient(0deg, var(--background) 0%, var(--background) 50%, transparent 100%)
     border-bottom: 1px solid var(--primary-hover)
   &:active
-    background-color: var(--background)
+    background: linear-gradient(0deg, var(--background) 0%, var(--background) 50%, transparent 100%)
     border-bottom: 1px solid var(--primary)
-  //&:focus
-  //  box-shadow: 0 1px 0 2px var(--primary-focus)
 </style>

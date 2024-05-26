@@ -1,7 +1,12 @@
 <template>
   <div class="calendar">
     <div class="calendar__header">
-      <span class="year-picker">{{ year }}</span>
+      <span
+        class="month-title"
+        @click.capture.stop="showMonthList"
+      >
+        {{ month }}
+      </span>
       <div class="month-picker">
         <TheIconButton
           class="month-change"
@@ -9,7 +14,10 @@
           size="15"
           @click.capture.stop="changeMonthBack"
         />
-        <span class="month-title">{{ month }}</span>
+        <span
+          class="year-picker">
+            {{ year }}
+        </span>
         <TheIconButton
           class="month-change"
           icon="fluent:ios-arrow-right-24-filled"
@@ -18,50 +26,29 @@
         />
       </div>
     </div>
-    <div class="calendar__body">
-      <div class="weeks-header">
-        <div class="weeks-header__title"
-             v-for="day in weekdays">
-          {{ day }}
-        </div>
-      </div>
-      <div class="days-wrapper">
-        <div
-          class="day"
-          v-for="(day, index) in daysMonth"
-          :key="index"
-          @click.capture.stop="
-          localValue = dayjs(day.date).toISOString();
-          $emit('update:modelValue', localValue);
-          $emit('input');
-         "
-        >
-          <span
-            v-if="day.day"
-            class="day-title"
-            :class="{
-              'selected': localValue ? dayjs(day.date).toISOString() === dayjs(localValue).toISOString() : false,
-              'today': dayjs(day.date).format('DD.MM.YYYY') === todayValue,
-            }"
-          >
-            {{ day.day }}
-          </span>
-        </div>
-      </div>
-    </div>
-    <div class="month-list"></div>
+    <TheDayPicker
+      :value="localValue"
+      @day-selected="
+        localValue = $event;
+        $emit('update:modelValue', localValue)
+        $emit('input');
+      "
+    />
+    <TheMonthPicker
+      :value="localValue"
+      :show="isVisibleMonthList"
+      @month-selected="
+        localValue = $event;
+        showMonthList();
+      "
+    />
   </div>
 </template>
 
 <script setup lang="ts">
 import dayjs from 'dayjs';
 import 'dayjs/locale/ru';
-import { onMounted } from 'vue';
 dayjs.locale('ru');
-type Date = {
-  day: number | null,
-  date: string | null
-}
 interface Props {
   value?: string;
   modelValue?: string;
@@ -73,58 +60,32 @@ defineEmits<{
   (e: 'input'):void
 }>()
 
+const localValue = ref<string>(dayjs().format('DD.MM.YYYY'));
+const isVisibleMonthList = ref(false);
 
-const localValue = ref<null | string>(null);
-const generatedDateValue = ref(dayjs().toISOString());
-const todayValue = ref(dayjs().format('DD.MM.YYYY'));
-const daysMonth = ref<Date[]>([]);
-const year = ref('');
-const month = ref('');
-
-const weekdays = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'];
-
-const generateCalendar = (dateToGenerate: string) => {
-
-  const firstDayOfMonth = dayjs(dateToGenerate).startOf('month').day();
-  const daysInMonth = dayjs(dateToGenerate).daysInMonth();
-
-  month.value = dayjs(dateToGenerate).format('MMMM');
-  year.value = dayjs(dateToGenerate).format('YYYY')
-
-  daysMonth.value = [];
-  let day = 1;
-
-  for (let i = 1; i < 43; i++) {
-    if (i < firstDayOfMonth || day > daysInMonth) {
-      daysMonth.value.push({ day: null, date: null });
-    } else {
-      daysMonth.value.push({ day, date: dayjs(dateToGenerate).set('date', day).toISOString() });
-      day++;
-    }
-  }
-};
+const showMonthList = () => {
+  isVisibleMonthList.value = !isVisibleMonthList.value;
+}
+const month = computed(() => {
+  return dayjs(localValue.value).format('MMMM')
+});
+const year = computed(() => {
+  return dayjs(localValue.value).format('YYYY')
+});
 
 const changeMonthUp = () => {
-  generatedDateValue.value = dayjs(generatedDateValue.value).add(1, 'month').toISOString()
-  if(localValue.value) localValue.value = dayjs(localValue.value).add(1, 'month').toISOString()
+  localValue.value = dayjs(localValue.value).add(1, 'month').toISOString()
 }
 const changeMonthBack = () => {
-  generatedDateValue.value = dayjs(generatedDateValue.value).subtract(1, 'month').toISOString()
-  if(localValue.value) localValue.value = dayjs(localValue.value).subtract(1, 'month').toISOString()
+  localValue.value = dayjs(localValue.value).subtract(1, 'month').toISOString()
 }
-
-onMounted(() => {
-  if(localValue.value === null) generateCalendar(generatedDateValue.value);
-});
 
 watch(
   () => props.value,
   (val) => {
     if (!val) return;
     if (!dayjs(val).isValid()) return;
-    if (!localValue.value && val) {
-      localValue.value = val;
-    }
+    localValue.value = val;
   },
   { immediate: true },
 );
@@ -134,38 +95,16 @@ watch(
   (val) => {
     if (!val) return;
     if (!dayjs(val).isValid()) return;
-    if (!localValue.value && val) {
-      localValue.value = val;
-    }
+    localValue.value = val;
   },
   { immediate: true },
 );
-
-watch(
-  localValue,
-  (val) => {
-    if (!dayjs(val).isValid()) return;
-    if (!val) return;
-  },
-  { immediate: true },
-);
-
-watch(
-  generatedDateValue,
-  (val) => {
-    if (!dayjs(val).isValid()) return;
-    if (!val) return;
-    generateCalendar(val);
-  },
-  { immediate: true, deep: true },
-);
-
 </script>
 
 <style lang="sass" scoped>
 .calendar 
   height: max-content
-  width: max-content
+  width: 345px
   background-color: var(--sidebar)
   border: 1px solid var(--border-base)
   border-radius: var(--border-radius)
@@ -182,105 +121,27 @@ watch(
     color: var(--base-text-color)
     padding: 10px
     user-select: none
+    .month-title
+      padding: 5px 10px
+      font-size: 23px
+      font-weight: 300
+      text-transform: capitalize
+      border-radius: 10px
+      cursor: pointer
     .month-picker
       display: flex
       align-items: center
       justify-content: space-between
       cursor: pointer
-      .month-title
-        font-size: 18px
-        font-weight: 300
-        min-width: 84px
-        margin-bottom: 4px
-        text-align: center
-        user-select: none
       .month-change
         width: 35px
         height: 23px
         color: var(--base-text-color)
         cursor: pointer
-    .year-picker
-      padding: 5px 10px
-      border-radius: 10px
-      cursor: pointer
-  .calendar__body
-    padding: 10px
-    .weeks-header
-      height: 50px
-      display: grid
-      grid-template-columns: repeat(7, 1fr)
-      font-weight: 600
-    .weeks-header__title
-      display: grid
-      place-items: center
-      color: var(--secondary-text-color)
-      user-select: none
-    .days-wrapper
-      display: grid
-      grid-template-columns: repeat(7, 1fr)
-      gap: 2px
-      color: var(--base-text-color)
-      animation: to-top 0.5s forwards
-      .day
-        width: 35px
-        height: 35px
-        position: relative
-        cursor: pointer
-        .day-title
-          display: flex
-          align-items: center
-          justify-content: center
-          padding: 5px
-          width: 100%
-          height: 100%
-          border-radius: var(--border-radius)
-          user-select: none
-          &.today
-            border: 1px solid var(--primary)
-          &.selected
-            background-color: var(--primary) !important
-            color: var(--white)
-          &:hover
-            background-color: var(--background)
-
-.month-list 
-  position: absolute
-  width: 100%
-  height: 100%
-  top: 0
-  left: 0
-  background-color: var(--bg-main)
-  padding: 20px
-  grid-template-columns: repeat(3, auto)
-  gap: 5px
-  display: grid
-  transform: scale(1.5)
-  visibility: hidden
-  pointer-events: none
-.month-list.show 
-  transform: scale(1)
-  visibility: visible
-  pointer-events: visible
-  transition: all 0.2s ease-in-out
-.month-list > div 
-  display: grid
-  place-items: center
-.month-list > div > div 
-  width: 100%
-  padding: 5px 20px
-  border-radius: 10px
-  text-align: center
-  cursor: pointer
-  color: var(--color-txt)
-.month-list > div > div:hover 
-  background-color: var(--color-hover)
-
-
-@keyframes to-top
-  0%
-    transform: translateY(10%)
-    opacity: 0
-  100%
-    transform: translateY(0)
-    opacity: 1
+      .year-picker
+        font-size: 18px
+        font-weight: 300
+        min-width: 84px
+        text-align: center
+        user-select: none
 </style>

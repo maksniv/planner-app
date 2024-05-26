@@ -1,10 +1,11 @@
 <template>
-  <Icon class="icon-button"
-        :style="{'background-color': color, 'color': color}"
-        v-bind="$attrs"
-        :primary="!color"
-        :size="size || '20'"
-        :name="icon"
+  <Icon
+    class="icon-button"
+    :style="{'background-color': color, 'color': color}"
+    v-bind="$attrs"
+    :primary="!color"
+    :size="size || '20'"
+    :name="icon"
   >
   </Icon>
 </template>

@@ -16,7 +16,8 @@
             @click.capture.stop="$emit('close')"
             icon="gg:close"
             class="modal__icon"
-            size="30"/>
+            size="28"
+          />
           <h1 class="modal__title">
             <slot name="title">
             </slot>
@@ -93,8 +94,8 @@ defineEmits<{
             pointer-events: all
         .modal__icon
           position: absolute
-          right: 8px
-          top: 8px
+          right: 5px
+          top: 5px
         .modal__title
           padding: 0 0 24px 0
           font-size: 36px

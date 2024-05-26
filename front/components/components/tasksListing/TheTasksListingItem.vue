@@ -56,8 +56,10 @@ import type { ITaskResponse, TypeTaskFormState } from '~/types/task.types';
 import { useMutation, useQueryClient } from '@tanstack/vue-query';
 import { errorCatch } from '~/utils/error';
 import { deleteTask, updateTask } from '~/composables/task.service';
+import { useTasksStore } from '~/store/tasks';
 const { $toast } = useNuxtApp();
 const router = useRouter();
+const { search, groupId } = toRefs(useTasksStore());
 interface Props {
   task: ITaskResponse;
 }
@@ -82,8 +84,8 @@ const {
   mutationKey: ['update-task', props.task.id],
   mutationFn: (data: TypeTaskFormState) => updateTask(props.task.id, data),
   onSuccess() {
-    queryClient.invalidateQueries({ queryKey: ['all-tasks-uncompleted'] });
-    queryClient.invalidateQueries({ queryKey: ['all-tasks-completed'] });
+    queryClient.invalidateQueries({ queryKey: ['all-tasks-uncompleted', search, groupId] });
+    queryClient.invalidateQueries({ queryKey: ['all-tasks-completed', search, groupId] });
     $toast.success('Сохранено');
   },
   onError: (err: any) => err,
@@ -98,8 +100,8 @@ const { mutate: deleteHandler, error } = useMutation({
   mutationKey: ['delete-task', props.task.id],
   mutationFn: () => deleteTask(props.task.id),
   onSuccess() {
-    queryClient.invalidateQueries({ queryKey: ['all-tasks-uncompleted'] });
-    queryClient.invalidateQueries({ queryKey: ['all-tasks-completed'] });
+    queryClient.invalidateQueries({ queryKey: ['all-tasks-uncompleted', search, groupId] });
+    queryClient.invalidateQueries({ queryKey: ['all-tasks-completed', search, groupId] });
     $toast.success('Удалено');
   },
   onError: (err: any) => err,

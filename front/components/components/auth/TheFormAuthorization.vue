@@ -1,5 +1,5 @@
 <template>
-  <TheForm>
+  <TheForm title-size="small">
     <template #title>Форма авторизации</template>
     <template #body>
       <TheInput
@@ -15,8 +15,8 @@
     </template>
     <template #footer>
       <TheButton @click.prevent="mutate({ email: email, password: password })"
-        >Войти</TheButton
-      >
+        >Войти
+      </TheButton>
     </template>
   </TheForm>
 </template>
@@ -45,7 +45,7 @@ const { mutate, error } = useMutation({
   async onSuccess() {
     email.value = '';
     password.value = '';
-    await router.push('/');
+    await router.push('/tasks');
   },
   onError: (err: any) => err,
 });

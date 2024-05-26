@@ -1,5 +1,5 @@
 <template>
-  <TheModal :show-modal="true" @close="$router.back()">
+  <TheModal :show-modal="true" @close="closeModal()">
     <template #title>
       <TheTitleInput
         v-model="localValue.name"
@@ -48,18 +48,21 @@
 </template>
 
 <script setup lang="ts">
-import { useQuery, keepPreviousData, useMutation } from '@tanstack/vue-query';
+import { useQuery, keepPreviousData, useMutation, useQueryClient } from '@tanstack/vue-query';
 import { getGroupsTask } from '@/composables/groupsTask.service';
 import { getTaskById, updateTask} from '~/composables/task.service';
 import { debounce } from '~/utils/debounce';
 import type { TypeTaskFormState } from '~/types/task.types';
+import { useTasksStore } from '~/store/tasks';
+const queryClient = useQueryClient();
 const { $toast } = useNuxtApp();
-const route = useRoute()
+const { search, groupId } = toRefs(useTasksStore());
+const router = useRouter();
 
 const localValue = ref({ name: '', content: '', isCompleted: false, groupsTask: null, deadlines: '' });
 
 const id = computed(() => {
-  return String(route.params.id);
+  return String(router.currentRoute.value.params.id);
 });
 
 const { data: taskData, error: errorGetTask } = useQuery({
@@ -111,10 +114,12 @@ const title = computed(() => {
   return taskData?.value?.data?.name || 'Задача';
 });
 
+const closeModal = () => {
+  router.back();
+  queryClient.invalidateQueries({ queryKey: ['all-tasks-uncompleted', search, groupId] })
+};
+
 useHead({
   title: title.value,
 });
 </script>
-
-<style lang="sass" scoped>
-</style>

@@ -1,18 +1,18 @@
 <template>
   <label class="field__label">
     <input
-        type="checkbox"
-        class="field__checkbox"
-        :checked="localValue"
-        @input="
-          localValue = ($event.target as HTMLInputElement).checked;
-          $emit('update:modelValue', localValue);
-          $emit('input')
-        "
-        v-bind="$attrs"
+      type="checkbox"
+      class="field__checkbox"
+      :checked="localValue"
+      @input="
+        localValue = ($event.target as HTMLInputElement).checked;
+        $emit('update:modelValue', localValue);
+        $emit('input')
+       "
+      v-bind="$attrs"
     />
     <span class="field__icon"></span>
-    {{label}}
+      {{label}}
   </label>
 </template>
 
@@ -60,14 +60,17 @@ watch(
   height: 20px
   color: var(--base-text-color)
   max-width: var(--max-width-field)
+  width: fit-content
   display: flex
   flex-direction: row
   flex-wrap: nowrap
-  gap: 5px
+  //gap: 5px
   justify-content: center
   align-items: center
   .field__checkbox
-    position: absolute
+    //position: absolute
+    appearance: none
+    -webkit-appearance: none
     width: 1px
     height: 1px
     overflow: hidden
@@ -81,10 +84,11 @@ watch(
     border: 2px solid var(--border-base)
     color: var(--base-text-color)
     background-color: var(--background)
-    transition: all 0.15s ease
+    transition: color .15s, border .15s ease
     z-index: 10
+    margin-right: 5px
     &::after
-      transition: all 0.15s ease
+      transition: color .15s, border .15s ease
     &::before
       content: ""
       display: inline-block

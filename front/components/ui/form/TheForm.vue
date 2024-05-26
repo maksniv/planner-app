@@ -2,7 +2,10 @@
   <form class="form__container" autocomplete="off">
     <h1
       class="form__title"
-      :class="smallTitleSize ? 'small' : 'big'"
+      :class="{
+      'small': titleSize === 'small',
+      'big': titleSize === 'big' || titleSize === undefined
+      }"
       v-if="!hideTitle"
     >
       <slot name="title"/>
@@ -20,7 +23,7 @@
 
 <script setup lang="ts">
 interface Props {
-  smallTitleSize?: boolean | false;
+  titleSize?: 'small' | 'big' | undefined;
   hideTitle?: boolean | false;
   hideFooter?: boolean | false;
 }

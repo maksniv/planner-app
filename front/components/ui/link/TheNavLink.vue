@@ -2,11 +2,12 @@
   <NuxtLink
     :to="link"
     class="link__nav"
-    :class="{ 'router-link-active': isActiveRoute }">
+    >
       <Icon
         :name="icon"
         class="link__icon"
-        size="20"/>
+        size="20"
+      />
       {{ title }}
   </NuxtLink>
 </template>
@@ -17,15 +18,7 @@ interface Props {
   link: string;
   icon: string;
 }
-const props = defineProps<Props>();
-
-const route = useRoute();
-
-const isActiveRoute = computed(() => {
-  const currentRoutePath = route.path;
-  const menuRoutePath = props.link;
-  return currentRoutePath.startsWith(menuRoutePath);
-});
+defineProps<Props>();
 </script>
 
 <style lang="sass" scoped>

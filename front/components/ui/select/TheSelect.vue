@@ -79,11 +79,9 @@ const showList = ref(false);
 
 // emit
 const emit = defineEmits<{
-  (e: 'update:modelValue', value: null | SelectItem | string): void;
+  (e: 'update:modelValue', value: null | SelectItem): void;
   (e: 'selectId', value: string | null): void;
-  (e: 'input'): void;
-  (e: 'blur'): void;
-  (e: 'focus'): void;
+  (e: 'input', value: null | SelectItem): void;
 }>();
 
 // watch
@@ -116,8 +114,8 @@ watch(
       if (toRaw(props.value.id) === toRaw(localValue.value.id)) return;
     }
       emit('update:modelValue', localValue.value);
-      emit('selectId', localValue.value.id);
-      emit('input');
+      emit('selectId', localValue.value? localValue.value.id : null);
+      emit('input', localValue.value );
     },
   { deep: true },
 );
@@ -163,7 +161,7 @@ const clearValue = () => {
     border: 1px solid var(--border-base)
     color: var(--base-text-color)
     background-color: var(--background)
-    padding: 0 45px 0 12px
+    padding: 0 55px 0 12px
     transition: color .15s, border .15s ease-out
     justify-content: flex-start
     align-items: center
@@ -176,13 +174,13 @@ const clearValue = () => {
     .select-field__clear-value
       z-index: 10
       position: absolute
-      right: 45px
+      right: 37px
       color: var(--base-text-color)
       bottom: calc(var(--base-height)/2 - 10px)
     .select-field__triangle
       z-index: 10
       position: absolute
-      right: 20px
+      right: 12px
       bottom: calc(var(--base-height)/2 - 10px)
       color: var(--base-text-color)
 </style>

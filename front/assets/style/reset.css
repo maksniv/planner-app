@@ -36,8 +36,7 @@ a:hover {
 
 body {
   overflow: hidden;
-  /*height: 100vh;*/
-  /*max-height: 100vh;*/
+  height: 100vh;
 
   --toastify-color-success: var(--success) !important;
   --toastify-color-error: var(--danger) !important;

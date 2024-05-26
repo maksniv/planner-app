@@ -1,6 +1,9 @@
 <template>
   <div class="user-block">
-    <TheForm hide-title hide-footer>
+    <TheForm hide-footer>
+      <template #title>
+        Изменить данные
+      </template>
       <template #body>
         <TheInput
           v-model="profile.name"
@@ -64,7 +67,7 @@ const { mutate: update, error: errorUpdate } = useMutation({
   async onSuccess() {
     $toast.success('Сохранено');
     profile.value.password = '';
-    queryClient.invalidateQueries({ queryKey: ['profile'] });
+    await queryClient.invalidateQueries({ queryKey: ['profile'] });
   },
   onError: (err: any) => err,
 });
