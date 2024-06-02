@@ -36,12 +36,14 @@
     </template>
     <template #button>
       <TheButton
-        @click="update({isCompleted: true}); $router.back()">
+        @click="update({isCompleted: true}); closeModal()">
         Задача выполнена
       </TheButton>
       <TheButton
-        @click="$router.back()"
-        outlined>Отмена
+        @click="closeModal()"
+        outlined
+      >
+        Отмена
       </TheButton>
     </template>
   </TheModal>

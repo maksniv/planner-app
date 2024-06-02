@@ -48,11 +48,17 @@ export class TaskService {
 
     return this.prisma.task.create({
       data: {
+        ...taskData,
         user: {
           connect: {
             id: userId,
           },
         },
+        taskGroup: taskGroupId? {
+          connect: {
+            id: taskGroupId,
+          },
+        } : undefined,
       },
     });
   }

@@ -25,7 +25,7 @@ model User {
 model Task {
   id           String     @id @default(cuid())
   userId       String     @map("user_id")
-  taskGroupId  String?    @default("") @map("task_group_id")
+  taskGroupId  String?    @map("task_group_id")
   name         String?
   content      String?
   isCompleted  Boolean?   @default(false) @map("is_completed")

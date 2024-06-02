@@ -1,21 +1,21 @@
 export default defineNuxtRouteMiddleware((to, from) => {
-  // const accessToken = useCookie('accessToken');
+  const refreshToken = useRequestHeader('cookie')?.split('; ')?.find((cookie) => cookie.startsWith('refreshToken='));
 
-  // if (!accessToken.value) {
-  //   console.log('авторизуйся');
-  //   abortNavigation();
-  //   return navigateTo('/login');
-  // }
+  console.log(refreshToken);
 
-  // if (accessToken.value && to.path === '/login') {
-  //   console.log('страничка любая, кроме авторизации');
-  //   return navigateTo('/');
-  // }
+  if (!refreshToken) {
+    console.log('авторизуйся');
+    // abortNavigation();
+    // return navigateTo('/login');
+  }
 
-  // if (to.path === '/login') {
-  //   console.log('страничка авторизации');
-  //   return navigateTo(to.fullPath);
-  // }
-  // console.log(from);
-  // console.log(to);
+  if (refreshToken && to.path === '/login') {
+    console.log('страничка любая, кроме авторизации');
+    // return navigateTo('/tasks');
+  }
+
+  if (!refreshToken && to.path === '/login') {
+    console.log('страничка авторизации');
+    // return navigateTo(to.fullPath);
+  }
 });

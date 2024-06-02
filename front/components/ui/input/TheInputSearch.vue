@@ -10,17 +10,17 @@
       @focus="$emit('focus')"
       @update:model-value="$emit('update:modelValue', localValue)"
     />
+    <Icon
+      name="tabler:search"
+      size="19"
+      class="wrapper__icon-search"
+    />
     <TheIconButton
       v-if="localValue"
       class="wrapper__icon-clear-value"
       @click="clearValue"
       icon="mdi:clear-bold"
       size="20"
-    />
-    <Icon
-      name="bi:search"
-      size="20"
-      class="wrapper__icon-search"
     />
   </div>
 </template>
@@ -56,16 +56,16 @@ const clearValue = () => {
   width: 100%
   max-width: var(--max-width-field)
   :deep(.field__input)
-    padding: 10px 45px 10px 12px
+    padding: 10px 55px 10px 35px
   .wrapper__icon-search
     position: absolute
-    right: 10px
-    color: var(--base-text-color)
-    bottom: calc(var(--base-height)/2 - 10px)
+    left: 10px
+    color: var(--secondary-text-color)
+    bottom: calc(var(--base-height)/2 - 9px)
   .wrapper__icon-clear-value
     cursor: pointer
     position: absolute
-    right: 40px
+    right: 10px
     color: var(--base-text-color)
     bottom: calc(var(--base-height)/2 - 10px)
 </style>
