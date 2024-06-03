@@ -28,6 +28,11 @@ const chartData = ref<ChartData<'bar'>>({
 const chartOptions = ref<ChartOptions<'bar'>>({
   responsive: true,
   maintainAspectRatio: false,
+  plugins: {
+    legend: {
+      position:"bottom",
+    }
+  },
 });
 
 watch(

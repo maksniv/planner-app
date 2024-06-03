@@ -26,7 +26,6 @@ export class StatisticsService {
     const profile = await this.getById(id);
 
     // first statistics
-    const totalTasks = profile.task.length;
     const completedTasks = await this.prisma.task.count({
       where: {
         userId: id,
@@ -75,9 +74,9 @@ export class StatisticsService {
 
     return {
       statisticsQuantity: {
-        label: ['Всего задач', 'Завершенных задач', 'Незавершенных задач', 'Просроченных задач'],
-        value: [totalTasks, completedTasks, uncompletedTasks, overdueTasks],
-        backgroundColor: ['#635fc7','#21725e','#3498db','#e05b5b']
+        label: ['Завершенных задач', 'Незавершенных задач', 'Просроченных задач'],
+        value: [completedTasks, uncompletedTasks, overdueTasks],
+        backgroundColor: ['#21725e','#3498db','#e05b5b']
       },
       statisticsWeekly: {
         label: ['Задач на сегодня', 'Задач на неделю'],

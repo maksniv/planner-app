@@ -38,7 +38,7 @@ watch(error, (val) => {
   gap: 40px
   padding: 50px 25px 25px
   .statistics__statistic
-    height: 300px
+    height: 350px
     width: 100%
-    //max-width: 500px
+    max-width: 500px
 </style>

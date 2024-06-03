@@ -14,10 +14,18 @@
     <TheIconButton
       class="groups-task-item__icon"
       :disabled="isPendingUpdate"
-      @click="deleteHandler"
+      @click="toggleVisible()"
       icon="material-symbols:delete-outline"
       size="45"
       danger
+    />
+    <TheModal
+      :show-modal="modalVisible"
+      @close="toggleVisible()"
+      @reject="toggleVisible()"
+      @confirm="deleteHandler(); toggleVisible()"
+      title-text="Удаление"
+      content-text="Вы уверены что хотите удалить группу задач? Это безвозвратно удалит и все задачи этой группы."
     />
   </div>
 </template>
@@ -82,6 +90,12 @@ watch(errorDelete, (val) => {
   const errorMessage = errorCatch(val);
   if (errorMessage) $toast.error(errorMessage);
 });
+
+const modalVisible = ref(false);
+
+const toggleVisible = () => {
+  modalVisible.value = !modalVisible.value;
+}
 </script>
 
 <style lang="sass" scoped>

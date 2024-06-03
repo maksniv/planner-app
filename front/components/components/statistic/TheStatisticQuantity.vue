@@ -1,13 +1,14 @@
 <template>
   <ClientOnly>
-    <Bar :data="chartData" :options="chartOptions"  class="statistic"/>
+    <Pie :data="chartData" :options="chartOptions"  class="statistic"/>
   </ClientOnly>
 </template>
 
 <script setup lang="ts">
-import { Bar } from 'vue-chartjs';
-import { type ChartOptions, type ChartData } from 'chart.js';
-import { ref, watch } from 'vue';
+// import { ref, watch } from 'vue';
+import { Chart as ChartJS, ArcElement, Tooltip, Legend, type ChartOptions, type ChartData } from 'chart.js';
+import { Pie } from 'vue-chartjs'
+ChartJS.register(ArcElement, Tooltip, Legend)
 
 interface Props {
   statistics:
@@ -21,13 +22,23 @@ interface Props {
 
 const props = defineProps<Props>();
 
-const chartData = ref<ChartData<'bar'>>({
-  labels: [],
-  datasets: [],
+const chartData = ref<ChartData<'pie'>>({
+  labels: ['VueJs', 'EmberJs', 'ReactJs', 'AngularJs'],
+  datasets: [
+    {
+      backgroundColor: ['#41B883', '#E46651', '#00D8FF', '#DD1B16'],
+      data: [40, 20, 80, 10]
+    }
+  ]
 });
-const chartOptions = ref<ChartOptions<'bar'>>({
+const chartOptions = ref<ChartOptions<'pie'>>({
   responsive: true,
   maintainAspectRatio: false,
+  plugins: {
+    legend: {
+      position:"bottom",
+    }
+  },
 });
 
 watch(

@@ -20,10 +20,12 @@
           />
           <h1 class="modal__title">
             <slot name="title">
+              {{ titleText }}
             </slot>
           </h1>
           <div class="modal__content">
             <slot name="body">
+              {{ contentText }}
             </slot>
           </div>
           <div class="modal__line"/>
@@ -43,6 +45,7 @@
 interface Props {
   showModal: boolean | false;
   contentText?: string | '';
+  titleText?: string | '';
 }
 
 defineProps<Props>();
