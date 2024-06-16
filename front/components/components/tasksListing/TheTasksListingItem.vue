@@ -66,7 +66,7 @@ interface Props {
 const props = defineProps<Props>();
 
 const formattedTime = computed(() => {
-  return dayjs(props.task.deadlines).format('hh:mm');
+  return dayjs(props.task.deadlines).format('HH:mm');
 });
 
 const pushTo = () => {
@@ -83,9 +83,9 @@ const {
 } = useMutation({
   mutationKey: ['update-task', props.task.id],
   mutationFn: (data: TypeTaskFormState) => updateTask(props.task.id, data),
-  onSuccess() {
-    queryClient.invalidateQueries({ queryKey: ['all-tasks-uncompleted', search, groupId] });
-    queryClient.invalidateQueries({ queryKey: ['all-tasks-completed', search, groupId] });
+  onSuccess:  async() => {
+    await queryClient.invalidateQueries({ queryKey: ['all-tasks-completed', search, groupId] });
+    await queryClient.invalidateQueries({ queryKey: ['all-tasks-uncompleted', search, groupId] });
     $toast.success('Сохранено');
   },
   onError: (err: any) => err,
@@ -99,10 +99,10 @@ watch(errorUpdate, (val) => {
 const { mutate: deleteHandler, error } = useMutation({
   mutationKey: ['delete-task', props.task.id],
   mutationFn: () => deleteTask(props.task.id),
-  onSuccess() {
-    queryClient.invalidateQueries({ queryKey: ['all-tasks-uncompleted', search, groupId] });
-    queryClient.invalidateQueries({ queryKey: ['all-tasks-completed', search, groupId] });
-    $toast.success('Удалено');
+  onSuccess:  async() => {
+    await queryClient.invalidateQueries({ queryKey: ['all-tasks-completed', search, groupId] });
+    await queryClient.invalidateQueries({ queryKey: ['all-tasks-uncompleted', search, groupId] });
+    $toast.success('Сохранено');
   },
   onError: (err: any) => err,
 });

@@ -24,6 +24,7 @@ const { $toast } = useNuxtApp();
 const { data: tasks, error: errorGetTasks } = useQuery({
   queryKey: ['all-tasks-uncompleted', search, groupId],
   queryFn: () => getTasks(false, search.value, groupId.value),
+  staleTime: 0,
   throwOnError: (e: any) => e,
   placeholderData: keepPreviousData,
 });

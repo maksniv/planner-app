@@ -6,26 +6,34 @@
   >
     <TheInput
       :value="visibleLocalValue"
-      v-model="visibleLocalValue"
       :placeholder-text="placeholderText"
       :label-text="labelText"
       @blur="$emit('blur')"
       @focus="$emit('focus')"
-      @input="updateLocalValue()"
-      maxlength="10"
+      readonly
     />
     <Icon
       name="bx:calendar"
       size="25"
       class="wrapper__icon"
     />
+    <TheIconButton
+      v-if="localValue"
+      class="wrapper__icon-clear-value"
+      @click="clearValue"
+      icon="mdi:clear-bold"
+      size="20"
+    />
     <div class="calendar__wrapper">
       <TheCalendar
         v-show="isVisible"
+        :visible="isVisible"
         :value="localValue"
         v-model="localValue"
+        @update:model-value="updateVisibleLocalValue()"
         @input="
           updateVisibleLocalValue()
+          clickOutside()
           $emit('update:modelValue', localValue);
           $emit('input');
         "
@@ -57,7 +65,7 @@ const localValue = ref<null | string | undefined>(null);
 const isVisible = ref(false);
 
 const formatValue = (val: string) => {
-  return dayjs(val).format('DD.MM.YYYY')
+  return dayjs(val).format('DD.MM.YYYY HH:mm')
 }
 
 watch(
@@ -74,12 +82,24 @@ watch(
   () => props.modelValue,
   (val) => {
     localValue.value = val
+    if(!val) {
+      visibleLocalValue.value = ''
+      return
+    }
     visibleLocalValue.value = formatValue(val);
   },
 );
 
+const clearValue = () => {
+  localValue.value = null;
+  emit('update:modelValue', localValue.value);
+  emit('input');
+}
+
 const updateVisibleLocalValue = () => {
-  if(localValue.value) visibleLocalValue.value = formatValue(localValue.value);
+  localValue.value
+    ? visibleLocalValue.value = formatValue(localValue.value)
+    : visibleLocalValue.value = '';
 }
 
 const updateLocalValue = () => {
@@ -111,6 +131,12 @@ const toggleVisible = () => {
     position: absolute
     right: 17px
     bottom: calc(var(--base-height)/2 - 13px)
+  .wrapper__icon-clear-value
+    cursor: pointer
+    position: absolute
+    right: 45px
+    color: var(--base-text-color)
+    bottom: calc(var(--base-height)/2 - 12px)
   .calendar__wrapper
     position: absolute
     top: 80px

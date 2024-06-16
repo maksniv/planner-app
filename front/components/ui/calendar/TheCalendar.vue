@@ -2,10 +2,15 @@
   <div class="calendar">
     <div class="calendar__header">
       <span
-        class="month-title"
+        class="date-title"
         @click.capture.stop="showMonthList"
       >
-        {{ month }}
+        <span class="date-month">
+          {{ month }}
+        </span>
+        <span class="date-year">
+          {{ year }}
+        </span>
       </span>
       <div class="month-picker">
         <TheIconButton
@@ -14,10 +19,6 @@
           size="15"
           @click.capture.stop="changeMonthBack"
         />
-        <span
-          class="year-picker">
-            {{ year }}
-        </span>
         <TheIconButton
           class="month-change"
           icon="fluent:ios-arrow-right-24-filled"
@@ -31,7 +32,7 @@
       @day-selected="
         localValue = $event;
         $emit('update:modelValue', localValue)
-        $emit('input');
+        showTimeSelect()
       "
     />
     <TheMonthPicker
@@ -40,6 +41,16 @@
       @month-selected="
         localValue = $event;
         showMonthList();
+      "
+    />
+    <TheTimePicker
+      :value="localValue"
+      :show="isVisibleTimeSelect"
+      @time-selected="
+        localValue = $event;
+        $emit('update:modelValue', localValue)
+        $emit('input')
+        showTimeSelect()
       "
     />
   </div>
@@ -52,6 +63,7 @@ dayjs.locale('ru');
 interface Props {
   value?: string;
   modelValue?: string;
+  visible?: boolean;
 }
 const props = defineProps<Props>();
 
@@ -60,12 +72,16 @@ defineEmits<{
   (e: 'input'):void
 }>()
 
-const localValue = ref<string>(dayjs().format('DD.MM.YYYY'));
+const localValue = ref<string>(dayjs().startOf('day').toISOString());
 const isVisibleMonthList = ref(false);
+const isVisibleTimeSelect = ref(false);
 
 const showMonthList = () => {
   isVisibleMonthList.value = !isVisibleMonthList.value;
 }
+const showTimeSelect = () => {
+  isVisibleTimeSelect.value = !isVisibleTimeSelect.value;
+};
 const month = computed(() => {
   return dayjs(localValue.value).format('MMMM')
 });
@@ -99,6 +115,17 @@ watch(
   },
   { immediate: true },
 );
+
+watch(
+  () => props.visible,
+  (val) => {
+    if (val === false) {
+      isVisibleMonthList.value = false;
+      isVisibleTimeSelect.value = false;
+    }
+  },
+  { immediate: true },
+);
 </script>
 
 <style lang="sass" scoped>
@@ -119,15 +146,23 @@ watch(
     font-size: 25px
     font-weight: 600
     color: var(--base-text-color)
-    padding: 10px
+    padding: 10px 0
     user-select: none
-    .month-title
+    .date-title
+      display: flex
+      flex-direction: row
+      flex-wrap: nowrap
+      gap: 10px
       padding: 5px 10px
-      font-size: 23px
-      font-weight: 300
-      text-transform: capitalize
-      border-radius: 10px
+      border-radius: var(--border-radius)
       cursor: pointer
+      .date-month
+        font-size: 23px
+        font-weight: 300
+        text-transform: capitalize
+      .date-year
+        font-size: 23px
+        font-weight: 400
     .month-picker
       display: flex
       align-items: center
@@ -138,10 +173,4 @@ watch(
         height: 23px
         color: var(--base-text-color)
         cursor: pointer
-      .year-picker
-        font-size: 18px
-        font-weight: 300
-        min-width: 84px
-        text-align: center
-        user-select: none
 </style>

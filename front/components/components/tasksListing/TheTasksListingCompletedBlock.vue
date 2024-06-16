@@ -17,18 +17,18 @@
 </template>
 
 <script setup lang="ts">
-import { useQuery } from '@tanstack/vue-query';
+import { useQuery, useQueryClient } from '@tanstack/vue-query';
 import { getTasks } from '~/composables/task.service';
 import { useTasksStore } from '~/store/tasks';
 const { search, groupId } = toRefs(useTasksStore());
 const { $toast } = useNuxtApp();
 const showList = ref(false);
 
-const { data: completedTask, refetch, error: errorGetTasks } = useQuery({
+const { data: completedTask, error: errorGetTasks } = useQuery({
   queryKey: ['all-tasks-completed', search, groupId],
   queryFn: () => getTasks(true, search.value, groupId.value),
+  staleTime: 0,
   throwOnError: (e: any) => e,
-  enabled: false,
 });
 
 watch(errorGetTasks, (val) => {
@@ -36,10 +36,12 @@ watch(errorGetTasks, (val) => {
   if (errorMessage) $toast.error(errorMessage);
 });
 
+const queryClient = useQueryClient();
+
 const handleClick = () => {
   showList.value = !showList.value;
   if (showList.value === true) {
-    refetch();
+    queryClient.invalidateQueries({ queryKey: ['all-tasks-completed', search, groupId] });
   }
 };
 </script>

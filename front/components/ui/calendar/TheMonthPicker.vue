@@ -63,7 +63,7 @@ const selectMonth = (index: number) => {
     .month-title
       width: 100%
       padding: 5px
-      border-radius: 10px
+      border-radius: var(--border-radius)
       text-align: center
       cursor: pointer
       color: var(--base-text-color)

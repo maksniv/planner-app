@@ -70,7 +70,10 @@ watch(
   ()=>props.value,
   (val) => {
     if (!dayjs(val).isValid()) return;
-    if (!val) return;
+    if (!val) {
+      generateCalendar(todayValue.value.toString());
+      return;
+    }
     generateCalendar(val);
   },
   { immediate: true, deep: true },
@@ -79,7 +82,7 @@ watch(
 
 <style lang="sass">
 .calendar__body
-  padding: 10px
+  padding: 10px 0
   .weeks-header
     height: 30px
     display: grid
