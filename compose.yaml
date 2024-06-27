@@ -1,0 +1,66 @@
+version: '3.8'
+
+services:
+  postgres:
+    container_name: ${PROJECT_NAME}-postgres
+    image: postgres:latest
+    restart: on-failure
+    environment:
+      PGUSER: ${POSTGRES_USER}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    healthcheck:
+      test: pg_isready -U ${POSTGRES_USER} -d $$POSTGRES_DB
+      interval: 10s
+      timeout: 3s
+      retries: 3
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - ${POSTGRES_PORT}:5432
+    networks:
+      -  max-planner_network
+
+  back:
+    container_name: ${PROJECT_NAME}-back
+    build:
+      context: ./back
+      dockerfile: ./docker/${ENV_MODE}/Dockerfile
+      args:
+        - BACK_PORT=${BACK_PORT}
+    restart: on-failure
+    volumes:
+      - ./back:/project
+      - /back/node_modules
+    ports:
+      - ${BACK_PORT}:4200
+    networks:
+      -  max-planner_network
+    depends_on:
+      - postgres
+
+  front:
+    container_name: ${PROJECT_NAME}-front
+    build:
+      context: ./front
+      dockerfile: ./docker/${ENV_MODE}/Dockerfile
+      args:
+        - FRONT_PORT=${FRONT_PORT}
+    restart: on-failure
+    volumes:
+      - ./front:/project
+      - /front/node_modules
+    ports:
+      - ${FRONT_PORT}:3000
+    networks:
+      -  max-planner_network
+    depends_on:
+       - back
+
+volumes:
+  postgres_data:
+
+networks:
+  max-planner_network:
+    name: ${PROJECT_NAME}_network

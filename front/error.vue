@@ -8,7 +8,7 @@
           беспокойтесь, мы вас вернем.
         </div>
         <TheButton>
-          <NuxtLink to="/" class="text-block__link">Вернуться</NuxtLink>
+          <NuxtLink to="/tasks" class="text-block__link">Вернуться</NuxtLink>
         </TheButton>
       </div>
       <img

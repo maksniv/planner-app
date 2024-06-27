@@ -3,7 +3,7 @@ export default defineNuxtConfig({
   ssr: true,
   runtimeConfig: {
     public: {
-      apiBase: process.env.API_BASE_URL,
+      apiBaseUrl: process.env.API_BASE_URL,
     },
   },
   app: {

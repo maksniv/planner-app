@@ -11,8 +11,11 @@ front/node_modules
 front/dist
 front/dist-ssr
 front/.nuxt
+front/.env
 back/node_modules
 back/dist
+back/.env
+.env
 .DS_Store
 *.local
 
