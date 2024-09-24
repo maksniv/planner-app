@@ -7,13 +7,13 @@ prod:
 	@echo "${GREEN}Environment configuration...${NC}"
 	docker compose up --build -d
 
-dev:
+first-start:
 	make logo
-	@echo "${GREEN}ENVIRONMENT CONFIGURATION...${NC}"
+	@echo "${GREEN}Environment configuration...${NC}"
 	cp ./.env.dev.dist ./.env || exit
 	cp ./back/.env.dev.dist ./back/.env || exit
 	cp ./front/.env.dev.dist ./front/.env || exit
-	@echo "${GREEN}ENVIRONMENT CONFIGURATION COMPLETE!${NC}"
+	@echo "${GREEN}Environment configuration complete!${NC}"
 	make down
 	@echo "${GREEN}Back-end installation start...${NC}"
 	cd ./back && yarn install && cd ../ || exit
@@ -21,14 +21,26 @@ dev:
 	@echo "${GREEN}Front-end installation start...${NC}"
 	cd ./front && yarn install && cd ../ || exit
 	@echo "${GREEN}Front-end installation complete!${NC}"
-	@echo "${GREEN}DOCKER-COMPOSE BUILD AND UP START...${NC}"
+	@echo "${GREEN}Docker-compose build and up start...${NC}"
 	docker compose up --build --force-recreate
-	@echo "${GREEN}BYE BYE!${NC}"
+	@echo "${GREEN}Bye!${NC}"
+
+dev:
+	make logo
+	@echo "${GREEN}Environment configuration...${NC}"
+	cp ./.env.dev.dist ./.env || exit
+	cp ./back/.env.dev.dist ./back/.env || exit
+	cp ./front/.env.dev.dist ./front/.env || exit
+	@echo "${GREEN}Environment configuration complete!${NC}"
+	make down
+	@echo "${GREEN}Docker-compose build and up start...${NC}"
+	docker compose up --build --force-recreate
+	@echo "${GREEN}Bye!${NC}"
 
 down:
-	@echo "${GREEN}DOCKER COMPOSE DOWN START...${NC}"
+	@echo "${GREEN}Docker-compose down start...${NC}"
 	docker compose down --remove-orphans
-	@echo "${GREEN}DOCKER COMPOSE DOWN IS COMPLETE!${NC}"
+	@echo "${GREEN}Docker-compose down is complete!${NC}"
 
 #action_up_prod() {
 #  # Set Environment
@@ -60,17 +72,6 @@ logo:
 	@echo "${GREEN} \ \_\    \ \_____\  \ \_\ \_\  \ \_\  \_\  \ \_\  \_\  \ \_____\  \ \_\ \_\${NC}"
 	@echo "${GREEN}  \/_/     \/_____/   \/_/\/_/   \/_/ \/_/   \/_/ \/_/   \/_____/   \/_/ /_/${NC}"
 	@echo "${GREEN}                                                                            ${NC}"
-# __    __     ______     __  __
-#/\ "-./  \   /\  __ \   /\_\_\_\
-#\ \ \-./\ \  \ \  __ \  \/_/\_\/_
-# \ \_\ \ \_\  \ \_\ \_\   /\_\/\_\
-#  \/_/  \/_/   \/_/\/_/   \/_/\/_/
-#
-# ______   __         ______     __   __     __   __     ______     ______
-#/\  == \ /\ \       /\  __ \   /\ "-.\ \   /\ "-.\ \   /\  ___\   /\  == \
-#\ \  _-/ \ \ \____  \ \  __ \  \ \ \-.  \  \ \ \-.  \  \ \  __\   \ \  __<
-# \ \_\    \ \_____\  \ \_\ \_\  \ \_\\"\_\  \ \_\\"\_\  \ \_____\  \ \_\ \_\
-#  \/_/     \/_____/   \/_/\/_/   \/_/ \/_/   \/_/ \/_/   \/_____/   \/_/ /_/
 
 
 
