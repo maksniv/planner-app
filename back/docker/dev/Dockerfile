@@ -10,16 +10,10 @@ COPY package*.json ./
 
 RUN yarn install
 
-# COPY .env ./
+COPY  /prisma ./prisma
 
-# COPY ./prisma/schema.prisma ./prisma/schema.prisma
-
-# RUN npx prisma generate
-
-# RUN npx prisma db push
-
-COPY . ./
+RUN npx prisma generate
 
 EXPOSE ${BACK_PORT}
 
-CMD ["yarn", "start:dev"]
+CMD ["yarn", "start:push:dev"]

@@ -32,7 +32,6 @@ services:
     restart: on-failure
     volumes:
       - ./back:/project
-      - /back/node_modules
     ports:
       - ${BACK_PORT}:4200
     networks:
@@ -50,7 +49,6 @@ services:
     restart: on-failure
     volumes:
       - ./front:/project
-      - /front/node_modules
     ports:
       - ${FRONT_PORT}:3000
     networks:

@@ -1,7 +1,11 @@
 {
-  "name": "nuxt-app",
+  "name": "front-planner-app",
+  "version": "0.0.1",
+  "description": "front-planner-app",
+  "author": "maksniv@gmail.com",
   "private": true,
   "type": "module",
+  "license": "UNLICENSED",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
