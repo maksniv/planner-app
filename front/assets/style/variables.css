@@ -64,6 +64,8 @@
   --max-width-field: 500px;
 
   /* z-index */
+  --z-loader: 10000;
+
   --z-dropdown: 1000;
 
   --z-top-listing: 500;

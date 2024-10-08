@@ -12,6 +12,15 @@ export default defineNuxtConfig({
       viewport: 'width=device-width, initial-scale=1',
     },
   },
+  vite: {
+    css: {
+      preprocessorOptions: {
+        sass: {
+          api: 'modern-compiler'
+        }
+      },
+    },
+  },
   css: ['@/assets/style/reset.css', '@/assets/style/variables.css'],
   components: [
     {

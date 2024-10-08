@@ -83,7 +83,7 @@ const addTask = () => {
   border-radius: var(--border-radius)
   border: 1px solid var(--border-base)
   box-shadow: 0 4px 6px var(--box-shadow)
-  padding: 15px 20px
+  padding: 7px 10px
   height: fit-content
   display: flex
   flex-direction: row
