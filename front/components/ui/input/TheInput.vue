@@ -15,7 +15,7 @@
         $emit('input', localValue);
       "
       @blur="$emit('blur')"
-    />
+    >
   </div>
 </template>
 

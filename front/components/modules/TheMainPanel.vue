@@ -6,7 +6,7 @@
         :name="'iconamoon:menu-burger-horizontal-bold'"
         size="40"
         @click="changeOpenStatusValue()"
-      ></Icon>
+      />
       <span class="left-wrapper__title">{{ getActivePageTitle }}</span>
     </div>
     <TheUserSection/>
@@ -24,7 +24,7 @@ const { getActivePageTitle } = storeToRefs(store);
 
 <style lang="sass" scoped>
 .aside__container
-  color: var(--base-text-color)
+  color: var(--text)
   display: flex
   flex-direction: row
   flex-wrap: nowrap
@@ -32,7 +32,7 @@ const { getActivePageTitle } = storeToRefs(store);
   align-items: center
   min-height: 70px
   padding: 0 15px 0 10px
-  background-color: var(--sidebar)
+  background-color: var(--main)
   .aside__left-wrapper
     color: inherit
     display: flex

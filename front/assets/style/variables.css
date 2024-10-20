@@ -36,23 +36,21 @@
 
   /* dark */
   --dark: #000112;
-  --navy: #20212c;
+  --dark-secondary: #20212c;
+  --dark-border: rgba(54,78,126,0.102);
+
+  /* gray */
   --gray: #2b2c37;
-  --light-gray: #828fa3;
-  --perfect-gray: #a4a4a4;
-  --transparent-gray: rgba(103, 103, 103, 0.35);
-  --black-gray: rgba(255, 255, 255, 0.12);
-  --transparent-navy: rgba(54,78,126,0.102);
+  --gray-secondary: #828fa3;
+  --gray-border: #a4a4a4;
+  --gray-hover: rgba(103, 103, 103, 0.35);
+  --gray-focus: rgba(255, 255, 255, 0.12);
+
 
   /* light */
   --white: #FFFFFF;
-  --almost-white: #9d9d9d;
-  --blue-white: #f4f7fd;
-
-  /* skeleton */
-  --base-skeleton: #eee;
-  --skeleton-light: #ccc;
-  --skeleton-light2: #ddd;
+  --white-secondary: #9d9d9d;
+  --white-border: #f4f7fd;
 
   /* radius*/
   --border-radius: 8px;
@@ -65,11 +63,8 @@
 
   /* z-index */
   --z-loader: 10000;
-
   --z-dropdown: 1000;
-
   --z-top-listing: 500;
-
   --z-modal: 2000;
 }
 
@@ -77,32 +72,32 @@
   /* light theme */
 
   /* bg */
-  --sidebar: var(--white);
-  --background: var(--blue-white);
-  --overlay: var(--transparent-gray);
-  --border-base: var(--transparent-navy);
-  --disabled: var(--almost-white);
-  --box-shadow: var(--transparent-navy);
+  --main: var(--white);
+  --main-secondary: var(--white-border);
+  --overlay: var(--gray-hover);
+  --border-base: var(--dark-border);
+  --disabled: var(--white-secondary);
+  --box-shadow: var(--dark-border);
 
   /* text color */
-  --base-text-color: var(--dark);
-  --secondary-text-color: var(--light-gray);
-  --disabled-text-color: var(--perfect-gray);
+  --text: var(--dark);
+  --text-secondary: var(--gray-secondary);
+  --text-disabled: var(--gray-border);
 }
 
 .dark-mode {
   /* dark theme */
 
   /* bg */
-  --sidebar: var(--gray);
-  --background: var(--navy);
-  --overlay: var(--transparent-gray);
-  --border-base: var(--black-gray);
-  --disabled: var(--almost-white);
-  --box-shadow: var(--transparent-navy);
+  --main: var(--gray);
+  --main-secondary: var(--dark-secondary);
+  --overlay: var(--gray-hover);
+  --border-base: var(--gray-focus);
+  --disabled: var(--white-secondary);
+  --box-shadow: var(--dark-border);
 
   /*text color*/
-  --base-text-color: var(--white);
-  --secondary-text-color: var(--light-gray);
-  --disabled-text-color: var(--perfect-gray);
+  --text: var(--white);
+  --text-secondary: var(--gray-secondary);
+  --text-disabled: var(--gray-border);
   }

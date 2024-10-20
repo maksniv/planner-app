@@ -6,8 +6,7 @@
     :primary="!color"
     :size="size || '20'"
     :name="icon"
-  >
-  </Icon>
+  />
 </template>
 
 <script lang="ts" setup>

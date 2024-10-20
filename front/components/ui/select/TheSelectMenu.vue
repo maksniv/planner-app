@@ -14,18 +14,18 @@
           class="dropdown-menu__filter-wrapper"
         >
           <input
-            class="dropdown-menu__filter"
-            v-model="stringFilter"
             ref="inputRef"
+            v-model="stringFilter"
+            class="dropdown-menu__filter"
             placeholder="Поиск"
             type="text"
             @click.capture.stop="focusOnAutocomplete"
           >
           <TheIconButton
             class="dropdown-menu__clear-filter"
-            @click="stringFilter = ''"
             icon="mdi:clear-bold"
             size="18"
+            @click="stringFilter = ''"
           />
         </div>
         <TheSelectItem
@@ -122,13 +122,13 @@ const getList = (list: Array<any>, useStringFilter: boolean = false): Array<any>
 }
 const setItemToInput = () => {
   if (list.value.length && props.value)  {
-    let currItemIndex = list.value.findIndex(el => (el as any).id === (props.value as any)?.id)
+    const currItemIndex = list.value.findIndex(el => (el as any).id === (props.value as any)?.id)
     if(currItemIndex >= 0) selectItem(list.value[currItemIndex])
     else selectItem(props.value);
   }
 }
 const selectItem = (item: SelectItem) => {
-  if(!list || list.value.length === 0) return;
+  if(!list.value || list.value.length === 0) return;
   emit('select', item);
   if (item) {
     stringFilter.value = '';
@@ -136,7 +136,7 @@ const selectItem = (item: SelectItem) => {
   emit('close');
 }
 const focusOnAutocomplete = () => {
-  if (process.server) return
+  if (import.meta.server) return
   if (inputRef.value) {
     inputRef.value.focus();
   }

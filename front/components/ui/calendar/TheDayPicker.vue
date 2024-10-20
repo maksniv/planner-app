@@ -1,16 +1,17 @@
 <template>
   <div class="calendar__body">
     <div class="weeks-header">
-      <div class="weeks-header__title"
-           v-for="day in weekdays">
+      <div
+v-for="day in weekdays"
+           class="weeks-header__title">
         {{ day }}
       </div>
     </div>
     <div class="days-wrapper">
       <div
-        class="day"
         v-for="(day, index) in daysMonth"
         :key="index"
+        class="day"
         @click.capture.stop="$emit('day-selected', dayjs(day.date).toISOString())"
       >
           <span

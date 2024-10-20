@@ -2,8 +2,8 @@
   <div class="container">
     <TheSidePanel />
     <div class="main__wrapper">
-      <TheMainPanel></TheMainPanel>
-      <TheLoader v-if="isFetching || isMutating" />
+      <TheMainPanel/>
+      <UILoader v-if="isFetching || isMutating" />
       <main class="content">
         <slot />
       </main>
@@ -36,5 +36,5 @@ const isMutating = useIsMutating();
     .content
       overflow: hidden
       height: 100%
-      background-color: var(--background)
+      background-color: var(--main-secondary)
 </style>

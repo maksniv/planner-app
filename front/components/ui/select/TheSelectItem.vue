@@ -5,13 +5,13 @@
     @click.capture.stop="selectItem"
     >
       <div
-        v-html="nameText"
         class="dropdown-menu__item-name"
         :class="{'colorize': colorize}"
         :style="{
           'background-color': itemColor,
           color: textColor,
         }"
+        v-html="nameText"
       />
     </div>
 </template>
@@ -47,7 +47,7 @@ const nameText = computed(() => {
   return name.replace(
     new RegExp(props.searchValue, 'gi'),
     (match, offset) => {
-      let resultInsert = match
+      const resultInsert = match
         .split('')
         .reduce((acc, letter, index) => acc + name[offset + index], '');
       return `<span class="highlight-text">${resultInsert}</span>`;

@@ -14,31 +14,31 @@
     <TheIconButton
       class="groups-task-item__icon"
       :disabled="isPendingUpdate"
-      @click="toggleVisible()"
       icon="material-symbols:delete-outline"
       size="45"
       danger
+      @click="toggleVisible()"
     />
     <TheModal
       :show-modal="modalVisible"
+      title-text="Удаление"
+      content-text="Вы уверены что хотите удалить группу задач? Это безвозвратно удалит и все задачи этой группы."
       @close="toggleVisible()"
       @reject="toggleVisible()"
       @confirm="deleteHandler(); toggleVisible()"
-      title-text="Удаление"
-      content-text="Вы уверены что хотите удалить группу задач? Это безвозвратно удалит и все задачи этой группы."
     />
   </div>
 </template>
 
 <script setup lang="ts">
-import { useQueryClient } from '@tanstack/vue-query';
-import { useMutation } from '@tanstack/vue-query';
-import { type TypeGroupsTaskFormState } from '~/types/groupsTask.types';
+import { useQueryClient , useMutation } from '@tanstack/vue-query';
+import type { TypeGroupsTaskFormState } from '~/types/groupsTask.types';
 import {
   updateGroupTask,
   deleteGroupTask,
 } from '@/composables/groupsTask.service';
 import { debounce } from '@/utils/debounce';
+import type { AxiosError } from 'axios';
 
 interface Props {
   name?: string;
@@ -76,7 +76,7 @@ const { mutate: deleteHandler, error: errorDelete } = useMutation({
     await queryClient.invalidateQueries({queryKey: ['groups-task']});
     $toast.success('Сохранено');
   },
-  onError: (err: any) => err,
+  onError: (err: AxiosError) => err,
 });
 
 const updateHandler = debounce(update, 800);

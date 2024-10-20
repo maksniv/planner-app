@@ -9,29 +9,28 @@
           v-model="profile.name"
           :value="data?.user?.name"
           placeholder-text="Имя"
-          labelText="Имя"
+          label-text="Имя"
           @input="updateHandler({ name: profile.name })"
-        ></TheInput>
+        />
         <TheInput
           v-model="profile.surname"
           :value="data?.user?.surname"
           placeholder-text="Фамилия"
-          labelText="Фамилия"
+          label-text="Фамилия"
           @input="updateHandler({ surname: profile.surname })"
-        ></TheInput>
+        />
         <TheInput
           v-model="profile.email"
           :value="data?.user?.email"
           placeholder-text="Email"
-          labelText="Email"
+          label-text="Email"
           @input="updateHandler({ email: profile.email })"
-        ></TheInput
-        ><TheInputPassword
+        /><TheInputPassword
           v-model="profile.password"
           placeholder-text="Пароль"
-          labelText="Пароль"
+          label-text="Пароль"
           @input="updateHandler({ password: profile.password })"
-        ></TheInputPassword>
+        />
       </template>
     </TheForm>
   </div>
@@ -44,7 +43,7 @@ import {
   keepPreviousData,
   useMutation,
 } from '@tanstack/vue-query';
-import { type TypeUserForm } from '~/types/auth.types';
+import type { TypeUserForm } from '~/types/auth.types';
 import { getProfile, updateProfile } from '@/composables/user.service';
 import { errorCatch } from '@/utils/error';
 

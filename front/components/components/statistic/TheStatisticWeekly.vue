@@ -6,7 +6,7 @@
 
 <script setup lang="ts">
 import { Bar } from 'vue-chartjs';
-import { type ChartOptions, type ChartData } from 'chart.js';
+import type { ChartOptions, ChartData } from 'chart.js';
 import { ref, watch } from 'vue';
 
 interface Props {

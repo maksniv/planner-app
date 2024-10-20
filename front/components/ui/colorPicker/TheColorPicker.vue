@@ -1,14 +1,14 @@
 <template>
   <div class="field">
     <input
-      type="color"
-      class="field__input"
       v-bind="$attrs"
       v-model="localValue"
+      type="color"
+      class="field__input"
       @focus="$emit('focus')"
       @input="$emit('update:modelValue', localValue)"
       @blur="$emit('blur', localValue)"
-    />
+    >
   </div>
 </template>
 

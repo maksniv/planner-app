@@ -1,16 +1,16 @@
 <template>
   <div
+    v-click-outside="clickOutside"
     class="wrapper"
     @click="toggleVisible"
-    v-click-outside="clickOutside"
   >
     <TheInput
       :value="visibleLocalValue"
       :placeholder-text="placeholderText"
       :label-text="labelText"
+      readonly
       @blur="$emit('blur')"
       @focus="$emit('focus')"
-      readonly
     />
     <Icon
       name="bx:calendar"
@@ -20,16 +20,16 @@
     <TheIconButton
       v-if="localValue"
       class="wrapper__icon-clear-value"
-      @click="clearValue"
       icon="mdi:clear-bold"
       size="20"
+      @click="clearValue"
     />
     <div class="calendar__wrapper">
       <TheCalendar
         v-show="isVisible"
+        v-model="localValue"
         :visible="isVisible"
         :value="localValue"
-        v-model="localValue"
         @update:model-value="updateVisibleLocalValue()"
         @input="
           updateVisibleLocalValue()

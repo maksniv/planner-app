@@ -1,8 +1,8 @@
 <template>
   <ClientOnly>
     <teleport
-      to="#__nuxt"
       v-if="showModal"
+      to="#__nuxt"
       >
       <div
         class="overlay" :class="showModal ? 'active' : ''"
@@ -13,10 +13,10 @@
           :class="showModal ? 'active' : ''"
         >
           <TheIconButton
-            @click.capture.stop="$emit('close')"
             icon="gg:close"
             class="modal__icon"
             size="28"
+            @click.capture.stop="$emit('close')"
           />
           <h1 class="modal__title">
             <slot name="title">
@@ -31,8 +31,8 @@
           <div class="modal__line"/>
           <div class="modal__button-wrapper">
             <slot name="button">
-              <TheButton @click="$emit('confirm')">Подтвердить</TheButton>
-              <TheButton @click="$emit('reject')" outlined>Отмена</TheButton>
+              <UIButton @click="$emit('confirm')">Подтвердить</UIButton>
+              <UIButton outlined @click="$emit('reject')">Отмена</UIButton>
             </slot>
           </div>
         </div>

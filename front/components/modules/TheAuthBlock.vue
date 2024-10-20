@@ -12,7 +12,7 @@
 </template>
 
 <script setup lang="ts">
-let flagForm = ref(true);
+const flagForm = ref(true);
 
 const toggleForm = () => {
   flagForm.value = !flagForm.value;

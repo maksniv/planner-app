@@ -1,12 +1,12 @@
 <template>
   <div
+    v-click-outside="clickOutside"
     class="dropdown"
     @click="toggleMenu"
-    v-click-outside="clickOutside"
   >
-    <slot name="opening-part"></slot>
-    <div class="dropdown__menu" v-show="isOpened">
-      <slot name="menu"></slot>
+    <slot name="opening-part"/>
+    <div v-show="isOpened" class="dropdown__menu">
+      <slot name="menu"/>
     </div>
   </div>
 </template>

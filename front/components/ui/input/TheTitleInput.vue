@@ -13,7 +13,7 @@
        $emit('input', localValue);
      "
     @blur="$emit('blur')"
-    />
+    >
 </template>
 
 <script setup lang="ts">

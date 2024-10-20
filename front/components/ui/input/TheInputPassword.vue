@@ -1,8 +1,8 @@
 <template>
   <div class="wrapper">
     <TheInput
-      :value="value"
       v-model="localValue"
+      :value="value"
       :placeholder-text="placeholderText"
       :label-text="labelText"
       :type="typeInput"

@@ -1,4 +1,4 @@
-import { type IAuthResponse, type IAuthForm } from '~/types/auth.types';
+import type { IAuthResponse, IAuthForm } from '~/types/auth.types';
 import { saveTokenStorage, removeFromStorage } from '~/utils/authToken';
 
 const main = async (type: 'login' | 'register', data: IAuthForm) => {

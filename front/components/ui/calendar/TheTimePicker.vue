@@ -4,8 +4,8 @@
     :class="{'visible': show}">
     <div class="time-wheel">
       <div
-        class="hour-wheel"
         ref="hourWheel"
+        class="hour-wheel"
       >
         <div
           v-for="hour in hours"
@@ -33,10 +33,10 @@
       </div>
     </div>
     <TheIconButton
-      @click.capture.stop="selectTime"
       class="time-select__icon-save"
       icon="material-symbols-light:save"
       size="40"
+      @click.capture.stop="selectTime"
     />
   </div>
 </template>

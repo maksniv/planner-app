@@ -1,6 +1,6 @@
-import {
-  type IgroupsTaskResponse,
-  type TypeGroupsTaskFormState,
+import type {
+  IgroupsTaskResponse,
+  TypeGroupsTaskFormState,
 } from '@/types/groupsTask.types';
 
 const BASE_URL = 'user/groups-task';

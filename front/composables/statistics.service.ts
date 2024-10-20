@@ -1,11 +1,11 @@
 export interface IStatisticsResponse {
   statisticsQuantity: {
-    label: String[];
-    value: Number[];
+    label: string[];
+    value: number[];
   };
   statisticsWeekly: {
-    label: String[];
-    value: Number[];
+    label: string[];
+    value: number[];
   };
 }
 

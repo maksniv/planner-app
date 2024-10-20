@@ -1,5 +1,5 @@
 <template>
-  <div class="skeleton"></div>
+  <div class="skeleton"/>
 </template>
 
 <style lang="sass" scoped>

@@ -3,7 +3,7 @@
     <TheDropDown>
       <template #opening-part>
         <div class="user-section__wrapper">
-          <TheAvatar :name="data?.user.name" :surname="data?.user.surname"></TheAvatar>
+          <TheAvatar :name="data?.user.name" :surname="data?.user.surname"/>
           <TheIconButton
             class="logo__icon"
             icon="bxs:down-arrow"
@@ -15,7 +15,7 @@
         <TheDropDownMenuItem @click="router.push('/user')">
           <Icon name="uil:setting" size="15"/>Настройки
         </TheDropDownMenuItem>
-        <TheDropDownMenuItem @click="mutate()" class="delete">
+        <TheDropDownMenuItem class="delete" @click="mutate()">
           <Icon name="material-symbols:logout-rounded" size="15"/>Выйти
         </TheDropDownMenuItem>
       </template>

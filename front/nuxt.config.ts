@@ -28,7 +28,14 @@ export default defineNuxtConfig({
       pathPrefix: false,
     },
   ],
-  modules: ['@nuxtjs/google-fonts', 'nuxt-icon', '@pinia/nuxt', '@nuxtjs/color-mode'],
+  modules: [
+    '@nuxtjs/google-fonts',
+    'nuxt-icon',
+    '@pinia/nuxt',
+    '@nuxtjs/color-mode',
+    '@maksniv/ui',
+    '@nuxt/eslint'
+  ],
   plugins: [
     {src: '~/plugins/vClickOutside.client.ts', mode: 'all'},
   ],

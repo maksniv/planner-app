@@ -3,9 +3,9 @@
     class="month-list"
     :class="{'visible': show}">
     <div
-      class="month"
       v-for="(month, index) in month_names"
       :key="month"
+      class="month"
       @click.capture.stop="selectMonth(index)"
       >
         <div

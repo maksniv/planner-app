@@ -1,4 +1,4 @@
-import { type ITaskResponse, type TypeTaskFormState } from '~/types/task.types';
+import type { ITaskResponse, TypeTaskFormState } from '~/types/task.types';
 
 const BASE_URL = 'user/tasks';
 

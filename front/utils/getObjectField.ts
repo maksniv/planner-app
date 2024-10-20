@@ -4,7 +4,7 @@ export function getObjectField(item: Record<string, any>, query: string | string
   const type = getType(item);
   if (type !== 'Object') return;
 
-  let queryType = getType(query);
+  const queryType = getType(query);
   let queryParts: string[] = [];
 
   if (queryType !== 'String' && queryType !== 'Array') {

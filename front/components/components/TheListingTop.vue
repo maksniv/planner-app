@@ -2,26 +2,26 @@
   <div class="top-listing__container">
     <TheSelect
       class="top-listing-select"
-      @selectId="changeGroupId($event)"
       :items="groupsTaskData?.data"
       placeholder-text="Группа задач"
       item-text="name"
       colorize
       clearable
       search-in-dropdown
+      @select-id="changeGroupId($event)"
     />
     <TheInputSearch
       class="top-listing-input"
-      @input="updateSearch($event)"
       placeholder-text="Поиск"
+      @input="updateSearch($event)"
     />
-    <TheButton
-      @click="addTask"
+    <UIButton
       outlined
+      @click="addTask"
     >
       <Icon size="15" name="fluent:add-24-filled"/>
       Добавить задачу
-    </TheButton>
+    </UIButton>
   </div>
 
 </template>

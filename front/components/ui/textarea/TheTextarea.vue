@@ -2,14 +2,14 @@
   <div class="field">
     <span v-if="labelText" class="field__label">{{ labelText }}</span>
     <textarea
-      class="field__input"
       ref="textarea"
+      class="field__input"
       autocomplete="new-password"
       v-bind="$attrs"
       :placeholder="placeholderText"
       :value="localValue"
-      @focus="$emit('focus')"
       rows="4"
+      @focus="$emit('focus')"
       @input="
         localValue = ($event.target as HTMLInputElement).value.trim();
         $emit('update:modelValue', localValue);
@@ -75,9 +75,6 @@ onMounted(() => {
 onUnmounted(()=>{
   textarea.value?.removeEventListener('keydown', resize);
 })
-
-
-
 </script>
 
 <style lang="sass" scoped>

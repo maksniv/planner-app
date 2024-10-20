@@ -7,15 +7,15 @@
           Кажется, что страница, которую вы ищете, где-то потерялась, но не
           беспокойтесь, мы вас вернем.
         </div>
-        <TheButton>
+        <UIButton>
           <NuxtLink to="/tasks" class="text-block__link">Вернуться</NuxtLink>
-        </TheButton>
+        </UIButton>
       </div>
       <img
         class="error__img"
         src="@/assets/img/404.svg"
         alt="Страница не найдена"
-      />
+      >
     </div>
   </div>
 </template>

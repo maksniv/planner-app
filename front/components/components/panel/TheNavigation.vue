@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-import { type NavLink } from '~/types/navLink.types';
+import type { NavLink } from '~/types/navLink.types';
 
 const links = ref<Array<NavLink>>([
   // { title: 'Главная', link: '/', icon: 'radix-icons:dashboard' },

@@ -4,14 +4,14 @@
       type="checkbox"
       class="field__checkbox"
       :checked="localValue"
+      v-bind="$attrs"
       @input="
         localValue = ($event.target as HTMLInputElement).checked;
         $emit('update:modelValue', localValue);
         $emit('input')
        "
-      v-bind="$attrs"
-    />
-    <span class="field__icon"></span>
+    >
+    <span class="field__icon"/>
       {{label}}
   </label>
 </template>

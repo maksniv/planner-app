@@ -30,7 +30,7 @@ const { getOpenStatus } = storeToRefs(store);
   gap: 30px
   max-width: 265px
   height: 100vh
-  background-color: var(--sidebar)
+  background-color: var(--main)
   padding-bottom: 30px
   .aside__wrapper
     width: 100%

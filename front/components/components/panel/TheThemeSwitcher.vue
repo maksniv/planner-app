@@ -5,7 +5,7 @@
       size="19"
       class="wrapper__icon"
     />
-    <TheToggle v-model="theme" ></TheToggle>
+    <TheToggle v-model="theme" />
     <Icon
       name="akar-icons:moon-fill"
       size="19"
@@ -43,8 +43,8 @@ onMounted(() => {
   height: var(--base-height)
   padding: 12px 16px
   margin: 0 16px
-  background-color: var(--background)
-  color: var(--secondary-text-color)
+  background-color: var(--main-secondary)
+  color: var(--text-secondary)
   border-radius: var(--border-radius)
   box-shadow: 0 4px 6px var(--box-shadow)
   display: flex

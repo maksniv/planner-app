@@ -1,8 +1,8 @@
 <template>
   <div class="wrapper">
     <TheInput
-      :value="value"
       v-model="localValue"
+      :value="value"
       :placeholder-text="placeholderText"
       :label-text="labelText"
       @input="$emit('input', localValue);"
@@ -18,9 +18,9 @@
     <TheIconButton
       v-if="localValue"
       class="wrapper__icon-clear-value"
-      @click="clearValue"
       icon="mdi:clear-bold"
       size="20"
+      @click="clearValue"
     />
   </div>
 </template>

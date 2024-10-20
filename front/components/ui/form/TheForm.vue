@@ -1,21 +1,21 @@
 <template>
   <form class="form__container" autocomplete="off">
     <h1
+      v-if="!hideTitle"
       class="form__title"
       :class="{
       'small': titleSize === 'small',
       'big': titleSize === 'big' || titleSize === undefined
       }"
-      v-if="!hideTitle"
     >
       <slot name="title"/>
     </h1>
-    <div class="form__line" v-if="!hideTitle" />
+    <div v-if="!hideTitle" class="form__line" />
     <div class="form__wrapper">
       <slot name="body"/>
     </div>
-    <div class="form__line" v-if="!hideFooter" />
-    <div class="form__button-wrapper" v-if="!hideFooter">
+    <div v-if="!hideFooter" class="form__line" />
+    <div v-if="!hideFooter" class="form__button-wrapper">
       <slot name="footer"/>
     </div>
   </form>

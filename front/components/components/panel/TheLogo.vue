@@ -1,6 +1,6 @@
 <template>
   <div class="logo">
-    <Icon name="line-md:text-box-twotone" size="50" class="logo__icon"></Icon>
+    <Icon name="line-md:text-box-twotone" size="50" class="logo__icon"/>
     <span class="logo__text">MAX Planner</span>
   </div>
 </template>

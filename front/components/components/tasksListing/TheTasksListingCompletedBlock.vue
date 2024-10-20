@@ -3,9 +3,9 @@
     <TheIconButton
       class="show-button__icon"
       :class="{'visible': showList}"
-      @click="handleClick"
       icon="bxs:right-arrow"
       size="20"
+      @click="handleClick"
     />
     <span>Показать выполненные</span>
   </div>

@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <TheLoader v-if="isFetching || isMutating" />
+    <UILoader v-if="isFetching || isMutating" />
     <slot />
   </div>
 </template>
@@ -15,8 +15,8 @@ const isMutating = useIsMutating();
 <style lang="sass" scoped>
 .container
   width: 100%
-  height: 100vh
+  height: 100dvh
   display: flex
-  background-color: var(--background)
+  background-color: var(--main-secondary)
   position: relative
 </style>

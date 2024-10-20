@@ -5,18 +5,18 @@
       <TheInput
         v-model="email"
         placeholder-text="Email"
-        labelText="Email"
+        label-text="Email"
       />
       <TheInputPassword
         v-model="password"
         placeholder-text="Пароль"
-        labelText="Пароль"
+        label-text="Пароль"
       />
     </template>
     <template #footer>
-      <TheButton @click.prevent="mutate({ email: email, password: password })"
+      <UIButton @click.prevent="mutate({ email: email, password: password })"
         >Войти
-      </TheButton>
+      </UIButton>
     </template>
   </TheForm>
 </template>
@@ -24,7 +24,7 @@
 <script setup lang="ts">
 import { useMutation } from '@tanstack/vue-query';
 import { main } from '~/composables/auth.service';
-import { type IAuthForm } from '~/types/auth.types';
+import type { IAuthForm } from '~/types/auth.types';
 import { errorCatch } from '~/utils/error';
 
 useHead({

@@ -2,8 +2,8 @@
   <div class="listing__container">
     <div class="listing__content">
       <TheTasksListingBlock
-        v-if="tasksGroups.length"
         v-for="tasksGroup in tasksGroups"
+        v-if="tasksGroups.length"
         :key="tasksGroup"
         :tasks-group="tasksGroup"
       />
@@ -14,11 +14,11 @@
 
 <script setup lang="ts">
 import { useTasksStore } from '~/store/tasks';
-const { search, groupId } = toRefs(useTasksStore());
 import { useQuery, keepPreviousData } from '@tanstack/vue-query';
 import { getTasks } from '@/composables/task.service';
 import type { ITaskResponse } from '~/types/task.types';
 import dayjs from 'dayjs';
+const { search, groupId } = toRefs(useTasksStore());
 const { $toast } = useNuxtApp();
 
 const { data: tasks, error: errorGetTasks } = useQuery({

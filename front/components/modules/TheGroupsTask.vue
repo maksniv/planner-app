@@ -1,28 +1,28 @@
 <template>
   <div class="groups-task__block">
-    <TheForm hide-title hideFooter>
+    <TheForm hide-title hide-footer>
       <template #body>
         <div class="groups-task__wrapper">
           <TheGroupsTaskItem
-            v-if="data?.data"
             v-for="item in toRaw(data.data)"
-            :key="item.id"
+            v-if="data?.data"
             :id="item.id"
+            :key="item.id"
             :name="item.name"
             :color="item.color"
           />
           <TheIconButton
             v-if="data?.data"
-            @click="addHandler({color: '#000000'})"
             icon="gala:add"
             size="50"
+            @click="addHandler({color: '#000000'})"
           />
           <div v-else class="groups-task__add-button">
             <span class="add-button__text">Похоже у вас еще нет групп...</span>
             <TheIconButton
-              @click="addHandler({color: '#000000'})"
               icon="gala:add"
               size="50"
+              @click="addHandler({color: '#000000'})"
             />
           </div>
         </div>
@@ -38,7 +38,7 @@ import {
   useQuery,
   keepPreviousData,
 } from '@tanstack/vue-query';
-import { type TypeGroupsTaskFormState } from '~/types/groupsTask.types';
+import type { TypeGroupsTaskFormState } from '~/types/groupsTask.types';
 import {
   getGroupsTask,
   createGroupTask,

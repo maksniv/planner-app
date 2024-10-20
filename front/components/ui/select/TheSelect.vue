@@ -11,12 +11,12 @@
         {{ labelText }}
     </label>
     <div
+      v-click-outside="closeList"
       class="select-field"
       :class="{
         'is-active': showList,
       }"
       @click="openList"
-      v-click-outside="closeList"
     >
       <TheSelectChosenItem
         :local-value="localValue"
@@ -26,26 +26,26 @@
       <TheIconButton
         v-if="localValue && clearable"
         class="select-field__clear-value"
-        @click.capture.stop="clearValue"
         icon="mdi:clear-bold"
         size="20"
+        @click.capture.stop="clearValue"
       />
       <TheIconButton
-        @click.capture.stop="toggleList"
         class="select-field__triangle"
         icon="bxs:down-arrow"
         size="20"
+        @click.capture.stop="toggleList"
       />
     </div>
     <TheSelectMenu
       :empty-text="emptyText"
-      :isOpen="showList"
-      :searchInDropdown="searchInDropdown"
+      :is-open="showList"
+      :search-in-dropdown="searchInDropdown"
       :value="value"
-      :localValue="localValue"
+      :local-value="localValue"
       :items="items"
       :with-label="labelText !== undefined"
-      :itemText="itemText"
+      :item-text="itemText"
       :colorize="colorize"
       @select="localValue = $event"
       @close="closeList"

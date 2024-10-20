@@ -4,12 +4,12 @@
         type="checkbox"
         class="field__toggle"
         :checked="modelValue"
+        v-bind="$attrs"
         @input="
           $emit('update:modelValue', ($event.target as HTMLInputElement).checked);
           $emit('input')"
-        v-bind="$attrs"
-    />
-    <span class="field__icon"></span>
+    >
+    <span class="field__icon"/>
     {{label}}
   </label>
 </template>
@@ -31,7 +31,7 @@ defineEmits<{
 <style scoped lang="sass">
 .field__label
   cursor: pointer
-  color: var(--base-text-color)
+  color: var(--text)
   height: 20px
   max-width: var(--max-width-field)
   display: flex
@@ -65,7 +65,7 @@ defineEmits<{
       left: 3px
       width: 13px
       height: 12px
-      background-color: var(--white)
+      background-color: var(--text)
       transition: all 0.25s ease-in-out
       z-index: 9
 

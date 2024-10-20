@@ -14,7 +14,7 @@
       </span>
     </div>
     <div class="tabs__content">
-      <slot name="content" :active="modelValue"></slot>
+      <slot name="content" :active="modelValue"/>
     </div>
   </div>
 </template>

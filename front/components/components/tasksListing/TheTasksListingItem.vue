@@ -3,8 +3,8 @@
     class="task-item__container"
     @click.self="pushTo">
     <TheCheckbox
-      :value="task.isCompleted"
       v-model="localIsCompleted"
+      :value="task.isCompleted"
       @input="updateHandler({isCompleted: localIsCompleted})"
     />
     <div
@@ -37,8 +37,8 @@
             Редактировать
           </TheDropDownMenuItem>
           <TheDropDownMenuItem
-            @click="deleteHandler"
-            class="delete">
+            class="delete"
+            @click="deleteHandler">
             <Icon
               name="ic:baseline-delete"
               size="15"/>

@@ -13,14 +13,14 @@
         v-model="localValue.content"
         :value="taskData?.data?.content"
         placeholder-text="Описание"
-        labelText="Описание"
+        label-text="Описание"
         @input="updateHandler({ content: localValue.content })"
       />
       <TheDateTimePicker
         v-model="localValue.deadlines"
         :value="taskData?.data?.deadlines"
         placeholder-text="Выберите дату"
-        labelText="Дедлайн"
+        label-text="Дедлайн"
         @input="updateHandler({ deadlines: localValue.deadlines })"
       />
       <TheSelect
@@ -40,8 +40,8 @@
         Задача выполнена
       </TheButton>
       <TheButton
-        @click="closeModal()"
         outlined
+        @click="closeModal()"
       >
         Отмена
       </TheButton>
