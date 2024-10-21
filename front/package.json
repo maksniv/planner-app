@@ -18,7 +18,7 @@
     "lintfix": "eslint . --fix && prettier --write --list-different ."
   },
   "dependencies": {
-    "@maksniv/ui": "0.0.19",
+    "@maksniv/ui": "0.0.20",
     "@nuxt/eslint": "^0.6.0",
     "@pinia/nuxt": "^0.5.1",
     "@tanstack/vue-query": "^5.28.4",

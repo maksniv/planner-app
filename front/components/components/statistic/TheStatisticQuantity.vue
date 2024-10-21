@@ -1,13 +1,12 @@
 <template>
-  <TheBlock>
+  <UIBlock>
     <ClientOnly>
-      <Pie :data="chartData" :options="chartOptions"  class="statistic"/>
+      <Pie :data="chartData" :options="chartOptions"/>
     </ClientOnly>
-  </TheBlock>
+  </UIBlock>
 </template>
 
 <script setup lang="ts">
-// import { ref, watch } from 'vue';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, type ChartOptions, type ChartData } from 'chart.js';
 import { Pie } from 'vue-chartjs'
 ChartJS.register(ArcElement, Tooltip, Legend)
@@ -63,6 +62,3 @@ watch(
 );
 
 </script>
-
-<style scoped lang="sass">
-</style>

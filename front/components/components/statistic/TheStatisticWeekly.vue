@@ -1,9 +1,9 @@
 <template>
-  <TheBlock>
+  <UIBlock>
     <ClientOnly>
       <Bar :data="chartData" :options="chartOptions" class="statistic"/>
     </ClientOnly>
-  </TheBlock>
+  </UIBlock>
 </template>
 
 <script setup lang="ts">
@@ -56,7 +56,4 @@ watch(
   { deep: true, immediate: true },
 );
 </script>
-
-<style scoped lang="sass">
-</style>
 

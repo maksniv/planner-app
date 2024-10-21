@@ -577,10 +577,10 @@
   resolved "https://registry.npmjs.org/@kwsites/promise-deferred/-/promise-deferred-1.1.1.tgz"
   integrity sha512-GaHYm+c0O9MjZRu0ongGBRbinu8gVAMd2UZjji6jVmqKtZluZnptXGWhz1E8j8D2HJ3f/yMxKAUC0b+57wncIw==
 
-"@maksniv/ui@0.0.19":
-  version "0.0.19"
-  resolved "https://registry.npmjs.org/@maksniv/ui/-/ui-0.0.19.tgz"
-  integrity sha512-3A9FoUs0nvoM1UNCFCMqqu9kz9ZpAExKQOr27foX5TEv/EiReAdlYAxLhv7lT/ZMDIdGCauBexBu+zQ07CSV7w==
+"@maksniv/ui@0.0.20":
+  version "0.0.20"
+  resolved "https://registry.npmjs.org/@maksniv/ui/-/ui-0.0.20.tgz"
+  integrity sha512-C5X+yGWUnHkWrEWoGnMpqOufb57prLDwCtDS7TxDVIapaZypVutpwrPQIiVJHsaLPNQr815Zz+6ZHjg/3/1vqA==
   dependencies:
     "@nuxt/kit" "^3.13.2"
     nuxt-icon "^0.6.8"
