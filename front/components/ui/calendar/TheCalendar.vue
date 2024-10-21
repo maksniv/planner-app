@@ -13,13 +13,13 @@
         </span>
       </span>
       <div class="month-picker">
-        <TheIconButton
+        <UIIconButton
           class="month-change"
           icon="fluent:ios-arrow-left-24-filled"
           size="15"
           @click.capture.stop="changeMonthBack"
         />
-        <TheIconButton
+        <UIIconButton
           class="month-change"
           icon="fluent:ios-arrow-right-24-filled"
           size="15"
@@ -132,7 +132,7 @@ watch(
 .calendar 
   height: max-content
   width: 345px
-  background-color: var(--sidebar)
+  background-color: var(--main)
   border: 1px solid var(--border-base)
   border-radius: var(--border-radius)
   padding: 20px
@@ -145,7 +145,7 @@ watch(
     align-items: center
     font-size: 25px
     font-weight: 600
-    color: var(--base-text-color)
+    color: var(--text)
     padding: 10px 0
     user-select: none
     .date-title
@@ -171,6 +171,6 @@ watch(
       .month-change
         width: 35px
         height: 23px
-        color: var(--base-text-color)
+        color: var(--text)
         cursor: pointer
 </style>

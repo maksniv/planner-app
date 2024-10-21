@@ -79,7 +79,7 @@ const addTask = () => {
 
 <style lang="sass" scoped>
 .top-listing__container
-  background-color: var(--sidebar)
+  background-color: var(--main)
   border-radius: var(--border-radius)
   border: 1px solid var(--border-base)
   box-shadow: 0 4px 6px var(--box-shadow)

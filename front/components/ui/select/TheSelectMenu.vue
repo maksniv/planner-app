@@ -21,7 +21,7 @@
             type="text"
             @click.capture.stop="focusOnAutocomplete"
           >
-          <TheIconButton
+          <UIIconButton
             class="dropdown-menu__clear-filter"
             icon="mdi:clear-bold"
             size="18"
@@ -175,7 +175,7 @@ const getItemKey = (item: SelectItem, index: number) => {
   max-height: 460px
   height: 0
   padding: 0
-  background-color: var(--sidebar)
+  background-color: var(--main)
   border-radius: var(--border-radius)
   overflow:  hidden auto
   &.with-label
@@ -205,11 +205,11 @@ const getItemKey = (item: SelectItem, index: number) => {
         height: var(--base-height)
         padding: 10px 45px 10px 12px
         &::placeholder
-          color: var(--secondary-text-color)
+          color: var(--text-secondary)
       .dropdown-menu__clear-filter
         position: absolute
         right: 15px
-        color: var(--base-text-color)
+        color: var(--text)
         bottom: calc(var(--base-height)/2 - 10px)
         z-index: 1
 </style>

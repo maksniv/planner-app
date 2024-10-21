@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <TheInput
+    <UIInput
       v-model="localValue"
       :value="value"
       :placeholder-text="placeholderText"
@@ -15,7 +15,7 @@
       size="19"
       class="wrapper__icon-search"
     />
-    <TheIconButton
+    <UIIconButton
       v-if="localValue"
       class="wrapper__icon-clear-value"
       icon="mdi:clear-bold"
@@ -26,13 +26,31 @@
 </template>
 
 <script setup lang="ts">
-interface Props {
-  modelValue?: string;
-  placeholderText?: string | 'Введите пароль...';
-  labelText?: string;
-  value?: string;
-}
-const props = defineProps<Props>();
+
+import { defineProps } from 'vue';
+
+const props = defineProps({
+  modelValue: {
+    type: String || null,
+    default: null
+  },
+  value: {
+    type: String || null,
+    default: null
+  },
+  type: {
+    type: String,
+    default: 'text'
+  },
+  placeholderText: {
+    type: String,
+    default: 'Введите значение...'
+  },
+  labelText: {
+    type: String,
+    default: ''
+  },
+});
 
 const emit = defineEmits<{
   (e: 'update:modelValue', value: string): void;
@@ -60,12 +78,12 @@ const clearValue = () => {
   .wrapper__icon-search
     position: absolute
     left: 10px
-    color: var(--secondary-text-color)
+    color: var(--text-secondary)
     bottom: calc(var(--base-height)/2 - 9px)
   .wrapper__icon-clear-value
     cursor: pointer
     position: absolute
     right: 10px
-    color: var(--base-text-color)
+    color: var(--text)
     bottom: calc(var(--base-height)/2 - 10px)
 </style>

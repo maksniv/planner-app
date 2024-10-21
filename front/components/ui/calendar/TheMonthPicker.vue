@@ -44,7 +44,7 @@ const selectMonth = (index: number) => {
   height: 100%
   top: 0
   left: 0
-  background-color: var(--sidebar)
+  background-color: var(--main)
   padding: 20px
   grid-template-columns: repeat(3, auto)
   gap: 5px
@@ -66,7 +66,7 @@ const selectMonth = (index: number) => {
       border-radius: var(--border-radius)
       text-align: center
       cursor: pointer
-      color: var(--base-text-color)
+      color: var(--text)
       &:hover
         background-color: var(--background)
         user-select: none

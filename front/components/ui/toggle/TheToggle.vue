@@ -65,7 +65,7 @@ defineEmits<{
       left: 3px
       width: 13px
       height: 12px
-      background-color: var(--text)
+      background-color: var(--white)
       transition: all 0.25s ease-in-out
       z-index: 9
 

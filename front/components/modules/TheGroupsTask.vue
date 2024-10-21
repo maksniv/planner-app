@@ -11,7 +11,7 @@
             :name="item.name"
             :color="item.color"
           />
-          <TheIconButton
+          <UIIconButton
             v-if="data?.data"
             icon="gala:add"
             size="50"
@@ -19,7 +19,7 @@
           />
           <div v-else class="groups-task__add-button">
             <span class="add-button__text">Похоже у вас еще нет групп...</span>
-            <TheIconButton
+            <UIIconButton
               icon="gala:add"
               size="50"
               @click="addHandler({color: '#000000'})"

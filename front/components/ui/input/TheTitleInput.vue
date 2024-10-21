@@ -63,11 +63,11 @@ watch(
   border-bottom: 1px solid var(--border-base)
   border-radius: var(--border-radius) var(--border-radius) 0 0
   font-size: 25px
-  color: var(--base-text-color)
+  color: var(--text)
   background-color: transparent
   transition: color .15s, border .15s ease-out, background-color 0.15s ease
   &::placeholder
-    color: var(--secondary-text-color)
+    color: var(--text-secondary)
   &:hover
     background: linear-gradient(0deg, var(--background) 0%, var(--background) 50%, transparent 100%)
     border-bottom: 1px solid var(--primary-hover)

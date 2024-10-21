@@ -39,8 +39,8 @@ defineProps<Props>();
   flex-direction: column
   border: 1px solid var(--border-base)
   border-radius: var(--border-radius)
-  background-color: var(--sidebar)
-  color: var(--base-text-color)
+  background-color: var(--main)
+  color: var(--text)
   .form__title
     &.small
       padding: 24px

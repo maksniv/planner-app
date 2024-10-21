@@ -1,7 +1,9 @@
 <template>
-  <ClientOnly>
-    <Pie :data="chartData" :options="chartOptions"  class="statistic"/>
-  </ClientOnly>
+  <TheBlock>
+    <ClientOnly>
+      <Pie :data="chartData" :options="chartOptions"  class="statistic"/>
+    </ClientOnly>
+  </TheBlock>
 </template>
 
 <script setup lang="ts">
@@ -63,10 +65,4 @@ watch(
 </script>
 
 <style scoped lang="sass">
-.statistic
-  padding: 15px
-  border: 1px solid var(--border-base)
-  border-radius: var(--border-radius)
-  background-color: var(--sidebar)
-  box-shadow: 0 4px 6px var(--box-shadow)
 </style>

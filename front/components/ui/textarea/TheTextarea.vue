@@ -87,7 +87,7 @@ onUnmounted(()=>{
   flex-wrap: nowrap
   gap: 10px
   .field__label
-    color: var(--base-text-color)
+    color: var(--text)
   .field__input
     resize: none
     overflow: hidden
@@ -96,11 +96,11 @@ onUnmounted(()=>{
     min-height: var(--base-height)
     border-radius: var(--border-radius)
     border: 1px solid var(--border-base)
-    color: var(--base-text-color)
+    color: var(--text)
     background-color: var(--background)
     transition: color .15s, border .15s ease-out
     &::placeholder
-      color: var(--secondary-text-color)
+      color: var(--text-secondary)
     &:hover
       border: 1px solid var(--primary-hover)
     &:active

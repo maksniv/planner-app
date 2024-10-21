@@ -31,7 +31,7 @@ const buttonContent = computed(() => {
 .forms-container
   margin: auto
   user-select: none
-  color: var(--base-text-color)
+  color: var(--text)
   transition: .15s ease-out
   display: flex
   flex-direction: column

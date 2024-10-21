@@ -128,7 +128,7 @@ watch(
   height: 100%
   top: 0
   left: 0
-  background-color: var(--sidebar)
+  background-color: var(--main)
   padding: 20px
   gap: 5px
   display: flex

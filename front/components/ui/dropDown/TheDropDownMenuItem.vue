@@ -14,7 +14,7 @@
   cursor: pointer
   width: 100%
   padding: 8px 16px
-  color: var(--secondary-text-color)
+  color: var(--text-secondary)
   &:hover
     background-color: var(--background)
   &:disabled

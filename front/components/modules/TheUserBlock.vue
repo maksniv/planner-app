@@ -5,27 +5,28 @@
         Изменить данные
       </template>
       <template #body>
-        <TheInput
+        <UIInput
           v-model="profile.name"
           :value="data?.user?.name"
           placeholder-text="Имя"
           label-text="Имя"
           @input="updateHandler({ name: profile.name })"
         />
-        <TheInput
+        <UIInput
           v-model="profile.surname"
           :value="data?.user?.surname"
           placeholder-text="Фамилия"
           label-text="Фамилия"
           @input="updateHandler({ surname: profile.surname })"
         />
-        <TheInput
+        <UIInput
           v-model="profile.email"
           :value="data?.user?.email"
           placeholder-text="Email"
           label-text="Email"
           @input="updateHandler({ email: profile.email })"
-        /><TheInputPassword
+        />
+        <TheInputPassword
           v-model="profile.password"
           placeholder-text="Пароль"
           label-text="Пароль"

@@ -36,6 +36,6 @@ const clickOutside = () => {
     padding: 8px 0
     border: 1px solid var(--border-base)
     border-radius: var(--border-radius)
-    background-color: var(--sidebar)
+    background-color: var(--main)
     box-shadow: 0 4px 6px var(--box-shadow)
 </style>

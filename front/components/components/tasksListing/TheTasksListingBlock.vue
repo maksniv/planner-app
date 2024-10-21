@@ -57,7 +57,7 @@ const formattedDate = computed(() => {
     padding: 0 10px 15px 15px
     font-size: 25px
     position: sticky
-    background-color: var(--sidebar)
+    background-color: var(--main)
     top: 0
     z-index: 20
   .overdue

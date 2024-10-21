@@ -23,14 +23,14 @@
         :placeholder-text="placeholderText"
         :colorize="colorize"
       />
-      <TheIconButton
+      <UIIconButton
         v-if="localValue && clearable"
         class="select-field__clear-value"
         icon="mdi:clear-bold"
         size="20"
         @click.capture.stop="clearValue"
       />
-      <TheIconButton
+      <UIIconButton
         class="select-field__triangle"
         icon="bxs:down-arrow"
         size="20"
@@ -151,7 +151,7 @@ const clearValue = () => {
     pointer-events: none
     user-select: none
   .select-label
-    color: var(--base-text-color)
+    color: var(--text)
     display: inline-block
   .select-field
     cursor: pointer
@@ -159,7 +159,7 @@ const clearValue = () => {
     height: var(--base-height)
     border-radius: var(--border-radius)
     border: 1px solid var(--border-base)
-    color: var(--base-text-color)
+    color: var(--text)
     background-color: var(--background)
     padding: 0 55px 0 12px
     transition: color .15s, border .15s ease-out
@@ -175,12 +175,12 @@ const clearValue = () => {
       z-index: 10
       position: absolute
       right: 37px
-      color: var(--base-text-color)
+      color: var(--text)
       bottom: calc(var(--base-height)/2 - 10px)
     .select-field__triangle
       z-index: 10
       position: absolute
       right: 12px
       bottom: calc(var(--base-height)/2 - 10px)
-      color: var(--base-text-color)
+      color: var(--text)
 </style>

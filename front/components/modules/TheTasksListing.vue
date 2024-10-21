@@ -89,8 +89,8 @@ const tasksGroups = computed(() => {
   box-shadow: 0 4px 6px var(--box-shadow)
   border: 1px solid var(--border-base)
   border-radius: var(--border-radius)
-  background-color: var(--sidebar)
-  color: var(--base-text-color)
+  background-color: var(--main)
+  color: var(--text)
   .listing__content
     padding: 0 15px
     overflow: auto

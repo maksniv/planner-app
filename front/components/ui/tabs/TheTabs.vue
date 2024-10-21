@@ -49,7 +49,7 @@ defineEmits<{
   margin-bottom: 15px
   .nav__item
     height: var(--base-height)
-    color: var(--base-text-color)
+    color: var(--text)
     display: flex
     justify-content: center
     align-items: center

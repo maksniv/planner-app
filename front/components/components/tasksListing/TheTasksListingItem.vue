@@ -124,7 +124,7 @@ watch(error, (val) => {
   align-items: flex-start
   justify-content: center
   padding: 15px 5px 10px 15px
-  background-color: var(--sidebar)
+  background-color: var(--main)
   &:hover
     background-color: var(--background)
     border-radius: var(--border-radius)
@@ -132,7 +132,7 @@ watch(error, (val) => {
       display: block
   .task-item__action
     display: none
-    color: var(--secondary-text-color)
+    color: var(--text-secondary)
   .task-item__content
     width: 100%
     display: flex
@@ -154,7 +154,7 @@ watch(error, (val) => {
       border-radius: 100px
       font-size: 12px
       padding: 3px 10px
-      color: var(--secondary-text-color)
+      color: var(--text-secondary)
       border: 1px solid var(--border-base)
 
 .delete

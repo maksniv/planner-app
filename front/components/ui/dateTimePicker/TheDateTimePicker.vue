@@ -4,7 +4,7 @@
     class="wrapper"
     @click="toggleVisible"
   >
-    <TheInput
+    <UIInput
       :value="visibleLocalValue"
       :placeholder-text="placeholderText"
       :label-text="labelText"
@@ -17,7 +17,7 @@
       size="25"
       class="wrapper__icon"
     />
-    <TheIconButton
+    <UIIconButton
       v-if="localValue"
       class="wrapper__icon-clear-value"
       icon="mdi:clear-bold"
@@ -135,7 +135,7 @@ const toggleVisible = () => {
     cursor: pointer
     position: absolute
     right: 45px
-    color: var(--base-text-color)
+    color: var(--text)
     bottom: calc(var(--base-height)/2 - 12px)
   .calendar__wrapper
     position: absolute

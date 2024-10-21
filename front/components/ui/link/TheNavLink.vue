@@ -28,7 +28,7 @@ defineProps<Props>();
   min-width: 90%
   height: 50px
   font-size: 16px
-  color: var(--secondary-text-color)
+  color: var(--text-secondary)
   display: flex
   flex-direction: row
   flex-wrap: nowrap

@@ -58,7 +58,7 @@ watch(
 .field__label
   cursor: pointer
   height: 20px
-  color: var(--base-text-color)
+  color: var(--text)
   max-width: var(--max-width-field)
   width: fit-content
   display: flex
@@ -82,7 +82,7 @@ watch(
     height: 20px
     border-radius: calc( var(--border-radius) / 2)
     border: 2px solid var(--border-base)
-    color: var(--base-text-color)
+    color: var(--textr)
     background-color: var(--background)
     transition: color .15s, border .15s ease
     z-index: 10

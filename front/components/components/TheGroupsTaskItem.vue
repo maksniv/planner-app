@@ -1,6 +1,6 @@
 <template>
   <div class="groups-task-item__container">
-    <TheInput
+    <UIInput
       v-model="localValue.name"
       placeholder-text="Название"
       :value="name"
@@ -11,7 +11,7 @@
       :value="color"
       @input="updateHandler({ color: localValue.color })"
     />
-    <TheIconButton
+    <UIIconButton
       class="groups-task-item__icon"
       :disabled="isPendingUpdate"
       icon="material-symbols:delete-outline"

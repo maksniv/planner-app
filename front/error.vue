@@ -25,7 +25,7 @@
   width: 100%
   height: 100vh
   display: flex
-  background-color: var(--background)
+  background-color: var(--main-secondary)
   position: relative
   .error__container
     margin: auto
@@ -36,8 +36,8 @@
     padding: 10px 30px
     border: 1px solid var(--border-base)
     border-radius: var(--border-radius)
-    background-color: var(--sidebar)
-    color: var(--base-text-color)
+    background-color: var(--main)
+    color: var(--text)
     height: 450px
     max-width: 900px
     width: 100%

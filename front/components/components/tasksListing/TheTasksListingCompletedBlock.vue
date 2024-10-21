@@ -1,6 +1,6 @@
 <template>
   <div class="show-button-container">
-    <TheIconButton
+    <UIIconButton
       class="show-button__icon"
       :class="{'visible': showList}"
       icon="bxs:right-arrow"

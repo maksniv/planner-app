@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <TheInput
+    <UIInput
       v-model="localValue"
       :value="value"
       :placeholder-text="placeholderText"
@@ -68,6 +68,6 @@ const typeInput = computed(() => {
     cursor: pointer
     position: absolute
     right: 10px
-    color: var(--base-text-color)
+    color: var(--text)
     bottom: calc(var(--base-height)/2 - 13px)
 </style>

@@ -18,5 +18,5 @@
     height: 100px
     .logo__text
         font-size: 29px
-        color: var(--base-text-color)
+        color: var(--text)
 </style>

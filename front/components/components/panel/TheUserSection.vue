@@ -4,7 +4,7 @@
       <template #opening-part>
         <div class="user-section__wrapper">
           <TheAvatar :name="data?.user.name" :surname="data?.user.surname"/>
-          <TheIconButton
+          <UIIconButton
             class="logo__icon"
             icon="bxs:down-arrow"
             size="20"

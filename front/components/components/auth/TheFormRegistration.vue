@@ -2,20 +2,21 @@
   <TheForm title-size="small">
     <template #title>Форма регистрации</template>
     <template #body>
-      <TheInput
+      <UIInput
         v-model="email"
         placeholder-text="Email"
         label-text="Email"
-      /><TheInputPassword
+      />
+      <TheInputPassword
         v-model="password"
         placeholder-text="Пароль"
         label-text="Пароль"
       />
     </template>
     <template #footer>
-      <UIButton @click.prevent="mutate({ email: email, password: password })"
-        >Зарегистрироваться</UIButton
-      >
+      <UIButton @click.prevent="mutate({ email: email, password: password })">
+        Зарегистрироваться
+      </UIButton>
     </template>
   </TheForm>
 </template>

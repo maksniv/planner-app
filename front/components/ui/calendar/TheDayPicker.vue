@@ -93,13 +93,13 @@ watch(
   .weeks-header__title
     display: grid
     place-items: center
-    color: var(--secondary-text-color)
+    color: var(--text-secondary)
     user-select: none
   .days-wrapper
     display: grid
     grid-template-columns: repeat(7, 1fr)
     gap: 2px
-    color: var(--base-text-color)
+    color: var(--text)
     animation: to-top 0.5s forwards
     .day
       width: 35px

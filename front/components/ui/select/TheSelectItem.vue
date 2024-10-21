@@ -83,7 +83,7 @@ const selectItem = () => {
   height: fit-content
   display: flex
   align-items: center
-  color: var(--base-text-color)
+  color: var(--text)
   &.selected
     color: var(--disabled-text-color)
     min-height: var(--base-height)

@@ -57,10 +57,10 @@ const getName = (value: any) => {
 
 <style lang="sass" scoped>
 .select-field__placeholder
-  color: var(--secondary-text-color)
+  color: var(--text-secondary)
   display: inline-block
 .select-field__selected
-  color: var(--base-text-color)
+  color: var(--text)
   display: inline-block
   &.colorize
     padding: 3px 5px

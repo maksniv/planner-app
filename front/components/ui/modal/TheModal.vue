@@ -84,8 +84,8 @@ defineEmits<{
         padding: 24px 32px 20px 32px
         height: auto
         border-radius: var(--border-radius)
-        background-color: var(--sidebar)
-        color: var(--base-text-color)
+        background-color: var(--main)
+        color: var(--text)
         transition: all 0.25s
         transform: scale(0.5)
         display: flex

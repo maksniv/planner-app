@@ -35,16 +35,16 @@
       />
     </template>
     <template #button>
-      <TheButton
+      <UIButton
         @click="update({isCompleted: true}); closeModal()">
         Задача выполнена
-      </TheButton>
-      <TheButton
+      </UIButton>
+      <UIButton
         outlined
         @click="closeModal()"
       >
         Отмена
-      </TheButton>
+      </UIButton>
     </template>
   </TheModal>
 </template>
